@@ -37,9 +37,8 @@ img, picture, svg, video {
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  line-height: 1.1;
-  font-weight: 600; /* Bricolage Grotesque needs a touch more weight than a contrast serif to hold display presence */
-  letter-spacing: -0.01em;
+  line-height: 1.12;
+  font-weight: 500; /* Newsreader holds display presence at 500; 600 gets heavy for a reading serif */
   text-wrap: balance;
 }
 
