@@ -21,12 +21,12 @@
 </head>
 <body class="is-locked">
   <!-- ============ PASSWORD GATE (RE-ENABLED 2026-09-28) ============
-       Gate is ON (body has class="is-locked"). Password lives in
-       Katarzyna's motivation letter; without it, recruiters are asked to
-       get in touch and she shares it by email. To turn OFF: remove
-       class="is-locked" from <body>. Real password goes in
-       CORRECT_PASSWORD in assets/js/password-gate.js (shared, still the
-       default placeholder until changed). -->
+       Gate is ON (body has class="is-locked"). The password is sent with
+       each job application (Asana: the application form; elsewhere: a
+       tailored CV or on request); anyone without it is asked to email.
+       To turn OFF: remove class="is-locked" from <body>. The real
+       password is set in CORRECT_PASSWORD in assets/js/password-gate.js
+       (shared across every protected page). -->
   <div class="password-gate" data-password-gate>
     <form class="password-gate__box" data-gate-form>
       <div class="password-gate__icon" aria-hidden="true">
@@ -37,7 +37,7 @@
       </div>
       <p class="eyebrow">Password protected</p>
       <h1>This case study is password-protected</h1>
-      <p class="text-muted">The password is in my motivation letter. Don't have it? <a href="mailto:katarzynkamoszczynska@gmail.com">email me</a> and I'll send it over.</p>
+      <p class="text-muted">If you're reviewing my application, you'll have the password. Otherwise, <a href="mailto:katarzynkamoszczynska@gmail.com">email me</a> and I'll send it over.</p>
       <div class="form-field">
         <label for="gate-password-2" class="visually-hidden">Password</label>
         <input type="password" id="gate-password-2" placeholder="Password" autocomplete="off" required />

@@ -195,6 +195,39 @@
   pointer-events: none;
 }
 
+/* Hero crayon accents — a dot pinned near the viewport's right edge up
+   top, a wave roughly mid-hero. The dot's `right` reaches out of the
+   centred .container to sit ~16px from the actual viewport edge. */
+.hero-dot {
+  position: absolute;
+  top: 6px;
+  right: calc(50% - 50vw + 16px);
+  width: 24px;
+  height: 24px;
+  color: var(--color-mark);
+  opacity: 0.9;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-wave {
+  position: absolute;
+  top: 41%;
+  left: 50%;
+  width: 176px;
+  height: auto;
+  color: var(--color-mark);
+  opacity: 0.85;
+  z-index: -1;
+  pointer-events: none;
+  transform: rotate(-6deg);
+}
+
+@media (max-width: 900px) {
+  .hero-dot,
+  .hero-wave { display: none; }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .footer-mark { transition: transform var(--duration-base) var(--ease-out); }
   .section:hover > .footer-mark { transform: rotate(10deg); }

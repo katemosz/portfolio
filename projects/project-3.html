@@ -21,16 +21,16 @@
 </head>
 <body class="is-locked">
   <!-- ============ PASSWORD GATE (RE-ENABLED 2026-09-28) ============
-       Gate is ON again (body has class="is-locked"). The password lives
-       in Katarzyna's motivation letter; recruiters without it are asked
-       to get in touch and she shares it by email. To turn the gate OFF
-       again: remove class="is-locked" from <body> above (the markup,
-       password-gate.css and password-gate.js all stay in place — the rule
-       body:not(.is-locked) .password-gate{display:none} hides it). Set the
-       actual password in CORRECT_PASSWORD in assets/js/password-gate.js
-       (shared across every protected page — still the default placeholder
-       until changed). Dark/light follows the visitor's OS setting, same
-       as the rest of the site. -->
+       Gate is ON again (body has class="is-locked"). The password is sent
+       with each job application (Asana: the application form; elsewhere: a
+       tailored CV or on request); anyone without it is asked to email.
+       To turn the gate OFF again: remove class="is-locked" from <body>
+       above (the markup, password-gate.css and password-gate.js all stay
+       in place — the rule body:not(.is-locked) .password-gate{display:none}
+       hides it). The real password is set in CORRECT_PASSWORD in
+       assets/js/password-gate.js (shared across every protected page).
+       Dark/light follows the visitor's OS setting, same as the rest of
+       the site. -->
   <div class="password-gate" data-password-gate>
     <form class="password-gate__box" data-gate-form>
       <div class="password-gate__icon" aria-hidden="true">
@@ -41,7 +41,7 @@
       </div>
       <p class="eyebrow">Password protected</p>
       <h1>This case study is password-protected</h1>
-      <p class="text-muted">The password is in my motivation letter. Don't have it? <a href="mailto:katarzynkamoszczynska@gmail.com">email me</a> and I'll send it over.</p>
+      <p class="text-muted">If you're reviewing my application, you'll have the password. Otherwise, <a href="mailto:katarzynkamoszczynska@gmail.com">email me</a> and I'll send it over.</p>
       <div class="form-field">
         <label for="gate-password-3" class="visually-hidden">Password</label>
         <input type="password" id="gate-password-3" placeholder="Password" autocomplete="off" required />

@@ -57,14 +57,29 @@
   <main id="main">
     <!-- ============ HERO ============ -->
     <section class="hero container" style="position: relative; padding-top: var(--space-xl);">
-      <div class="sticky-note hero-note" data-reveal style="--rotate: 8deg; width: 250px; top: 4%; right: 1%;">
+      <div class="sticky-note hero-note" data-reveal style="--rotate: 8deg; width: 250px; top: 12%; right: 2%;">
         "An exceptional designer — deeply focused on UX, data flow, and logical workflows."
         <span class="hero-note__attr">— Bartek, Tech Lead</span>
       </div>
-      <div class="sticky-note sticky-note--pink hero-note" data-reveal style="--rotate: -6deg; width: 230px; top: 44%; right: 10%;">
+      <div class="sticky-note sticky-note--pink hero-note" data-reveal style="--rotate: -6deg; width: 230px; top: 46%; right: 12%;">
         "Strong design skills — and she builds a culture of trust and high-quality design."
         <span class="hero-note__attr">— Agata, Product Designer</span>
       </div>
+      <!-- Crayon accents: a dot pinned to the top-right of the viewport, and
+           a wave (same shape as the one at the very bottom of the page)
+           roughly mid-hero. Self-contained filter. Hidden on mobile. -->
+      <svg class="hero-dot" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <filter id="crayon-texture-hero" x="-50%" y="-50%" width="200%" height="200%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+        <circle cx="12" cy="12" r="10" fill="currentColor" filter="url(#crayon-texture-hero)" />
+      </svg>
+      <svg class="hero-wave" viewBox="0 0 182 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6,23 C18,9 30,9 36,23 C48,37 60,37 66,23 C78,9 90,9 96,23 C108,37 120,37 126,23 C138,9 150,9 156,23 C165,32 171,29 176,25" stroke="currentColor" stroke-width="7" stroke-linecap="round" filter="url(#crayon-texture-hero)" />
+      </svg>
       <div class="hero__grid">
         <p class="eyebrow" data-anim="hero-eyebrow">Senior Product Designer · Research &amp; Data-Led · AI Enthusiast</p>
         <h1 class="hero__title" data-anim="hero-title" style="max-width: 40rem; font-size: clamp(2.4rem, 4.6vw + 0.8rem, 4.2rem);">
