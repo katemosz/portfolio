@@ -265,14 +265,14 @@
       </p>
       <!-- Bottom-left hand-drawn wave, and a crayon dot at the top-right.
            Self-contained filter so it doesn't depend on DOM order. -->
-      <svg class="footer-mark" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg class="footer-mark" viewBox="0 0 182 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
           <filter id="crayon-texture-footer" x="-40%" y="-40%" width="180%" height="180%">
             <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise" />
             <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
           </filter>
         </defs>
-        <path d="M6,26 C18,6 30,6 42,26 C54,46 66,46 78,26 C90,6 102,6 124,20" stroke="currentColor" stroke-width="7" stroke-linecap="round" filter="url(#crayon-texture-footer)" />
+        <path d="M6,23 C18,9 30,9 36,23 C48,37 60,37 66,23 C78,9 90,9 96,23 C108,37 120,37 126,23 C138,9 150,9 156,23 C165,32 171,29 176,25" stroke="currentColor" stroke-width="7" stroke-linecap="round" filter="url(#crayon-texture-footer)" />
       </svg>
       <svg class="cta-dot" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="12" cy="12" r="10" fill="currentColor" filter="url(#crayon-texture-footer)" />
