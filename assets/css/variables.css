@@ -5,19 +5,19 @@
 
 :root {
   /* --- Kolory: jasny motyw ---
-     Warm paper ground. Two accents that play off each other:
-     --color-accent (deep forest green) carries the UI — links, buttons,
-     focus, active states; --color-mark (warm vermilion) is reserved for
-     the hand-drawn crayon marks only. Green + orange on warm paper —
-     natural, a bit "field notes", not the cool blueprint look. */
-  --color-bg: #f6f4ee;
-  --color-bg-alt: #ece9df;
+     Near-white ground (barely-there warmth, not cream). Two accents that
+     play off each other: --color-accent (pine green) carries the UI —
+     links, buttons, focus, active states; --color-mark (warm vermilion)
+     is reserved for the hand-drawn crayon marks only. Green + orange —
+     natural, a bit "field notes". */
+  --color-bg: #fbfbf9;
+  --color-bg-alt: #f0f0ec;
   --color-surface: #ffffff;
-  --color-text: #1a1a15;
-  --color-text-muted: #5c5b51;
-  --color-border: #e4e1d6;
-  --color-accent: #1f6a43;        /* UI accent — deep forest green */
-  --color-accent-soft: #e2ede4;
+  --color-text: #1a1a18;
+  --color-text-muted: #5d5d57;
+  --color-border: #e6e5e0;
+  --color-accent: #0f6b4a;        /* UI accent — pine green */
+  --color-accent-soft: #e0ede7;
   --color-accent-contrast: #ffffff;
   --color-mark: #f2542d;          /* hand-drawn crayon marks ONLY */
 
@@ -30,7 +30,7 @@
   --font-body: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "Space Mono", ui-monospace, "SF Mono", "SFMono-Regular", Menlo, monospace;
 
-  --fs-900: clamp(2.6rem, 5vw + 1rem, 5rem);
+  --fs-900: clamp(2.35rem, 4.4vw + 0.85rem, 4.4rem);
   --fs-800: clamp(2rem, 3vw + 1rem, 3.25rem);
   --fs-700: clamp(1.5rem, 1.5vw + 1rem, 2.1rem);
   --fs-600: 1.25rem;
@@ -67,15 +67,15 @@
    Usuń ten blok, jeśli chcesz tylko jasnej wersji. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #12120f;
-    --color-bg-alt: #1a1813;
-    --color-surface: #1e1c17;
-    --color-text: #f3f1eb;
-    --color-text-muted: #a3a099;
-    --color-border: #2d2a24;
-    --color-accent: #5fbf87;       /* lifted forest green for contrast on dark */
-    --color-accent-soft: #18271e;
-    --color-accent-contrast: #12120f;
+    --color-bg: #121311;
+    --color-bg-alt: #1a1b18;
+    --color-surface: #1e1f1c;
+    --color-text: #f2f2ee;
+    --color-text-muted: #a1a19a;
+    --color-border: #2c2d29;
+    --color-accent: #57c191;       /* lifted pine for contrast on dark */
+    --color-accent-soft: #17271f;
+    --color-accent-contrast: #121311;
     --color-mark: #ff6a44;         /* brighter warm for the marks on dark */
   }
 }
