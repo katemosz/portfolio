@@ -5,20 +5,19 @@
 
 :root {
   /* --- Kolory: jasny motyw ---
-     Cooler off-white ground (deliberately NOT warm cream). Two accents:
-     --color-accent (cool "blueprint" indigo) carries the UI — links,
-     buttons, focus, active states; --color-mark (warm vermilion) is
-     reserved for the hand-drawn crayon marks only. The split is the
-     concept: the system is cool, the human annotation on top of it is
-     warm. */
-  --color-bg: #f2f3f5;
-  --color-bg-alt: #e8eaee;
+     Warm paper ground. Two accents that play off each other:
+     --color-accent (deep forest green) carries the UI — links, buttons,
+     focus, active states; --color-mark (warm vermilion) is reserved for
+     the hand-drawn crayon marks only. Green + orange on warm paper —
+     natural, a bit "field notes", not the cool blueprint look. */
+  --color-bg: #f6f4ee;
+  --color-bg-alt: #ece9df;
   --color-surface: #ffffff;
-  --color-text: #16181d;
-  --color-text-muted: #585c64;
-  --color-border: #e0e2e6;
-  --color-accent: #2f43c9;        /* UI accent — cool indigo */
-  --color-accent-soft: #e5e8fb;
+  --color-text: #1a1a15;
+  --color-text-muted: #5c5b51;
+  --color-border: #e4e1d6;
+  --color-accent: #1f6a43;        /* UI accent — deep forest green */
+  --color-accent-soft: #e2ede4;
   --color-accent-contrast: #ffffff;
   --color-mark: #f2542d;          /* hand-drawn crayon marks ONLY */
 
@@ -68,15 +67,15 @@
    Usuń ten blok, jeśli chcesz tylko jasnej wersji. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #111214;
-    --color-bg-alt: #191b1f;
-    --color-surface: #1d1f23;
-    --color-text: #f1f2f4;
-    --color-text-muted: #9fa2a9;
-    --color-border: #2c2e33;
-    --color-accent: #8b98ff;       /* lifted indigo for contrast on dark */
-    --color-accent-soft: #23263a;
-    --color-accent-contrast: #111214;
+    --color-bg: #12120f;
+    --color-bg-alt: #1a1813;
+    --color-surface: #1e1c17;
+    --color-text: #f3f1eb;
+    --color-text-muted: #a3a099;
+    --color-border: #2d2a24;
+    --color-accent: #5fbf87;       /* lifted forest green for contrast on dark */
+    --color-accent-soft: #18271e;
+    --color-accent-contrast: #12120f;
     --color-mark: #ff6a44;         /* brighter warm for the marks on dark */
   }
 }
