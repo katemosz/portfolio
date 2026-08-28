@@ -148,3 +148,21 @@
 .section:has(.bio-text:hover) > .crayon-loop {
   transform: rotate(15deg);
 }
+
+/* Hero sticky notes get the same crayon-style swing on hover — a little
+   motion on an otherwise static page. Scoped to the decorative hero
+   notes; the in-content notes (metric board, voice of users) stay put so
+   they don't wobble while you're reading them. !important because the
+   GSAP intro leaves an inline transform (the resting tilt) on each note
+   that a normal rule can't override; the transition still applies. */
+.hero > .sticky-note,
+.case-hero > .sticky-note {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero > .sticky-note:hover,
+  .case-hero > .sticky-note:hover {
+    transform: rotate(calc(var(--rotate, -6deg) + 3.5deg)) !important;
+  }
+}
