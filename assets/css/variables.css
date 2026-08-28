@@ -9,18 +9,17 @@
      play off each other: --color-accent (teal-green) carries the UI —
      links, buttons, focus, active states; --color-mark (warm vermilion)
      is reserved for the hand-drawn crayon marks only. Green + orange —
-     natural, a bit "field notes". NOTE: this teal is fairly light, so
-     accent-filled buttons use dark text (--color-accent-contrast) rather
-     than white to stay readable. */
+     natural, a bit "field notes". This deep teal clears WCAG AA 4.5:1 as
+     text on --color-bg (~5:1) and against white on buttons (~5.2:1). */
   --color-bg: #fbfbf9;
   --color-bg-alt: #f0f0ec;
   --color-surface: #ffffff;
   --color-text: #1a1a18;
   --color-text-muted: #5d5d57;
   --color-border: #e6e5e0;
-  --color-accent: #04a58a;        /* UI accent — teal-green */
+  --color-accent: #0a7a66;        /* UI accent — deep teal */
   --color-accent-soft: #dbf1ec;
-  --color-accent-contrast: #05302a;
+  --color-accent-contrast: #ffffff;
   --color-mark: #f2542d;          /* hand-drawn crayon marks ONLY */
 
   /* --- Typografia ---
