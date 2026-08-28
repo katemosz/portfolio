@@ -38,7 +38,8 @@ img, picture, svg, video {
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   line-height: 1.1;
-  font-weight: 500;
+  font-weight: 600; /* Bricolage Grotesque needs a touch more weight than a contrast serif to hold display presence */
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
@@ -95,11 +96,27 @@ button { cursor: pointer; }
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
+  font-family: var(--font-mono);
   font-size: var(--fs-300);
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-accent);
+  /* Hand-drawn underline — the crayon annotation motif, made a consistent
+     signature under every section eyebrow. Painted as a background image
+     (an ::after would become a flex item beside the text, not under it).
+     Colour is baked into the SVG, so dark mode overrides it below. */
+  padding-bottom: 0.4em;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='100'%20height='8'%20viewBox='0%200%20100%208'%20fill='none'%3E%3Cpath%20d='M1%205%20C%2012%201%2020%208%2032%204%20C%2044%200%2052%208%2064%204%20C%2076%201%2084%207%2099%203'%20stroke='%23f2542d'%20stroke-width='2.2'%20stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  background-size: 100% 0.34em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .eyebrow {
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='100'%20height='8'%20viewBox='0%200%20100%208'%20fill='none'%3E%3Cpath%20d='M1%205%20C%2012%201%2020%208%2032%204%20C%2044%200%2052%208%2064%204%20C%2076%201%2084%207%2099%203'%20stroke='%23ff6a44'%20stroke-width='2.2'%20stroke-linecap='round'/%3E%3C/svg%3E");
+  }
 }
 
 .eyebrow::before {
@@ -108,6 +125,7 @@ button { cursor: pointer; }
   height: 6px;
   border-radius: 50%;
   background: currentColor;
+  flex: none;
 }
 
 .visually-hidden {

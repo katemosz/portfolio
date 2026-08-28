@@ -23,7 +23,7 @@
   position: absolute;
   top: 46%;
   right: 8%;
-  color: var(--color-accent);
+  color: var(--color-mark);
   transform: rotate(-8deg);
   pointer-events: none;
 }
@@ -49,8 +49,9 @@
 .hero-note__attr {
   display: block;
   margin-top: var(--space-2xs);
-  font-size: var(--fs-300);
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: calc(var(--fs-300) * 0.9);
+  font-weight: 400;
   opacity: 0.75;
 }
 

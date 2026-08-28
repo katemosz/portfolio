@@ -174,9 +174,10 @@
 
 .callout__label {
   display: block;
+  font-family: var(--font-mono);
   font-size: var(--fs-300);
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--color-accent);
   margin-bottom: var(--space-2xs);
@@ -203,7 +204,7 @@
    the shadow entirely. */
 @media (prefers-color-scheme: dark) {
   .sticky-note {
-    box-shadow: 0 0 32px 2px color-mix(in srgb, var(--color-accent) 40%, transparent);
+    box-shadow: 0 0 32px 2px color-mix(in srgb, var(--color-mark) 40%, transparent);
   }
 }
 
@@ -323,10 +324,11 @@
   }
   .metric-note__label {
     display: block;
+    font-family: var(--font-mono);
     font-size: var(--fs-300);
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
     color: var(--color-text-muted);
     margin-bottom: var(--space-3xs);
   }
@@ -374,7 +376,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  color: var(--color-accent);
+  color: var(--color-mark);
 }
 
 .metric-status--met {
@@ -616,8 +618,10 @@
   background: transparent;
   border: 1px solid var(--color-accent);
   color: var(--color-accent);
-  font-size: var(--fs-300);
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: calc(var(--fs-300) * 0.92);
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 .skill-pill {
@@ -796,7 +800,7 @@
   left: -18px;
   right: -18px;
   z-index: -1;
-  color: var(--color-accent);
+  color: var(--color-mark);
   opacity: 0.9;
 }
 

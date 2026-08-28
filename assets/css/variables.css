@@ -4,20 +4,31 @@
    ========================================================================== */
 
 :root {
-  /* --- Kolory: jasny motyw --- */
-  --color-bg: #faf9f6;
-  --color-bg-alt: #f1efe8;
+  /* --- Kolory: jasny motyw ---
+     Cooler off-white ground (deliberately NOT warm cream). Two accents:
+     --color-accent (cool "blueprint" indigo) carries the UI — links,
+     buttons, focus, active states; --color-mark (warm vermilion) is
+     reserved for the hand-drawn crayon marks only. The split is the
+     concept: the system is cool, the human annotation on top of it is
+     warm. */
+  --color-bg: #f2f3f5;
+  --color-bg-alt: #e8eaee;
   --color-surface: #ffffff;
-  --color-text: #17171a;
-  --color-text-muted: #5c5c63;
-  --color-border: #e5e2d9;
-  --color-accent: #ff5a36;       /* akcent — zmień na swój kolor marki */
-  --color-accent-soft: #ffe6dc;
+  --color-text: #16181d;
+  --color-text-muted: #585c64;
+  --color-border: #e0e2e6;
+  --color-accent: #2f43c9;        /* UI accent — cool indigo */
+  --color-accent-soft: #e5e8fb;
   --color-accent-contrast: #ffffff;
+  --color-mark: #f2542d;          /* hand-drawn crayon marks ONLY */
 
-  /* --- Typografia --- */
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  /* --- Typografia ---
+     Display: Bricolage Grotesque (characterful grotesk, not the default
+     high-contrast serif). Body: Inter. Mono: Space Mono for all small
+     labels — eyebrows, case-meta keys, tags, metric labels. */
+  --font-display: "Bricolage Grotesque", "Hanken Grotesk", "Segoe UI", sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Space Mono", ui-monospace, "SF Mono", "SFMono-Regular", Menlo, monospace;
 
   --fs-900: clamp(2.6rem, 5vw + 1rem, 5rem);
   --fs-800: clamp(2rem, 3vw + 1rem, 3.25rem);
@@ -56,14 +67,15 @@
    Usuń ten blok, jeśli chcesz tylko jasnej wersji. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #121214;
-    --color-bg-alt: #1a1a1d;
-    --color-surface: #1e1e22;
-    --color-text: #f2f1ed;
-    --color-text-muted: #a3a2a0;
-    --color-border: #2d2d31;
-    --color-accent: #ff7452;
-    --color-accent-soft: #3a2620;
-    --color-accent-contrast: #121214;
+    --color-bg: #111214;
+    --color-bg-alt: #191b1f;
+    --color-surface: #1d1f23;
+    --color-text: #f1f2f4;
+    --color-text-muted: #9fa2a9;
+    --color-border: #2c2e33;
+    --color-accent: #8b98ff;       /* lifted indigo for contrast on dark */
+    --color-accent-soft: #23263a;
+    --color-accent-contrast: #111214;
+    --color-mark: #ff6a44;         /* brighter warm for the marks on dark */
   }
 }
