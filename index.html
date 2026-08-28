@@ -232,7 +232,7 @@
     </section>
 
     <!-- ============ TOOLS / SKILLS ============ -->
-    <section class="section container" data-reveal style="padding-block: calc(var(--space-2xl) - 50px);">
+    <section class="section container" data-reveal style="padding-top: calc(var(--space-2xl) - 50px);">
       <p class="eyebrow">Tools &amp; methods</p>
       <div class="marquee">
         <div class="marquee__track">
@@ -253,7 +253,7 @@
     </section>
 
     <!-- ============ CONTACT CTA ============ -->
-    <section class="section container text-center" data-reveal style="padding-top: calc(var(--space-2xl) - 50px); position: relative;">
+    <section class="section container text-center" data-reveal style="position: relative;">
       <p class="eyebrow">Let's work together</p>
       <h2>Open to new opportunities.</h2>
       <p style="margin-inline:auto; max-width: 44ch; margin-top: 24px;">
@@ -263,17 +263,19 @@
         <a href="https://www.linkedin.com/in/katarzyna-moszczynska/" target="_blank" rel="noopener" style="color: var(--color-accent); font-weight: 500; text-decoration: underline; text-underline-offset: 3px;">LinkedIn</a>.
         I'm always up for a good problem — and I can't wait to hear what you're working on.
       </p>
-      <!-- New hand-drawn shape for the page's bottom-left — a coil, unlike
-           the horizontal squiggles used elsewhere. Self-contained filter
-           so it doesn't depend on DOM order. -->
-      <svg class="footer-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Bottom-left hand-drawn wave, and a crayon dot at the top-right.
+           Self-contained filter so it doesn't depend on DOM order. -->
+      <svg class="footer-mark" viewBox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
           <filter id="crayon-texture-footer" x="-40%" y="-40%" width="180%" height="180%">
             <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise" />
             <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
           </filter>
         </defs>
-        <path d="M54,50 C54,43 45,42 43,49 C40,58 43,68 55,68 C70,68 76,53 72,39 C67,20 44,15 28,24 C7,36 8,64 27,79" stroke="currentColor" stroke-width="7" stroke-linecap="round" filter="url(#crayon-texture-footer)" />
+        <path d="M6,26 C18,6 30,6 42,26 C54,46 66,46 78,26 C90,6 102,6 124,20" stroke="currentColor" stroke-width="7" stroke-linecap="round" filter="url(#crayon-texture-footer)" />
+      </svg>
+      <svg class="cta-dot" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" fill="currentColor" filter="url(#crayon-texture-footer)" />
       </svg>
     </section>
   </main>

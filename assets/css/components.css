@@ -552,7 +552,7 @@
 /* --- Karta projektu --- */
 .project-card {
   display: block;
-  border-radius: var(--radius-lg);
+  border-radius: 12px;
   overflow: hidden;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -601,7 +601,7 @@
 .project-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3xs);
+  gap: calc(var(--space-3xs) + 2px);
   margin-bottom: var(--space-xs);
 }
 
@@ -931,9 +931,9 @@
 
 .testimonial-card blockquote {
   margin: 0 0 var(--space-md);
-  font-family: var(--font-display);
-  font-size: var(--fs-600);
-  line-height: 1.35;
+  font-family: var(--font-body);
+  font-size: var(--fs-500);
+  line-height: 1.5;
   color: var(--color-text);
 }
 

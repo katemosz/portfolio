@@ -253,7 +253,7 @@
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  align-items: start;
+  align-items: stretch; /* equal-height cards — tops AND bottoms line up regardless of blurb length */
   gap: var(--space-lg);
   margin-top: var(--space-lg);
 }

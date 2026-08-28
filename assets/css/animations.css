@@ -167,15 +167,15 @@
   }
 }
 
-/* Hand-drawn coil at the bottom-left of the homepage's closing section —
-   a new shape (every other crayon mark on the site is a horizontal
-   squiggle). Bleeds ~14px past the container's left edge (safe on mobile,
-   where the container padding is wider than that), sits behind the text. */
+/* Hand-drawn wave at the bottom-left of the homepage's closing section,
+   plus a crayon dot at its top-right. The wave bleeds ~14px past the
+   container's left edge (safe on mobile, where the container padding is
+   wider than that); both sit behind the text. */
 .footer-mark {
   position: absolute;
   left: -14px;
-  bottom: 6px;
-  width: 118px;
+  bottom: 8px;
+  width: 132px;
   height: auto;
   color: var(--color-mark);
   opacity: 0.85;
@@ -183,7 +183,19 @@
   pointer-events: none;
 }
 
+.cta-dot {
+  position: absolute;
+  top: 36px;
+  right: 22px;
+  width: 24px;
+  height: 24px;
+  color: var(--color-mark);
+  opacity: 0.9;
+  z-index: -1;
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .footer-mark { transition: transform var(--duration-base) var(--ease-out); }
-  .section:hover > .footer-mark { transform: rotate(14deg); }
+  .section:hover > .footer-mark { transform: rotate(10deg); }
 }
