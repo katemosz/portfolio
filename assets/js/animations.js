@@ -53,6 +53,18 @@
         "-=0.6"
       );
 
+    /* Failsafe. gsap.from() immediately sets the hero to opacity:0; if the
+       timeline then stalls before finishing — a throttled rAF in a
+       backgrounded tab, a slow GSAP load, a JS error later on the page —
+       the hero would stay invisible for good. A beat after load, force it
+       visible no matter what. On a normal load the timeline finished long
+       ago and this is a harmless no-op. */
+    window.addEventListener("load", () => {
+      window.setTimeout(() => {
+        gsap.set("[data-anim]", { opacity: 1, clearProps: "transform" });
+      }, 2500);
+    });
+
     /* ---------------------------------------------------------------------
        2) SCROLL REVEAL
        Każdy element z atrybutem data-reveal pojawia się i "wjeżdża"

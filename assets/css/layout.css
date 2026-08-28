@@ -141,10 +141,9 @@
 
 /* Hand-drawn crayon loop above the bio quote — bleeds into the page's
    side margin on wide screens, sits behind the quote text (negative
-   z-index paints below normal-flow siblings in the same stacking context,
-   but above the blurred .blob--accent glow since it comes later in the
-   DOM). Simply clips at the container edge on narrow viewports, which is
-   fine. */
+   z-index paints below normal-flow siblings in the same stacking
+   context). Simply clips at the container edge on narrow viewports,
+   which is fine. */
 .crayon-loop {
   position: absolute;
   top: -6px;
