@@ -20,7 +20,7 @@
 (() => {
   // 👇 ZMIEŃ TO HASŁO na swoje. To samo hasło obowiązuje na wszystkich
   // stronach, które dołączają ten plik.
-  const CORRECT_PASSWORD = "zmien-to-haslo";
+  const CORRECT_PASSWORD = "whenlifegivesyoulemons";
 
   const STORAGE_KEY = "portfolio-case-study-unlocked";
 
@@ -55,6 +55,19 @@
   }
 
   input?.focus();
+
+  // Show/hide password toggle (the eye icon next to the field).
+  const toggle = gate.querySelector("[data-gate-toggle]");
+  if (toggle && input) {
+    toggle.addEventListener("click", () => {
+      const reveal = input.type === "password";
+      input.type = reveal ? "text" : "password";
+      toggle.setAttribute("aria-pressed", String(reveal));
+      toggle.setAttribute("aria-label", reveal ? "Hide password" : "Show password");
+      toggle.classList.toggle("is-on", reveal);
+      input.focus();
+    });
+  }
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
