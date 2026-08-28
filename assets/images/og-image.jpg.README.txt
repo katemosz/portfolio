@@ -1,0 +1,4 @@
+Wstaw tutaj plik og-image.jpg (zalecane 1200×630 px).
+To obrazek, który pojawi się jako podgląd, gdy ktoś udostępni link
+do Twojego portfolio na LinkedIn, Facebooku, w Slacku itp.
+Po wgraniu usuń ten plik .txt.

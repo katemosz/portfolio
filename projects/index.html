@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work — Katarzyna Moszczyńska</title>
+  <meta name="description" content="Selected case studies from my work as a research-led Senior Product Designer." />
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="nav__logo" href="../index.html">
+        <img class="nav__avatar" src="../assets/images/profile/headshot.jpg" alt="" />
+        <span class="nav__name">Katarzyna Moszczyńska</span>
+        <span class="nav__role"><span class="nav__dot">&bull;</span> Senior Product Designer <span class="nav__dot">&bull;</span> Warsaw</span>
+      </a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html" aria-current="page">Work</a></li>
+        <li><a href="../how-i-work.html">How I work</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a class="btn btn--ghost" href="../assets/files/cv-katarzyna-moszczynska.pdf" target="_blank" rel="noopener">Download CV</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- ============ /HEADER ============ -->
+
+  <main id="main">
+    <section class="hero container">
+      <p class="eyebrow" data-anim="hero-eyebrow">Portfolio</p>
+      <h1 class="hero__title" data-anim="hero-title">Selected work</h1>
+      <p class="hero__lede" data-anim="hero-lede">
+        Three case studies spanning strategic discovery, a full usability-testing
+        cycle, and structured concept testing — from context to outcome.
+      </p>
+    </section>
+
+    <section class="section container">
+      <div class="project-grid" data-reveal-group>
+        <a class="project-card" href="project-1.html" data-reveal>
+          <div class="project-card__media project-card__media--blurred">
+            <img src="../assets/images/projects/project-1/after-audience-selection.jpg" alt="The redesigned campaign-planning flow" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag">Full Redesign</span>
+              <span class="tag">SaaS</span>
+            </div>
+            <h3 class="project-card__title">Rebuilding Campaign Planning</h3>
+            <p>Turning one agency's internal tool into a company-wide platform — as the first team to pilot WPP's new design system.</p>
+          </div>
+        </a>
+
+        <a class="project-card" href="project-2.html" data-reveal>
+          <div class="project-card__media project-card__media--blurred">
+            <img src="../assets/images/projects/project-1/after-touchpoints-selection.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag">Business Discovery</span>
+              <span class="tag">Interviews</span>
+            </div>
+            <h3 class="project-card__title">Frequency Capping</h3>
+            <p>Six in-depth interviews reframed a feature request — and changed which of two directions the team built.</p>
+          </div>
+        </a>
+
+        <a class="project-card" href="project-3.html" data-reveal>
+          <div class="project-card__media project-card__media--blurred">
+            <img src="../assets/images/projects/project-1/process-2c.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag">Survey</span>
+              <span class="tag">Concept Testing</span>
+            </div>
+            <h3 class="project-card__title">Express Scenarios</h3>
+            <p>A structured survey across three UI concepts turned a stuck design debate into an evidence-backed decision.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="get-in-touch">
+    <div class="container site-footer__grid">
+      <p class="footer-cta">Open to new roles and projects — <strong>let's talk.</strong></p>
+      <ul class="footer-socials">
+        <li><a href="mailto:katarzynkamoszczynska@gmail.com">katarzynkamoszczynska@gmail.com</a></li>
+        <li><a class="footer-link--linkedin" href="https://www.linkedin.com/in/katarzyna-moszczynska/" target="_blank" rel="noopener">Let's connect on LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- ============ /FOOTER ============ -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

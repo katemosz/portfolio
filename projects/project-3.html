@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Express Scenarios — Katarzyna Moszczyńska</title>
+  <meta name="description" content="Case study: a 0-to-1 media-planning tool shaped over four years of iterative research — and now growing an AI layer." />
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+  <!-- This page is password-protected — see assets/js/password-gate.js -->
+  <link rel="stylesheet" href="../assets/css/password-gate.css" />
+</head>
+<body class="is-locked">
+  <!-- ============ PASSWORD GATE (RE-ENABLED 2026-09-28) ============
+       Gate is ON again (body has class="is-locked"). The password lives
+       in Katarzyna's motivation letter; recruiters without it are asked
+       to get in touch and she shares it by email. To turn the gate OFF
+       again: remove class="is-locked" from <body> above (the markup,
+       password-gate.css and password-gate.js all stay in place — the rule
+       body:not(.is-locked) .password-gate{display:none} hides it). Set the
+       actual password in CORRECT_PASSWORD in assets/js/password-gate.js
+       (shared across every protected page — still the default placeholder
+       until changed). Dark/light follows the visitor's OS setting, same
+       as the rest of the site. -->
+  <div class="password-gate" data-password-gate>
+    <form class="password-gate__box" data-gate-form>
+      <div class="password-gate__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="10" width="16" height="10" rx="2" />
+          <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+        </svg>
+      </div>
+      <p class="eyebrow">Password protected</p>
+      <h1>This case study is password-protected</h1>
+      <p class="text-muted">The password is in my motivation letter. Don't have it? <a href="mailto:katarzynkamoszczynska@gmail.com">email me</a> and I'll send it over.</p>
+      <div class="form-field">
+        <label for="gate-password-3" class="visually-hidden">Password</label>
+        <input type="password" id="gate-password-3" placeholder="Password" autocomplete="off" required />
+      </div>
+      <p class="password-gate__error" data-gate-error hidden>Incorrect password — try again.</p>
+      <button class="btn btn--accent" type="submit">Unlock</button>
+    </form>
+  </div>
+  <!-- ============ /PASSWORD GATE ============ -->
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="nav__logo" href="../index.html">
+        <img class="nav__avatar" src="../assets/images/profile/headshot.jpg" alt="" />
+        <span class="nav__name">Katarzyna Moszczyńska</span>
+        <span class="nav__role"><span class="nav__dot">&bull;</span> Senior Product Designer <span class="nav__dot">&bull;</span> Warsaw</span>
+      </a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html" aria-current="page">Work</a></li>
+        <li><a href="../how-i-work.html">How I work</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a class="btn btn--ghost" href="../assets/files/cv-katarzyna-moszczynska.pdf" target="_blank" rel="noopener">Download CV</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- ============ /HEADER ============ -->
+
+  <main id="main">
+    <!-- ============ CASE HERO ============ -->
+    <section class="case-hero container" style="position: relative; overflow: visible;">
+      <div class="sticky-note" data-reveal style="top: -10px; right: 6%; --rotate: 7deg;">
+        "The simple setup is a relief — I get to a plan without the spreadsheet marathon."
+      </div>
+      <div class="sticky-note sticky-note--pink" data-reveal style="top: 209px; right: -10px; --rotate: -4deg;">
+        "I use it to test an idea before I commit to it in the big tool."
+      </div>
+
+      <p class="eyebrow" data-anim="hero-eyebrow">Case study · 0-to-1 product · Four years of iteration</p>
+      <h1 class="hero__title" data-anim="hero-title">Express Scenarios</h1>
+      <p class="hero__lede" data-anim="hero-lede">
+        A stripped-down way to build and compare media plans — built from
+        zero in 2022, then reshaped over four years by research that
+        <strong>kept overturning what we assumed</strong>. Today it's
+        growing an AI layer.
+      </p>
+
+      <dl class="case-meta" data-anim="hero-actions">
+        <div>
+          <dt>Role</dt>
+          <dd>Research &amp; design lead<br />&rarr; design support</dd>
+        </div>
+        <div>
+          <dt>Team</dt>
+          <dd>Product Owner, Product Designers, Data Science, Engineering</dd>
+        </div>
+        <div>
+          <dt>Timeframe</dt>
+          <dd>2022 &ndash; now<br />(4 years, ongoing)</dd>
+        </div>
+        <div>
+          <dt>Company</dt>
+          <dd>WPP Media</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ============ MAIN IMAGE ============ -->
+    <section class="container" style="padding-block: var(--space-2xl);" data-reveal>
+      <div class="media-card">
+        <img src="../assets/images/projects/project-3/express-v2.jpg" alt="The redesigned Express Scenarios screen — a simplified setup and a results view with two scenarios" style="width:100%;display:block;" />
+      </div>
+    </section>
+
+    <!-- ============ CONTEXT / PROBLEM ============ -->
+    <section class="case-section case-section--divide container" data-reveal-group style="padding-bottom: calc(var(--space-2xl) * 0.7);">
+      <div class="case-section__body">
+        <h2 data-reveal>Context &amp; problem</h2>
+        <div class="measure" data-reveal>
+          <p>
+            Media planners at our agencies build their plans in
+            <strong>Campaigns</strong> — another app in our family of
+            tools. It's built for year-long strategies and campaigns with
+            very large budgets, and it's excellent at that. But planning a
+            short, tactical campaign there — four weeks, a smaller budget —
+            takes a lot of time. Planners always have a budget to work to;
+            what slows them down is that clients like to explore variants
+            and ask "what if we shifted the split, what if we spent more
+            here?"
+          </p>
+          <p>
+            <strong>The team's bet: a much simpler tool on top of the same
+            planning engine</strong> — a stripped-down setup, only the
+            essentials on the results — so a planner could build and
+            compare scenarios for a shorter, smaller campaign fast, and
+            answer a client's "what if" on the spot. I led research and
+            design on it from discovery through the first big redesign;
+            from the 2025 iteration onward a colleague took design lead and
+            I moved to support.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============
+         Full-width stacked layout (NOT .case-section__body's label/content
+         grid) — this section needs the full container width for the step
+         galleries. h2, intro line, then the timeline. -->
+    <section class="case-section container" data-reveal-group style="padding-top: calc(var(--space-2xl) * 0.7);">
+      <h2 data-reveal>Process</h2>
+      <p class="measure" data-reveal style="margin-top: var(--space-sm); color: var(--color-text);">Nearly four years, many research rounds, and a few assumptions that didn't survive contact with users. Step by step:</p>
+
+      <div class="timeline" style="margin-top: var(--space-xl);">
+        <!-- STEP 1 -->
+        <div class="timeline__item" data-reveal>
+          <div class="timeline__marker"><span class="timeline__dot"></span></div>
+          <div>
+            <h4 class="timeline__title">1. Discovery — a day in a planner's life</h4>
+            <p class="timeline__desc">Persona work surfaced three real user types — plus a junior planner we defined but couldn't actually find among our users. A two-hour focus group with eight planners across the world mapped their day: pain points, tools, and which tasks cost them the most. I planned and ran the study, and owned the synthesis — Conclusions, Goals, Pain points, How can we help.</p>
+            <div class="case-gallery" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: calc(var(--space-md) * 1.5);">
+              <div class="media-card"><img src="../assets/images/projects/project-3/persona-ellen.jpg" alt="Persona: Ellen, Account Manager" style="width:100%;height:100%;object-fit:cover;" /></div>
+              <div class="media-card"><img src="../assets/images/projects/project-3/persona-jack.jpg" alt="Persona: Jack, Strategist" style="width:100%;height:100%;object-fit:cover;" /></div>
+              <div class="media-card"><img src="../assets/images/projects/project-3/persona-sophie.jpg" alt="Persona: Sophie, Analyst" style="width:100%;height:100%;object-fit:cover;" /></div>
+              <div class="media-card"><img src="../assets/images/projects/project-3/persona-tom.jpg" alt="Persona: Tom, Media Planner — the junior profile we couldn't find among real users" style="width:100%;height:100%;object-fit:cover;" /></div>
+            </div>
+            <div class="case-gallery" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: calc(var(--space-md) * 1.5);">
+              <div class="media-card"><img src="../assets/images/projects/project-3/research-feedback-clustering.jpg" alt="Feedback clustered by topic: Home page, Setup, Results, Scenarios, Other" style="width:100%;display:block;" /></div>
+              <div class="media-card"><img src="../assets/images/projects/project-3/research-conclusions.jpg" alt="Synthesised conclusions with a design implication under each cluster" style="width:100%;display:block;" /></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="timeline__item" data-reveal>
+          <div class="timeline__marker"><span class="timeline__dot"></span></div>
+          <div>
+            <h4 class="timeline__title">2. A bet on simplicity</h4>
+            <p class="timeline__desc">In a team workshop we shaped the idea: reuse the existing algorithm and data model, strip the setup right down, and drop the advanced parameters newer planners don't read. I mapped user flows for the features coming out of brainstorming, defined what <em>must</em> live on a scenario card — the "ingredients" — and ranked each element by priority, then designed four layout directions.</p>
+            <div class="media-card" style="margin-top: calc(var(--space-md) * 1.5);">
+              <img src="../assets/images/projects/project-3/ingredients-for-scenario.jpg" alt="'Ingredients for a scenario' — every possible element of a scenario card, each ranked as priority, second, or third" style="width:100%;display:block;" />
+            </div>
+            <div class="case-gallery" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: calc(var(--space-md) * 1.5);">
+              <div class="media-card"><img src="../assets/images/projects/project-3/option-a.jpg" alt="Layout direction — Option A" style="width:100%;height:100%;object-fit:cover;" /></div>
+              <div class="media-card"><img src="../assets/images/projects/project-3/option-b.jpg" alt="Layout direction — Option B" style="width:100%;height:100%;object-fit:cover;" /></div>
+              <div class="media-card"><img src="../assets/images/projects/project-3/option-c.jpg" alt="Layout direction — Option C" style="width:100%;height:100%;object-fit:cover;" /></div>
+              <div class="media-card"><img src="../assets/images/projects/project-3/option-d.jpg" alt="Layout direction — Option D" style="width:100%;height:100%;object-fit:cover;" /></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="timeline__item" data-reveal>
+          <div class="timeline__marker"><span class="timeline__dot"></span></div>
+          <div>
+            <h4 class="timeline__title">3. Concept testing by survey</h4>
+            <p class="timeline__desc">The team voted the four directions down to three. I built a structured survey: react to each option on its own — likes, pains, ideas — <em>before</em> voting overall, so a fixable complaint about one layout wouldn't get read as a preference for another. Then I extracted the insights and wrote up the conclusions.</p>
+            <div class="callout" data-reveal style="margin-top: calc(var(--space-md) * 1.5);">
+              <p><strong>The votes tied between two options</strong> — but the writing pointed somewhere else. People wanted one option's stacked, expandable scenario cards combined with another's detailed per-scenario breakdown. We built the combination none of the three had on its own.</p>
+            </div>
+            <div class="media-card" style="margin-top: calc(var(--space-md) * 1.5);">
+              <img src="../assets/images/projects/project-3/survey-2022.jpg" alt="The concept-testing survey, August 2022 — three layouts presented for individual reaction, then an overall vote" style="width:100%;display:block;" />
+            </div>
+            <div class="case-gallery" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: calc(var(--space-md) * 1.5);">
+              <div class="media-card"><img src="../assets/images/projects/project-3/survey-responses.jpg" alt="Survey responses, laid out per option" style="width:100%;display:block;" /></div>
+              <div class="media-card"><img src="../assets/images/projects/project-3/research-insights-extraction.jpg" alt="Insights extracted from the survey responses" style="width:100%;display:block;" /></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="timeline__item" data-reveal>
+          <div class="timeline__marker"><span class="timeline__dot"></span></div>
+          <div>
+            <h4 class="timeline__title">4. Reality check &rarr; redesign</h4>
+            <p class="timeline__desc">New research pushed back on the core idea. Planners told us they always have one campaign goal — and clients often just want maximum reach — so showing four goal-based scenarios didn't match how they work. We redesigned the setup and the results around <strong>two scenarios</strong>: one impact-focused option the planner picks in setup, and one always optimised for reach. We added a way to show <strong>budget variants</strong> — "what if we spend 15% more, or less?" — a question clients asked constantly.</p>
+            <div class="media-card" style="margin-top: calc(var(--space-md) * 1.5);">
+              <img src="../assets/images/projects/project-3/express-v1.jpg" alt="Express Scenarios V1 — the first shipped version, with four goal-based scenarios" style="width:100%;display:block;" />
+            </div>
+            <div class="case-gallery" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: calc(var(--space-md) * 1.5);">
+              <div class="media-card"><img src="../assets/images/projects/project-3/research-what-we-learned.jpg" alt="What we learned from the feedback — conclusions sorted into must / should / could work on" style="width:100%;display:block;" /></div>
+              <div class="media-card"><img src="../assets/images/projects/project-3/research-feedback-highlights.jpg" alt="Feedback highlights from the research round" style="width:100%;display:block;" /></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="timeline__item" data-reveal>
+          <div class="timeline__marker"><span class="timeline__dot"></span></div>
+          <div>
+            <h4 class="timeline__title">5. Maturity &amp; handover (2025)</h4>
+            <p class="timeline__desc">A year after the redesign shipped, research said people were happy — but wanted to edit the algorithm's budget split by hand, duplicate a scenario, and tweak it inside one campaign. A colleague took design lead on this iteration; I moved to support and unblocking.</p>
+            <div class="media-card" style="margin-top: calc(var(--space-md) * 1.5);">
+              <img src="../assets/images/projects/project-3/express-v3-support.jpg" alt="V3 — scenarios you can edit and duplicate inside a campaign (colleague-led; I supported)" style="width:100%;display:block;" />
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="timeline__item" data-reveal>
+          <div class="timeline__marker"><span class="timeline__dot"></span></div>
+          <div>
+            <h4 class="timeline__title">6. An agentic layer (2026 &ndash; now)</h4>
+            <p class="timeline__desc">The current chapter: creating and editing scenarios by talking to an Agent in a chat panel. My colleague leads; I support the design and help unblock the harder problems — and it's where I've built <strong>hands-on understanding of what LLMs do well, where they fail confidently, and the guardrails a product has to put around them</strong>.</p>
+            <div class="media-card" style="margin-top: calc(var(--space-md) * 1.5);">
+              <img src="../assets/images/projects/project-3/agentic-approach.jpg" alt="The agentic approach — building and editing scenarios by chatting with an Agent (in development)" style="width:100%;display:block;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IMPACT ============
+         Moved to directly after Process and given its own accent panel
+         (design-team feedback: it's the most important part and was
+         blending into the grey bullet lists around it). Framed as "what
+         changed" in business terms. -->
+    <section class="case-section container" data-reveal-group>
+      <div class="impact-panel" data-reveal>
+        <h2>Impact</h2>
+        <p class="impact-panel__intro">What changed for the business — not just the screen.</p>
+        <ul class="impact-panel__list">
+          <li>
+            <strong>Client "what if" questions get answered in the room.</strong>
+            Budget-variant scenarios that used to mean rebuilding the plan
+            in Campaigns after the meeting now take minutes, live in the
+            pitch.
+          </li>
+          <li>
+            <strong>A shorter ramp onto the planning methodology.</strong>
+            Express is where planners learn the approach; in markets that
+            trained their teams, use of it rose sharply.
+          </li>
+          <li>
+            <strong>Less rework at the expensive end.</strong>
+            Senior planners prototype a direction in Express first, then
+            commit it in Campaigns with full control — fewer wasted cycles
+            in the heavy tool.
+          </li>
+          <li>
+            <strong>A measurement habit the team kept.</strong>
+            The project produced the team's first success-metrics
+            framework, now reused on later work.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ MEASURING SUCCESS ============
+         Kept as its own section (not a timeline step) because the honest
+         metrics story here is the point: first framework -> adoption wall
+         -> an experiment to find the cause -> a deliberate non-claim. -->
+    <section class="case-section container" data-reveal-group>
+      <div class="case-section__body">
+        <h2 data-reveal>Measuring success</h2>
+        <div>
+          <div class="measure" data-reveal>
+            <p>
+              This was the team's <strong>first serious attempt at
+              metrics</strong> — set up after a conference I brought back
+              to them. In our first metrics workshop we defined what to
+              track: time to a finished plan, repeat use, and qualitative
+              satisfaction.
+            </p>
+            <p>
+              <strong>Then adoption undercut the signal.</strong> Too few
+              planners were using Express to read anything reliable about
+              the UX itself. Rather than guess, in 2025 I designed an
+              experiment to find out why — was it the product, or
+              something around it?
+            </p>
+            <p>
+              <strong>The cause was systemic, not the design.</strong>
+              Planners aren't given time to learn new tools, and the
+              company doesn't carve that time out. Where formal training
+              did happen — the Polish market ran sessions — Express usage
+              rose sharply. That pointed at time-to-learn as the real
+              blocker, not the interface.
+            </p>
+            <p>
+              <strong>What I won't claim:</strong> I can show the usage
+              increase in analytics, but it tracks the training rollout,
+              not a design change — so it isn't a UX win and I don't
+              present it as one. What the work produced instead was an
+              evidenced reason for the gap, and a case for training rather
+              than another redesign.
+            </p>
+          </div>
+          <div class="media-card" data-reveal style="margin-top: var(--space-xl);">
+            <img src="../assets/images/projects/project-3/measuring-success-wip.jpg" alt="The team's first success-metrics framework — a work-in-progress board defining what to track" style="width:100%;display:block;" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VOICE OF USERS ============
+         Toned right down from the old colour sticky-note board (design-team
+         feedback: it was overwhelming and shouted over the rest of the
+         page). Now a quiet, colourless research readout — four columns of
+         short muted quote lines. Good / Watch outs / Errors are
+         participant voice; Opportunities is paraphrased asks with a small
+         "Added" tag where the request actually shipped.
+         TODO with Katarzyna: swap the Errors lines for real session
+         quotes — she's compiling them; the rest are close paraphrases of
+         what she reported.
+         border-bottom removed so only the crayon squiggle separates this
+         section from Learnings. -->
+    <section class="case-section container" data-reveal-group style="border-bottom: none;">
+      <h2 data-reveal>Voice of users</h2>
+      <p class="measure" data-reveal style="margin-top: var(--space-sm); color: var(--color-text-muted);">A short readout from research sessions across the years — what worked, what to watch, what confused people, and what they asked for.</p>
+
+      <div class="voice-readout" data-reveal>
+        <div class="voice-readout__col voice-readout__col--good">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M8 12.5l2.5 2.5 5-5.5" /></svg><span>Good</span></h3>
+          <ul>
+            <li>"The simple setup is a relief — I get to a plan without a spreadsheet marathon."</li>
+            <li>"Less on the screen means I actually read it."</li>
+            <li>"Good for testing an idea before I build the real thing in Campaigns."</li>
+          </ul>
+        </div>
+
+        <div class="voice-readout__col voice-readout__col--watch">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z" /><circle cx="12" cy="12" r="3" /></svg><span>Watch outs</span></h3>
+          <ul>
+            <li>"Four scenarios for different goals? I always know my goal before I start."</li>
+            <li>"Half the time the client just wants maximum reach — that's the whole brief."</li>
+            <li>"I don't have time to sit down and learn another tool."</li>
+          </ul>
+        </div>
+
+        <div class="voice-readout__col voice-readout__col--error">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5v5" /><path d="M12 16.5h.01" /></svg><span>Errors</span></h3>
+          <ul>
+            <li>"I couldn't tell which scenario was the one I'd chosen and which was the reach one."</li>
+            <li>"I expected the algorithm's numbers to be editable — and couldn't change them."</li>
+          </ul>
+        </div>
+
+        <div class="voice-readout__col voice-readout__col--opp">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18h6" /><path d="M10 21h4" /><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.9 1 1 1.7l.1.5h5l.1-.5c.1-.7.5-1.3 1-1.7A6 6 0 0 0 12 3z" /></svg><span>Opportunities</span></h3>
+          <ul>
+            <li>Edit the investment split by hand.<span class="voice-readout__added">&check; Added 2025</span></li>
+            <li>Duplicate a scenario and tweak it inside the campaign.<span class="voice-readout__added">&check; Added 2025</span></li>
+            <li>Show budget variants — what if we spend more, or less?<span class="voice-readout__added">&check; Added</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SQUIGGLE DIVIDER ============
+         Defines the #crayon-texture filter for this page (SVG filter IDs
+         are document-global once defined anywhere in the DOM). -->
+    <div class="squiggle-divider container" aria-hidden="true">
+      <svg viewBox="0 0 420 100" width="320" height="76" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="crayon-texture" x="-30%" y="-30%" width="160%" height="160%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+        <path d="M10,60 C40,10 70,110 100,60 C130,10 160,110 190,60 C220,10 250,110 280,60 C305,20 320,90 340,55 C350,38 358,58 368,48" stroke="var(--color-accent)" stroke-width="7" stroke-linecap="round" filter="url(#crayon-texture)" />
+      </svg>
+    </div>
+
+    <!-- ============ LEARNINGS ============
+         Header full-width above the cards (not in a label column), cards
+         flow left→right, 3 per row. -->
+    <section class="case-section container" data-reveal-group>
+      <h2 data-reveal>Learnings</h2>
+      <div class="learning-cards">
+        <div class="learning-card learning-card--plus" data-reveal>
+          <span class="learning-card__icon" aria-hidden="true">&check;</span>
+          <p>Four years of research rounds meant assumptions got caught and corrected — not shipped and quietly forgotten.</p>
+        </div>
+          <div class="learning-card learning-card--plus" data-reveal>
+            <span class="learning-card__icon" aria-hidden="true">&check;</span>
+            <p>I brought the team its first metrics practice, and treated weak adoption as something to investigate, not hide.</p>
+          </div>
+          <div class="learning-card learning-card--plus" data-reveal>
+            <span class="learning-card__icon" aria-hidden="true">&check;</span>
+            <p>I handed design lead to a colleague when it was time, and shifted to support — the work was better for it.</p>
+          </div>
+          <div class="learning-card learning-card--minus" data-reveal>
+            <span class="learning-card__icon">Next time</span>
+            <p>We should have tested the "for juniors" idea against how agencies actually let juniors work — much earlier.</p>
+          </div>
+          <div class="learning-card learning-card--minus" data-reveal>
+            <span class="learning-card__icon">Next time</span>
+            <p>The first version over-modelled the problem with four goal-scenarios. The simpler two-scenario version could have shipped sooner and taught us the same thing faster.</p>
+          </div>
+          <div class="learning-card learning-card--minus" data-reveal>
+            <span class="learning-card__icon">Next time</span>
+            <p>Measurement is the craft I most want to go deeper on — designing for signal from the start, not retrofitting it once adoption is already thin.</p>
+          </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW I WORK (teaser → methodology page) ============ -->
+    <section class="case-section container" data-reveal-group style="border-bottom: none;">
+      <div class="case-section__body">
+        <h2 data-reveal>How I work</h2>
+        <div data-reveal>
+          <p class="measure" style="color: var(--color-text-muted);">
+            This case study is the arc. The mechanics — how I scope a study,
+            write the research script, document as I go, and turn sessions
+            into decisions — live on their own page, with real artefacts.
+          </p>
+          <p style="margin-top: var(--space-lg);">
+            <a class="btn btn--primary" href="../how-i-work.html">See how I work &rarr;</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECT NAVIGATION ============ -->
+    <nav class="case-nav container" aria-label="Project navigation">
+      <a class="btn btn--ghost" href="project-2.html">&larr; Previous project</a>
+      <a class="btn btn--primary" href="index.html">All work &rarr;</a>
+    </nav>
+
+    <!-- ============ LIGHTBOX ============
+         Click any process/media-card image to see it larger (~75% of the
+         viewport). See [data-lightbox*] wiring in main.js. -->
+    <div class="lightbox" data-lightbox-overlay hidden>
+      <div class="lightbox__box">
+        <button class="lightbox__close" type="button" data-lightbox-close aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+        <img class="lightbox__image" data-lightbox-image src="" alt="" />
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="get-in-touch">
+    <div class="container site-footer__grid">
+      <p class="footer-cta">Open to new roles and projects — <strong>let's talk.</strong></p>
+      <ul class="footer-socials">
+        <li><a href="mailto:katarzynkamoszczynska@gmail.com">katarzynkamoszczynska@gmail.com</a></li>
+        <li><a class="footer-link--linkedin" href="https://www.linkedin.com/in/katarzyna-moszczynska/" target="_blank" rel="noopener">Let's connect on LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- ============ /FOOTER ============ -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/password-gate.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

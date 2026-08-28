@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+*.log
+
+# Raw research source files (screenshots/PDFs with real names, client
+# data) — kept locally for reference, never published to GitHub Pages.
+research-sources/

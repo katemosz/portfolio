@@ -1,0 +1,69 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   Zmieniaj wartości tutaj, żeby przestylować całą stronę naraz.
+   ========================================================================== */
+
+:root {
+  /* --- Kolory: jasny motyw --- */
+  --color-bg: #faf9f6;
+  --color-bg-alt: #f1efe8;
+  --color-surface: #ffffff;
+  --color-text: #17171a;
+  --color-text-muted: #5c5c63;
+  --color-border: #e5e2d9;
+  --color-accent: #ff5a36;       /* akcent — zmień na swój kolor marki */
+  --color-accent-soft: #ffe6dc;
+  --color-accent-contrast: #ffffff;
+
+  /* --- Typografia --- */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --fs-900: clamp(2.6rem, 5vw + 1rem, 5rem);
+  --fs-800: clamp(2rem, 3vw + 1rem, 3.25rem);
+  --fs-700: clamp(1.5rem, 1.5vw + 1rem, 2.1rem);
+  --fs-600: 1.25rem;
+  --fs-500: 1.125rem;
+  --fs-400: 1rem;
+  --fs-300: 0.875rem;
+
+  /* --- Odstępy --- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 9rem;
+
+  /* --- Layout --- */
+  --container-width: 1180px;
+  --container-padding: clamp(1.25rem, 4vw, 3rem);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+
+  /* --- Ruch --- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 0.25s;
+  --duration-base: 0.5s;
+  --duration-slow: 0.9s;
+}
+
+/* Opcjonalny ciemny motyw — włącza się automatycznie wg ustawień systemu.
+   Usuń ten blok, jeśli chcesz tylko jasnej wersji. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #121214;
+    --color-bg-alt: #1a1a1d;
+    --color-surface: #1e1e22;
+    --color-text: #f2f1ed;
+    --color-text-muted: #a3a2a0;
+    --color-border: #2d2d31;
+    --color-accent: #ff7452;
+    --color-accent-soft: #3a2620;
+    --color-accent-contrast: #121214;
+  }
+}

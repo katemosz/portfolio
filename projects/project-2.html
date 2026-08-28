@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frequency Capping — Katarzyna Moszczyńska</title>
+  <meta name="description" content="Case study: six in-depth interviews reframed a feature request and changed which of two technical directions the team pursued." />
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+  <!-- This page is password-protected — see assets/js/password-gate.js -->
+  <link rel="stylesheet" href="../assets/css/password-gate.css" />
+</head>
+<body class="is-locked">
+  <!-- ============ PASSWORD GATE (RE-ENABLED 2026-09-28) ============
+       Gate is ON (body has class="is-locked"). Password lives in
+       Katarzyna's motivation letter; without it, recruiters are asked to
+       get in touch and she shares it by email. To turn OFF: remove
+       class="is-locked" from <body>. Real password goes in
+       CORRECT_PASSWORD in assets/js/password-gate.js (shared, still the
+       default placeholder until changed). -->
+  <div class="password-gate" data-password-gate>
+    <form class="password-gate__box" data-gate-form>
+      <div class="password-gate__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="10" width="16" height="10" rx="2" />
+          <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+        </svg>
+      </div>
+      <p class="eyebrow">Password protected</p>
+      <h1>This case study is password-protected</h1>
+      <p class="text-muted">The password is in my motivation letter. Don't have it? <a href="mailto:katarzynkamoszczynska@gmail.com">email me</a> and I'll send it over.</p>
+      <div class="form-field">
+        <label for="gate-password-2" class="visually-hidden">Password</label>
+        <input type="password" id="gate-password-2" placeholder="Password" autocomplete="off" required />
+      </div>
+      <p class="password-gate__error" data-gate-error hidden>Incorrect password — try again.</p>
+      <button class="btn btn--accent" type="submit">Unlock</button>
+    </form>
+  </div>
+  <!-- ============ /PASSWORD GATE ============ -->
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="nav__logo" href="../index.html">
+        <img class="nav__avatar" src="../assets/images/profile/headshot.jpg" alt="" />
+        <span class="nav__name">Katarzyna Moszczyńska</span>
+        <span class="nav__role"><span class="nav__dot">&bull;</span> Senior Product Designer <span class="nav__dot">&bull;</span> Warsaw</span>
+      </a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html" aria-current="page">Work</a></li>
+        <li><a href="../how-i-work.html">How I work</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a class="btn btn--ghost" href="../assets/files/cv-katarzyna-moszczynska.pdf" target="_blank" rel="noopener">Download CV</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- ============ /HEADER ============ -->
+
+  <main id="main">
+    <!-- ============ CASE HERO ============ -->
+    <section class="case-hero container">
+      <p class="eyebrow" data-anim="hero-eyebrow">Case study · Business discovery</p>
+      <h1 class="hero__title" data-anim="hero-title">Frequency Capping</h1>
+      <p class="hero__lede" data-anim="hero-lede">
+        Six in-depth interviews with senior media planners — before a single
+        screen was designed — reframed a long-standing feature request and
+        changed which of two technical directions the team pursued.
+      </p>
+
+      <dl class="case-meta" data-anim="hero-actions">
+        <div>
+          <dt>Role</dt>
+          <dd>Research Lead</dd>
+        </div>
+        <div>
+          <dt>Team</dt>
+          <dd>Product Owner, Data Science</dd>
+        </div>
+        <div>
+          <dt>Timeframe</dt>
+          <dd>September 2025</dd>
+        </div>
+        <div>
+          <dt>Methods</dt>
+          <dd>In-depth interviews, hypothesis-driven discovery</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ============ MAIN IMAGE ============ -->
+    <section class="container" style="padding-block: var(--space-2xl);" data-reveal>
+      <div class="project-card__media" style="aspect-ratio: 16/9; border-radius: var(--radius-lg);">
+        <div class="img-placeholder">Main visual — e.g. the research repository or TL;DR summary page<br />(assets/images/projects/project-2/cover.jpg)</div>
+      </div>
+    </section>
+
+    <!-- ============ CONTEXT / PROBLEM ============ -->
+    <section class="case-section case-section--divide container" data-reveal-group>
+      <div class="case-section__body">
+        <h2 data-reveal>Context &amp; problem</h2>
+        <div data-reveal>
+          <p>
+            For a long time, planners had been asking for "frequency
+            capping" — a way to stop the same person from seeing an ad too
+            many times. The obvious response is to build a cap: a maximum
+            number, one setting, one control.
+          </p>
+          <p>
+            Before committing engineering time to that, we wanted to test a
+            real hypothesis first: were senior planners actually asking for
+            a literal cap, or using "frequency capping" as a proxy for a
+            bigger, less obvious problem?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="case-section container" data-reveal-group>
+      <div class="case-section__body">
+        <h2 data-reveal>Process</h2>
+        <div data-reveal>
+          <p>
+            Instead of a standard discovery guide, I wrote the research
+            around two explicit, falsifiable hypotheses:
+          </p>
+          <p>
+            <strong>Hypothesis 1 — The Strategic Imperative:</strong>
+            decisions about frequency are made at the planning-strategy
+            stage, not as a tactical afterthought — planners already have a
+            "frequency philosophy" before they ever touch a platform
+            setting.
+          </p>
+          <p>
+            <strong>Hypothesis 2 — The Proxy Problem:</strong> when senior
+            planners ask for "frequency capping," they aren't literally
+            asking for a cap button. They're using the term as a stand-in
+            for their real goal — stopping the optimizer from
+            over-saturating one channel and wasting budget.
+          </p>
+          <p>
+            I interviewed six senior users — from strategic planning
+            directors to highly tactical buyers, across EU and US markets —
+            with structured follow-up probes designed to surface which
+            hypothesis actually held.
+          </p>
+          <div class="case-gallery" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="project-card__media" style="aspect-ratio: 4/3;">
+              <div class="img-placeholder">Research plan / hypotheses doc (Confluence)</div>
+            </div>
+            <div class="project-card__media" style="aspect-ratio: 4/3;">
+              <div class="img-placeholder">Interview script &amp; probes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT THE INTERVIEWS SHOWED ============
+         The old "Solution" section, kept between Process and Impact — the
+         findings need to come before the outcome, so on this page Impact
+         doesn't sit immediately after Process. -->
+    <section class="case-section container" data-reveal-group>
+      <div class="case-section__body">
+        <h2 data-reveal>What the interviews showed</h2>
+        <div data-reveal>
+          <p class="measure">
+            The interviews were unanimous: a cross-channel, budget-efficiency
+            solution was seen as far more valuable and strategic than a
+            simple platform-specific cap. Four things stood out:
+          </p>
+          <ul class="measure" style="margin-top: var(--space-sm); display:grid; gap: var(--space-xs); color: var(--color-text-muted); padding-left: 1.2em; list-style: disc;">
+            <li>The real problem is waste, not capping — described as "contact pollution" or "controlling investment levels," not a cap for its own sake.</li>
+            <li>The unsolved problem is cross-media — even the most digital-focused participant chose the cross-channel option, because real campaigns mix TV, out-of-home, and digital.</li>
+            <li>A single-platform cap would have solved a problem several users already considered minor or handled elsewhere.</li>
+            <li>"Frequency capping" was consistently shorthand for a bigger, unsolved budget-efficiency problem.</li>
+          </ul>
+          <div class="media-card" style="margin-top: var(--space-lg);">
+            <div class="img-placeholder" style="aspect-ratio: 16/9;">TL;DR summary &amp; key findings</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IMPACT ============
+         Merged old "Results" into an accent panel (design-team feedback:
+         make the outcome the headline). Framed as decision-impact — this
+         research deliberately has no usage metric (see content strategy). -->
+    <section class="case-section container" data-reveal-group style="border-bottom: none;">
+      <div class="impact-panel" data-reveal>
+        <h2>Impact</h2>
+        <p class="impact-panel__intro">No feature shipped yet — but the direction did. What changed:</p>
+        <ul class="impact-panel__list">
+          <li>
+            <strong>The team committed to the right build before starting it.</strong>
+            Six interviews settled which of two technical directions to
+            pursue — the cross-channel, budget-efficiency one — at the
+            discovery stage, not mid-sprint.
+          </li>
+          <li>
+            <strong>A long-standing request got decoded.</strong>
+            "Frequency capping" turned out to be shorthand for a bigger,
+            unsolved efficiency problem. Naming the real goal changed what
+            went on the roadmap.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ HOW I WORK (teaser → methodology page) ============ -->
+    <section class="case-section container" data-reveal-group style="border-bottom: none;">
+      <div class="case-section__body">
+        <h2 data-reveal>How I work</h2>
+        <div data-reveal>
+          <p class="measure" style="color: var(--color-text-muted);">
+            This case study is the arc. The mechanics — how I scope a study,
+            write the research script, document as I go, and turn sessions
+            into decisions — live on their own page, with real artefacts.
+          </p>
+          <p style="margin-top: var(--space-lg);">
+            <a class="btn btn--primary" href="../how-i-work.html">See how I work &rarr;</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECT NAVIGATION ============ -->
+    <nav class="case-nav container" aria-label="Project navigation">
+      <a class="btn btn--ghost" href="project-1.html">← Previous project</a>
+      <a class="btn btn--primary" href="project-3.html">Next project →</a>
+    </nav>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="get-in-touch">
+    <div class="container site-footer__grid">
+      <p class="footer-cta">Open to new roles and projects — <strong>let's talk.</strong></p>
+      <ul class="footer-socials">
+        <li><a href="mailto:katarzynkamoszczynska@gmail.com">katarzynkamoszczynska@gmail.com</a></li>
+        <li><a class="footer-link--linkedin" href="https://www.linkedin.com/in/katarzyna-moszczynska/" target="_blank" rel="noopener">Let's connect on LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- ============ /FOOTER ============ -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/password-gate.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

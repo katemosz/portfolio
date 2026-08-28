@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rebuilding Campaign Planning App — Katarzyna Moszczyńska</title>
+  <meta name="description" content="Case study: rebuilding a single agency's internal tool into the campaign-planning platform for an entire global company, and cutting setup time in half." />
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+  <!-- This page is password-protected — see assets/js/password-gate.js -->
+  <link rel="stylesheet" href="../assets/css/password-gate.css" />
+</head>
+<body class="is-locked">
+  <!-- ============ PASSWORD GATE (RE-ENABLED 2026-09-28) ============
+       Gate is ON (body has class="is-locked"). The password lives in
+       Katarzyna's motivation letter; recruiters without it are asked to
+       get in touch and she shares it by email. To turn OFF again: remove
+       class="is-locked" from <body>. Set the real password in
+       CORRECT_PASSWORD in assets/js/password-gate.js (shared across every
+       protected page — still the default placeholder until changed).
+       Dark/light follows the visitor's OS setting, same as the rest of
+       the site. -->
+  <div class="password-gate" data-password-gate>
+    <form class="password-gate__box" data-gate-form>
+      <div class="password-gate__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="10" width="16" height="10" rx="2" />
+          <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+        </svg>
+      </div>
+      <p class="eyebrow">Password protected</p>
+      <h1>This case study is password-protected</h1>
+      <p class="text-muted">The password is in my motivation letter. Don't have it? <a href="mailto:katarzynkamoszczynska@gmail.com">email me</a> and I'll send it over.</p>
+      <div class="form-field">
+        <label for="gate-password-1" class="visually-hidden">Password</label>
+        <input type="password" id="gate-password-1" placeholder="Password" autocomplete="off" required />
+      </div>
+      <p class="password-gate__error" data-gate-error hidden>Incorrect password — try again.</p>
+      <button class="btn btn--accent" type="submit">Unlock</button>
+    </form>
+  </div>
+  <!-- ============ /PASSWORD GATE ============ -->
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="nav__logo" href="../index.html">
+        <img class="nav__avatar" src="../assets/images/profile/headshot.jpg" alt="" />
+        <span class="nav__name">Katarzyna Moszczyńska</span>
+        <span class="nav__role"><span class="nav__dot">&bull;</span> Senior Product Designer <span class="nav__dot">&bull;</span> Warsaw</span>
+      </a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html" aria-current="page">Work</a></li>
+        <li><a href="../how-i-work.html">How I work</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a class="btn btn--ghost" href="../assets/files/cv-katarzyna-moszczynska.pdf" target="_blank" rel="noopener">Download CV</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- ============ /HEADER ============ -->
+
+  <main id="main">
+    <!-- ============ CASE HERO ============ -->
+    <section class="case-hero container" style="position: relative; overflow: visible;">
+      <div class="sticky-note" data-reveal style="top: -10px; right: 6%; --rotate: 7deg;">
+        "This is so much easier to follow — every action finally feels like it's in the right place."
+      </div>
+      <div class="sticky-note sticky-note--pink" data-reveal style="top: 209px; right: -10px; --rotate: -4deg;">
+        Faster to scan. Fewer places to get lost.
+      </div>
+
+      <p class="eyebrow" data-anim="hero-eyebrow">Case study · Full app redesign</p>
+      <h1 class="hero__title" data-anim="hero-title">Rebuilding Campaign Planning App</h1>
+      <p class="hero__lede" data-anim="hero-lede">
+        We took the campaign-planning tool apart and rebuilt it — as the
+        <strong>first team</strong> trusted to pilot WPP's new company-wide
+        design system — cutting full setup time in half.
+      </p>
+
+      <dl class="case-meta" data-anim="hero-actions">
+        <div>
+          <dt>Role</dt>
+          <dd>Lead Product Designer</dd>
+        </div>
+        <div>
+          <dt>Team</dt>
+          <dd>Designers, Product Owner, Engineering</dd>
+        </div>
+        <div>
+          <dt>Timeframe</dt>
+          <dd>~12 months<br />(late 2023 – early 2025)</dd>
+        </div>
+        <div>
+          <dt>Company</dt>
+          <dd>WPP Media</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ============ CONTEXT / PROBLEM ============ -->
+    <section class="case-section case-section--divide container" data-reveal-group style="padding-bottom: calc(var(--space-2xl) * 0.7);">
+      <div class="case-section__body">
+        <h2 data-reveal>Context &amp; problem</h2>
+        <div class="measure" data-reveal>
+          <p>
+            This tool started as one piece of a single media agency's
+            internal software. WPP decided to make it the campaign-planning
+            platform for the whole company — and picked our team to go
+            first with a brand-new, company-wide design system (now WPP
+            Open), ahead of every other team, because of how mature our
+            process already was.
+          </p>
+          <p>
+            <strong>I set the bar above a component swap: fix real pain
+            points, simplify the flow, speed up performance, and add smart
+            defaults wherever the data justified them.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BEFORE / AFTER SLIDER #1 ============ -->
+    <section class="container" style="padding-block: var(--space-xl);" data-reveal-group>
+      <p class="eyebrow" data-reveal style="margin-bottom: var(--space-sm);">Before → after · drag to compare</p>
+
+      <div class="compare-slider" data-compare-slider data-reveal style="--pos: 50%;">
+        <img class="compare-slider__after" src="../assets/images/projects/project-1/after-audience-selection.jpg" alt="After: audience selection inside a simple, linear stepper" />
+        <img class="compare-slider__before" src="../assets/images/projects/project-1/before-audience-selection.jpg" alt="Before: audience selection under a dense, multi-level tab navigation" />
+        <span class="compare-slider__label compare-slider__label--before">Before</span>
+        <span class="compare-slider__label compare-slider__label--after">After</span>
+        <div class="compare-slider__handle">
+          <svg class="compare-slider__handle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
+          </svg>
+        </div>
+      </div>
+
+      <p class="quote" data-reveal style="margin-top: var(--space-xl); font-size: var(--fs-700); max-width: calc(650px * 16 / 10); margin-inline: auto;">
+        A complicated, multi-element navigation became one simplified path —
+        cutting cognitive load and making the entire campaign-setup flow
+        <strong>2× faster</strong>, through merged settings, smart defaults,
+        and a backend rebuilt to load only what's needed.
+      </p>
+    </section>
+
+    <!-- ============ PROCESS ============
+         Deliberately NOT using .case-section__body's label/content grid
+         here — this section needs full container width for the images, so
+         it's just a plain stacked layout: h2, then intro line, then the
+         timeline, all full width. -->
+    <section class="case-section container" data-reveal-group style="padding-top: calc(var(--space-2xl) * 0.7);">
+        <h2 data-reveal>Process</h2>
+        <p class="measure" data-reveal style="margin-top: var(--space-sm); color: var(--color-text-muted);">A year-long redesign needs a paper trail, not just good instincts. Here's what I actually did, step by step:</p>
+
+        <div class="timeline" style="margin-top: var(--space-xl);">
+          <div class="timeline__item" data-reveal>
+            <div class="timeline__marker"><span class="timeline__dot"></span></div>
+            <div>
+              <h4 class="timeline__title">1. Grounded it in data</h4>
+              <p class="timeline__desc">Pulled backend usage data, past research, and support's most common complaints — before touching a single screen.</p>
+              <div class="case-gallery" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: calc(var(--space-md) * 1.5);">
+                <div class="media-card"><img src="../assets/images/projects/project-1/process-1a.jpg" alt="Page-level analytics: where users struggle most and drop off" style="width:100%;display:block;" /></div>
+                <div class="media-card"><img src="../assets/images/projects/project-1/process-1b.jpg" alt="Quarterly feature usage frequency across the whole app" style="width:100%;display:block;" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline__item" data-reveal>
+            <div class="timeline__marker"><span class="timeline__dot"></span></div>
+            <div>
+              <h4 class="timeline__title">2. Audited the entire flow</h4>
+              <p class="timeline__desc">Mapped every step and function in the app, then worked with engineering to separate what had to change from what could wait.</p>
+              <div class="case-gallery" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top: calc(var(--space-md) * 1.5);">
+                <div class="media-card"><img src="../assets/images/projects/project-1/process-2a.jpg" alt="Audit of the Media Plan results screen" style="width:100%;display:block;" /></div>
+                <div class="media-card"><img src="../assets/images/projects/project-1/process-2b.jpg" alt="Audit of the Parameters screen" style="width:100%;display:block;" /></div>
+                <div class="media-card"><img src="../assets/images/projects/project-1/process-2c.jpg" alt="Audit of the Branding/Performance touchpoints screen" style="width:100%;display:block;" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline__item" data-reveal>
+            <div class="timeline__marker"><span class="timeline__dot"></span></div>
+            <div>
+              <h4 class="timeline__title">3. Redesigned the flow</h4>
+              <p class="timeline__desc">Wireframed a reorganized path that merged related settings into smarter steps, then built higher-fidelity mockups of the home screen and full setup.</p>
+              <div class="case-gallery" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: calc(var(--space-md) * 1.5);">
+                <div class="media-card"><img src="../assets/images/projects/project-1/process-3a.jpg" alt="Flow chart mapping how campaign creation branches by optimization method" style="width:100%;display:block;" /></div>
+                <div class="media-card"><img src="../assets/images/projects/project-1/process-3b.jpg" alt="Early hand-sketched notes comparing the current and proposed start screen" style="width:100%;display:block;" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline__item" data-reveal>
+            <div class="timeline__marker"><span class="timeline__dot"></span></div>
+            <div>
+              <h4 class="timeline__title">4. Validated with users</h4>
+              <p class="timeline__desc">Ran in-depth interviews and prototype testing myself, and turned the findings into concrete direction for the next round.</p>
+              <div class="case-gallery" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: calc(var(--space-md) * 1.5);">
+                <div class="media-card"><img src="../assets/images/projects/project-1/process-4a.jpg" alt="Usability test notes on the setup flow, question by question" style="width:100%;display:block;" /></div>
+                <div class="media-card"><img src="../assets/images/projects/project-1/process-4b.jpg" alt="Synthesized conclusions: facts, problems, reasons, needs, and how we can help" style="width:100%;display:block;" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline__item" data-reveal>
+            <div class="timeline__marker"><span class="timeline__dot"></span></div>
+            <div>
+              <h4 class="timeline__title">5. Handed over &amp; built</h4>
+              <p class="timeline__desc">Turned findings into a full handover package and stayed close to engineering through build.</p>
+              <div class="media-card" style="margin-top: calc(var(--space-md) * 1.5);">
+                <img src="../assets/images/projects/project-1/handover-for-devs.jpg" alt="Annotated handover spec connecting each screen state to its implementation notes" style="width:100%;display:block;" />
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline__item" data-reveal style="position: relative;">
+            <div class="timeline__marker"><span class="timeline__dot"></span></div>
+            <div>
+              <h4 class="timeline__title">6. Defined success metrics, presented &amp; kept listening</h4>
+              <p class="timeline__desc">Before calling it done, I defined what success would actually look like and tracked it — alongside walking users through the changes directly and keeping the feedback loop open after launch, not just before it.</p>
+
+              <div class="metric-board" style="margin-top: calc(var(--space-md) * 1.5);" data-reveal>
+                <div class="metric-board__row metric-board__row--head" aria-hidden="true">
+                  <div class="sticky-note sticky-note--pink" style="--rotate: -1.5deg;">Goal</div>
+                  <div class="sticky-note sticky-note--pink" style="--rotate: 1deg;">How / what to measure</div>
+                  <div class="sticky-note sticky-note--pink" style="--rotate: -1deg;">Success metric</div>
+                </div>
+
+                <div class="metric-board__row">
+                  <div class="metric-note">
+                    <span class="metric-note__label">Goal</span>
+                    <div class="sticky-note" style="--rotate: -2deg;">Speeding up the campaign creation process.</div>
+                  </div>
+                  <div class="metric-note">
+                    <span class="metric-note__label">How / what to measure</span>
+                    <div class="sticky-note" style="--rotate: 1.5deg;">We count the session duration from the moment you click "Create campaign" until you click "Calculate media plan."</div>
+                  </div>
+                  <div class="metric-note">
+                    <span class="metric-note__label">Success metric</span>
+                    <div class="sticky-note sticky-note--with-status" style="--rotate: -1deg;">
+                      <p class="metric-note__text">It takes a user no more than 6 minutes to set up a "typical" campaign.</p>
+                      <div class="metric-status-row"><span class="metric-status metric-status--met">&check; Met</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="metric-board__row">
+                  <div class="metric-note">
+                    <span class="metric-note__label">Goal</span>
+                    <div class="sticky-note" style="--rotate: 1deg;">Increasing user satisfaction with the Campaigns module.</div>
+                  </div>
+                  <div class="metric-note">
+                    <span class="metric-note__label">How / what to measure</span>
+                    <div class="sticky-note" style="--rotate: -1.5deg;">Fewer support tickets about features alone (excluding issues related to technical problems or access).</div>
+                  </div>
+                  <div class="metric-note">
+                    <span class="metric-note__label">Success metric</span>
+                    <div class="sticky-note sticky-note--with-status" style="--rotate: 2deg;">
+                      <p class="metric-note__text">Positive feedback from users across channels, and fewer bug-related tickets (Teams, sprint reviews, etc.).</p>
+                      <div class="metric-status-row"><span class="metric-status metric-status--met">&check; Met</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="metric-board__row">
+                  <div class="metric-note">
+                    <span class="metric-note__label">Goal</span>
+                    <div class="sticky-note" style="--rotate: -1deg;">Increasing user satisfaction with the Campaigns module.</div>
+                  </div>
+                  <div class="metric-note">
+                    <span class="metric-note__label">How / what to measure</span>
+                    <div class="sticky-note" style="--rotate: 1deg;">In-app satisfaction rating on a 0–10 scale after the first month of the open beta.</div>
+                  </div>
+                  <div class="metric-note">
+                    <span class="metric-note__label">Success metric</span>
+                    <div class="sticky-note sticky-note--with-status" style="--rotate: -2deg;">
+                      <p class="metric-note__text">Average score above 7.5.</p>
+                      <div class="metric-status-row"><span class="metric-status metric-status--close">&asymp; Close — scored 7</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="metric-board__row">
+                  <div class="metric-note">
+                    <span class="metric-note__label">Goal</span>
+                    <div class="sticky-note" style="--rotate: 1.5deg;">Increasing retention.</div>
+                  </div>
+                  <div class="metric-note">
+                    <span class="metric-note__label">How / what to measure</span>
+                    <div class="sticky-note" style="--rotate: -1deg;">Counting logins to the Campaigns module.</div>
+                  </div>
+                  <div class="metric-note">
+                    <span class="metric-note__label">Success metric</span>
+                    <div class="sticky-note sticky-note--with-status" style="--rotate: 1deg;">
+                      <p class="metric-note__text">80% of new users return to the app within 3 months.</p>
+                      <div class="metric-status-row"><span class="metric-status metric-status--miss">&mdash; Not met</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="metric-board__row metric-board__row--annotation" aria-hidden="true">
+                  <div class="metric-board__squiggle">
+                    <svg class="crayon-loop" viewBox="0 0 320 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: static; width: 300px; opacity: 1;">
+                      <defs>
+                        <filter id="crayon-texture" x="-30%" y="-30%" width="160%" height="160%">
+                          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise" />
+                          <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+                        </filter>
+                      </defs>
+                      <path d="M20,110 C50,20 130,10 150,70 C168,122 100,130 95,85 C91,50 140,35 175,55 C220,80 210,25 260,20 C285,18 300,35 300,55" stroke="currentColor" stroke-width="7" stroke-linecap="round" filter="url(#crayon-texture)" />
+                    </svg>
+                  </div>
+                  <div></div>
+                  <div class="metric-note" style="position: relative;">
+                    <svg class="metric-arrow" viewBox="0 0 40 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M30,55 C24,38 10,28 10,6" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" filter="url(#crayon-texture)" />
+                      <path d="M10,6 L4,16 M10,6 L18,14" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" filter="url(#crayon-texture)" />
+                    </svg>
+                    <div class="sticky-note sticky-note--white" style="--rotate: -1.5deg;">Retention turned out to be seasonal — usage is heaviest at the start, middle, and end of the year — something the redesign alone was never going to move on its own.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </section>
+
+    <!-- ============ IMPACT ============
+         Merged Solution + Results, in an accent panel directly after
+         Process (design-team feedback: it's the headline and was blending
+         into the grey bullet lists around it). "What changed" in business
+         terms — no internal feature names. -->
+    <section class="case-section container" data-reveal-group>
+      <div class="impact-panel" data-reveal>
+        <h2>Impact</h2>
+        <p class="impact-panel__intro">What changed for the business — not just the screen.</p>
+        <ul class="impact-panel__list">
+          <li>
+            <strong>Campaign setup got 2× faster.</strong>
+            A re-sequenced flow, data-informed defaults, and a backend that
+            loads only what's needed — together, not any single fix.
+          </li>
+          <li>
+            <strong>Fewer clicks, and no lost place mid-setup.</strong>
+            The option people reached for most right after recalculating
+            got its own step, in the right spot in the flow.
+          </li>
+          <li>
+            <strong>Advanced settings stopped taxing everyone else.</strong>
+            Options less-experienced planners never touched moved to a side
+            panel or were marked optional — progressive disclosure instead
+            of everything on by default.
+          </li>
+          <li>
+            <strong>It became the reference other teams build from.</strong>
+            As the company rolled out its new design system, our rebuild
+            was the implementation teams looked to — the payoff for being
+            trusted to go first.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ VOICE OF USERS ============
+         Toned down from the colour sticky-note board (design-team
+         feedback: overwhelming, shouted over the rest of the page). Now a
+         quiet colourless readout — four columns of short muted lines.
+         Good / Watch outs / Errors are participant voice; Opportunities is
+         paraphrased asks with an "Added" tag where the request shipped. -->
+    <section class="case-section container" data-reveal-group>
+      <h2 data-reveal>Voice of users</h2>
+      <p class="measure" data-reveal style="margin-top: var(--space-sm); color: var(--color-text-muted);">A short readout from usability sessions — what worked, what to watch, what confused people, and what they asked for.</p>
+
+      <div class="voice-readout" data-reveal>
+        <div class="voice-readout__col voice-readout__col--good">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M8 12.5l2.5 2.5 5-5.5" /></svg><span>Good</span></h3>
+          <ul>
+            <li>"Recency/Frequency is gone — good call. That parameter caused more confusion than it was worth; hard to explain to clients."</li>
+            <li>"The vertical navigation on the left is so much better — easier to move through, and the order of steps is easier to follow."</li>
+            <li>"The layout now is much clearer."</li>
+          </ul>
+        </div>
+        <div class="voice-readout__col voice-readout__col--watch">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z" /><circle cx="12" cy="12" r="3" /></svg><span>Watch outs</span></h3>
+          <ul>
+            <li>"It wasn't obvious whether I can create these lists myself, or if they're set by default."</li>
+            <li>"I couldn't tell you for sure what the difference between the optimizer names is — I think one's for communication goals, the other for reach."</li>
+          </ul>
+        </div>
+        <div class="voice-readout__col voice-readout__col--error">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7.5v5" /><path d="M12 16.5h.01" /></svg><span>Errors</span></h3>
+          <ul>
+            <li>"At first I didn't read the adjustment numbers the way they were meant. After a quick walkthrough it clicked — and I thought it was a good solution."</li>
+            <li>"Max Reach and Scores show up as separate charts — I decide based on both, so I'd rather see them together."</li>
+            <li>"I didn't understand what 'Soft threshold' meant."</li>
+          </ul>
+        </div>
+        <div class="voice-readout__col voice-readout__col--opp">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18h6" /><path d="M10 21h4" /><path d="M12 3a6 6 0 0 0-3.6 10.8c.5.4.9 1 1 1.7l.1.5h5l.1-.5c.1-.7.5-1.3 1-1.7A6 6 0 0 0 12 3z" /></svg><span>Opportunities</span></h3>
+          <ul>
+            <li>Ready-made, editable audience templates would be a genuine time-saver.</li>
+            <li>Sort campaigns by budget size.<span class="voice-readout__added">&check; Added</span></li>
+            <li>Set investment periods per touchpoint — e.g. TV spend only for the first 20 weeks.<span class="voice-readout__added">&check; Added</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LEARNINGS ============
+         Header full-width above the cards, cards flow left→right 3 per row. -->
+    <section class="case-section container" data-reveal-group style="padding-bottom: calc(var(--space-2xl) * 0.35);">
+      <h2 data-reveal>Learnings</h2>
+      <div class="learning-cards">
+        <div class="learning-card learning-card--plus" data-reveal>
+          <span class="learning-card__icon" aria-hidden="true">&check;</span>
+          <p>Learned to work inside a large, comprehensively-designed Design System for the first time — extending it consistently instead of working around it.</p>
+        </div>
+          <div class="learning-card learning-card--plus" data-reveal>
+            <span class="learning-card__icon" aria-hidden="true">&check;</span>
+            <p>Staying close to engineering after handover, not just handing off and moving on, caught small gaps before they shipped.</p>
+          </div>
+          <div class="learning-card learning-card--minus" data-reveal>
+            <span class="learning-card__icon">Next time</span>
+            <p>Our research window landed in December/January — the hardest possible time to recruit participants. I'd plan around that risk earlier next time.</p>
+          </div>
+          <div class="learning-card learning-card--minus" data-reveal>
+            <span class="learning-card__icon">Next time</span>
+            <p>A year on, even I had to reconstruct the reasoning behind some calls. A lightweight decision log kept as I go would've saved me from re-deriving my own decisions later.</p>
+          </div>
+          <div class="learning-card learning-card--minus" data-reveal>
+            <span class="learning-card__icon">Next time</span>
+            <p>With this many iterations, Figma got messy fast. I've learned to clean up ideas that don't go anywhere right away instead of hoarding them "just in case."</p>
+          </div>
+      </div>
+    </section>
+
+    <!-- ============ SQUIGGLE DIVIDER ============
+         Replaces a plain <hr> between Learnings and the Appendix — reuses
+         the #crayon-texture filter defined in the metric-board's squiggle
+         a bit further up (SVG filter IDs are document-global). Not full
+         width on purpose — a small hand-drawn mark, not a rule. -->
+    <div class="squiggle-divider container" aria-hidden="true">
+      <svg viewBox="0 0 420 100" width="320" height="76" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10,60 C40,10 70,110 100,60 C130,10 160,110 190,60 C220,10 250,110 280,60 C305,20 320,90 340,55 C350,38 358,58 368,48" stroke="var(--color-accent)" stroke-width="7" stroke-linecap="round" filter="url(#crayon-texture)" />
+      </svg>
+    </div>
+
+    <!-- ============ APPENDIX: BEFORE / AFTER ============
+         Moved down from Process step 5 per feedback (the handover-spec
+         image stays under step 5 — only comparison sliders live here).
+         Two sliders under one heading, each with its own smaller
+         step-title (reuses .timeline__title for visual consistency with
+         Process) — Goal selection first, then Touchpoints. -->
+    <section class="case-section container" data-reveal style="padding-top: calc(var(--space-2xl) * 0.35); padding-bottom: calc(var(--space-2xl) * 0.5);">
+      <p class="eyebrow" data-reveal>Appendix</p>
+      <h2 data-reveal>Before / After</h2>
+
+      <h3 class="timeline__title slider-heading" data-reveal style="margin-top: var(--space-xl);">Goal selection</h3>
+      <div class="compare-slider" data-compare-slider style="--pos: 50%; margin-top: calc(var(--space-md) * 1.5);">
+        <img class="compare-slider__after" src="../assets/images/projects/project-1/goal-after.jpg" alt="After: a clear, upfront campaign-goal selection step" />
+        <img class="compare-slider__before" src="../assets/images/projects/project-1/goal-before.jpg" alt="Before: goal-related settings buried inside a technical 'Optimizers' step" />
+        <span class="compare-slider__label compare-slider__label--before">Before</span>
+        <span class="compare-slider__label compare-slider__label--after">After</span>
+        <div class="compare-slider__handle">
+          <svg class="compare-slider__handle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
+          </svg>
+        </div>
+      </div>
+
+      <h3 class="timeline__title slider-heading" data-reveal style="margin-top: var(--space-xl);">Touchpoints</h3>
+      <div class="compare-slider" data-compare-slider style="--pos: 50%; margin-top: calc(var(--space-md) * 1.5);">
+        <img class="compare-slider__after" src="../assets/images/projects/project-1/after-touchpoints-selection.jpg" alt="After: touchpoint selection in the redesigned flow" />
+        <img class="compare-slider__before" src="../assets/images/projects/project-1/before-touchpoints-selection.jpg" alt="Before: touchpoint selection in the original tool" />
+        <span class="compare-slider__label compare-slider__label--before">Before</span>
+        <span class="compare-slider__label compare-slider__label--after">After</span>
+        <div class="compare-slider__handle">
+          <svg class="compare-slider__handle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW I WORK (teaser → methodology page) ============ -->
+    <section class="case-section container" data-reveal-group style="border-bottom: none;">
+      <div class="case-section__body">
+        <h2 data-reveal>How I work</h2>
+        <div data-reveal>
+          <p class="measure" style="color: var(--color-text-muted);">
+            This case study is the arc. The mechanics — how I scope a study,
+            write the research script, document as I go, and turn sessions
+            into decisions — live on their own page, with real artefacts.
+          </p>
+          <p style="margin-top: var(--space-lg);">
+            <a class="btn btn--primary" href="../how-i-work.html">See how I work &rarr;</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECT NAVIGATION ============ -->
+    <nav class="case-nav container" aria-label="Project navigation">
+      <a class="btn btn--ghost" href="index.html">← All work</a>
+      <a class="btn btn--primary" href="project-2.html">Next project →</a>
+    </nav>
+
+    <!-- ============ LIGHTBOX ============
+         Click any process/media-card image to see it larger. Covers ~75%
+         of the viewport, not the full screen, so the page stays visible
+         behind it. See [data-lightbox*] wiring in main.js. -->
+    <div class="lightbox" data-lightbox-overlay hidden>
+      <div class="lightbox__box">
+        <button class="lightbox__close" type="button" data-lightbox-close aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+        <img class="lightbox__image" data-lightbox-image src="" alt="" />
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="get-in-touch">
+    <div class="container site-footer__grid">
+      <p class="footer-cta">Open to new roles and projects — <strong>let's talk.</strong></p>
+      <ul class="footer-socials">
+        <li><a href="mailto:katarzynkamoszczynska@gmail.com">katarzynkamoszczynska@gmail.com</a></li>
+        <li><a class="footer-link--linkedin" href="https://www.linkedin.com/in/katarzyna-moszczynska/" target="_blank" rel="noopener">Let's connect on LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- ============ /FOOTER ============ -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/password-gate.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

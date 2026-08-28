@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katarzyna Moszczyńska — Senior Product Designer</title>
+  <meta name="description" content="Portfolio of Katarzyna Moszczyńska — a research-led Senior Product Designer specializing in complex, data-intensive products for global teams." />
+
+  <!-- Social sharing -->
+  <meta property="og:title" content="Katarzyna Moszczyńska — Senior Product Designer" />
+  <meta property="og:description" content="Research-led Senior Product Designer specializing in complex, data-intensive products for global teams." />
+  <meta property="og:image" content="assets/images/og-image.jpg" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+
+  <!-- Fonts (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- ============ HEADER (same block repeated on every page) ============ -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="nav__logo" href="index.html">
+        <img class="nav__avatar" src="assets/images/profile/headshot.jpg" alt="" />
+        <span class="nav__name">Katarzyna Moszczyńska</span>
+        <span class="nav__role"><span class="nav__dot">&bull;</span> Senior Product Designer <span class="nav__dot">&bull;</span> Warsaw</span>
+      </a>
+      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="projects/index.html">Work</a></li>
+        <li><a href="how-i-work.html">How I work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="btn btn--ghost" href="assets/files/cv-katarzyna-moszczynska.pdf" target="_blank" rel="noopener">Download CV</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- ============ /HEADER ============ -->
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero container" style="position: relative; padding-top: var(--space-xl);">
+      <div class="blob blob--1" aria-hidden="true"></div>
+      <div class="blob blob--2" aria-hidden="true"></div>
+      <div class="sticky-note hero-note" data-reveal style="--rotate: 8deg; width: 260px; top: 38%; right: 2%;">
+        "An exceptional designer — deeply focused on UX, data flow, and logical workflows."
+        <span class="hero-note__attr">— Bartek, Tech Lead</span>
+      </div>
+      <div class="sticky-note sticky-note--pink hero-note" data-reveal style="--rotate: -6deg; width: 230px; top: calc(60% + 40px); right: 11%;">
+        "She combines a rare mix: strong design skills with a genuine talent for leading people."
+        <span class="hero-note__attr">— Agata, Product Designer</span>
+      </div>
+      <div class="hero__grid">
+        <p class="eyebrow" data-anim="hero-eyebrow">Senior Product Designer · Research &amp; Data-Led · AI Enthusiast</p>
+        <h1 class="hero__title" data-anim="hero-title">
+          I turn ambiguous, data-heavy<br />problems into decisions<br />teams can act on.
+        </h1>
+        <p class="hero__lede" data-anim="hero-lede">
+          8 years designing complex, data-intensive products for global teams.
+          For the past two years I've informally led design and research on my
+          team — without the title, but with the trust of stakeholders across
+          the business. I use AI tools daily as a thinking partner, always
+          starting from my own sketches.
+        </p>
+        <div class="hero__actions" data-anim="hero-actions" style="margin-top: 0;">
+          <a class="btn btn--accent" href="projects/index.html">View my work</a>
+          <a class="btn btn--ghost" href="#get-in-touch">Let's talk</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED PROJECTS ============ -->
+    <section class="section container">
+      <div class="section__head" data-reveal>
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2>Case studies</h2>
+        </div>
+        <a class="btn btn--ghost" href="projects/index.html">All work →</a>
+      </div>
+
+      <div class="project-grid" data-reveal-group>
+        <a class="project-card" href="projects/project-1.html" data-reveal>
+          <div class="project-card__media project-card__media--blurred">
+            <img src="assets/images/projects/project-1/after-audience-selection.jpg" alt="The redesigned campaign-planning flow" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag">Full Redesign</span>
+              <span class="tag">SaaS</span>
+            </div>
+            <h3 class="project-card__title">Rebuilding Campaign Planning</h3>
+            <p>Turning one agency's internal tool into a company-wide platform — as the first team to pilot WPP's new design system.</p>
+          </div>
+        </a>
+
+        <a class="project-card" href="projects/project-2.html" data-reveal>
+          <div class="project-card__media project-card__media--blurred">
+            <img src="assets/images/projects/project-1/after-touchpoints-selection.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag">Business Discovery</span>
+              <span class="tag">Interviews</span>
+            </div>
+            <h3 class="project-card__title">Frequency Capping</h3>
+            <p>Six in-depth interviews reframed a feature request — and changed which of two directions the team built.</p>
+          </div>
+        </a>
+
+        <a class="project-card" href="projects/project-3.html" data-reveal>
+          <div class="project-card__media project-card__media--blurred">
+            <img src="assets/images/projects/project-1/process-2c.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="tag">Survey</span>
+              <span class="tag">Concept Testing</span>
+            </div>
+            <h3 class="project-card__title">Express Scenarios</h3>
+            <p>A structured survey across three UI concepts turned a stuck design debate into an evidence-backed decision.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT PREVIEW ============
+         Photo-blob reuses the About page's organic-mask look (.photo-blob/
+         .photo-blob__shape) but skips the click-to-reveal "Hi!" greeting
+         easter egg on purpose — that's a one-time delight meant for the
+         About page itself, not something to duplicate here. The crayon
+         mark is a separate, simpler squiggle (not the closed blob-outline
+         trace) positioned to deliberately bleed across the photo's edge —
+         see .home-photo-mark below for how the overlap works. -->
+    <section class="section container" data-reveal>
+      <div class="about-hero">
+        <div class="hero__grid" style="max-width: 60ch;">
+          <p class="eyebrow">About me</p>
+          <h2>When I joined my team, no one had ever run a single research study. Today, every initiative starts with one.</h2>
+          <p>
+            I'm a Senior Product Designer who built a research
+            culture from scratch — and I've been informally leading design and
+            research on my team for the past two years. I run studies with
+            users across nearly every continent, and I work daily with AI tools
+            as a thinking partner for research and concept testing.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="about.html">More about me</a>
+          </div>
+        </div>
+        <div class="about-hero__photo">
+          <div class="photo-blob" style="aspect-ratio: 789 / 870;">
+            <span class="photo-blob__shape photo-blob__shape--pear">
+              <img class="photo-blob__img" src="assets/images/profile/about-me-homepage.jpg" alt="Katarzyna Moszczyńska" />
+            </span>
+            <svg class="home-photo-mark" viewBox="0 0 170 85" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <filter id="crayon-texture-about-preview" x="-30%" y="-30%" width="160%" height="160%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise" />
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+                </filter>
+              </defs>
+              <path d="M8,65 C18,35 35,80 48,52 C62,24 80,68 95,45 C110,20 128,62 145,38 C152,28 156,34 160,24" stroke="var(--color-accent)" stroke-width="8" stroke-linecap="round" filter="url(#crayon-texture-about-preview)" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ APPRECIATION NOTES ============
+         Real quotes from colleagues, pull-quoted from longer written
+         recommendations — verbatim excerpts, not rewritten. Alina, Jan,
+         Agata, and Bartek have real text; Adam and Michał are confirmed
+         but still waiting on actual quotes — their [bracketed] blockquote
+         is a placeholder, swap it for the real line before this goes
+         live, same as the other placeholder patterns on this site.
+         Carousel: 2 cards per view + a peek of the next, floating
+         prev/next buttons + dots, driven by assets/js/main.js
+         (data-carousel*). Moved here (between About me and Tools &
+         methods) 2026-08-27, was previously right before the footer. -->
+    <section class="section container" data-reveal>
+      <p class="eyebrow" data-reveal>Kind words</p>
+      <h2 data-reveal style="margin-top: 24px;">What it's like to work with me</h2>
+      <div class="testimonial-carousel" data-carousel data-reveal-group>
+        <div class="testimonial-track" data-carousel-track>
+          <figure class="testimonial-card" data-reveal>
+            <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>Kasia is an outstanding designer, confident working with data and technical teams to translate user research into clear, intuitive experiences. Her ability to connect user needs with technical perspectives was instrumental in developing thoughtful and effective solutions.</blockquote>
+            <figcaption>
+              <span class="name">Alina Niemiro-Hardy</span>
+              <span class="role">Data Science Director</span>
+            </figcaption>
+          </figure>
+          <figure class="testimonial-card" data-reveal>
+            <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>She excelled at translating human needs into practical technological solutions, serving as a natural bridge between people and machines.</blockquote>
+            <figcaption>
+              <span class="name">Jan Garstka</span>
+              <span class="role">CEO, TAKŁADNIE Design Group</span>
+            </figcaption>
+          </figure>
+          <figure class="testimonial-card" data-reveal>
+            <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>She combines a rare mix: strong design skills with a genuine talent for leading people. I recommend her to any team looking for a leader who builds a culture of trust and high-quality design.</blockquote>
+            <figcaption>
+              <span class="name">Agata Budner</span>
+              <span class="role">Product Designer</span>
+            </figcaption>
+          </figure>
+          <figure class="testimonial-card" data-reveal>
+            <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>[Quote from Adam — ask him for a one-line highlight about working together.]</blockquote>
+            <figcaption>
+              <span class="name">Adam Waliszewski</span>
+              <span class="role">Product Director</span>
+            </figcaption>
+          </figure>
+          <figure class="testimonial-card" data-reveal>
+            <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>[Quote from Michał — ask him for a one-line highlight about working together.]</blockquote>
+            <figcaption>
+              <span class="name">Michał Puchalski</span>
+              <span class="role">Lead Data Science</span>
+            </figcaption>
+          </figure>
+          <figure class="testimonial-card" data-reveal>
+            <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>She doesn't just design screens — she maps out the full data flow, catches logic issues early, and prevents problems that would've surfaced much later in development. She's equally sharp in user research sessions and stakeholder meetings, always making sure everyone in the room walks away aligned.</blockquote>
+            <figcaption>
+              <span class="name">Bartek Kurzyński</span>
+              <span class="role">Tech Lead / Backend</span>
+            </figcaption>
+          </figure>
+        </div>
+        <button type="button" class="carousel-btn carousel-btn--prev" data-carousel-prev aria-label="Previous testimonials">&lsaquo;</button>
+        <button type="button" class="carousel-btn carousel-btn--next" data-carousel-next aria-label="Next testimonials">&rsaquo;</button>
+        <div class="carousel-dots" data-carousel-dots></div>
+      </div>
+    </section>
+
+    <!-- ============ TOOLS / SKILLS ============ -->
+    <section class="section container" data-reveal>
+      <p class="eyebrow">Tools &amp; methods</p>
+      <div class="marquee">
+        <div class="marquee__track">
+          <span class="skill-pill">Figma</span>
+          <span class="skill-pill">User Research</span>
+          <span class="skill-pill">Usability Testing</span>
+          <span class="skill-pill">Surveys &amp; A/B Testing</span>
+          <span class="skill-pill">Business Discovery</span>
+          <span class="skill-pill">Design Systems</span>
+          <span class="skill-pill">FigJam / Miro</span>
+          <span class="skill-pill">AI-Augmented Workflow</span>
+          <span class="skill-pill">Claude</span>
+          <span class="skill-pill">Claude Code</span>
+          <span class="skill-pill">Figma Make</span>
+          <span class="skill-pill">Agent Creation</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT CTA ============ -->
+    <section class="section container text-center" data-reveal style="position: relative;">
+      <div class="blob blob--cta" aria-hidden="true"></div>
+      <p class="eyebrow">Let's work together</p>
+      <h2>Open to new opportunities.</h2>
+      <p style="margin-inline:auto; max-width: 50ch; margin-top: 24px;">I'm currently looking for my next role — get in touch if you'd like to talk.</p>
+      <div class="hero__actions" style="justify-content:center;">
+        <a class="btn btn--accent" href="#get-in-touch">Get in touch</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER (same block repeated on every page) ============ -->
+  <footer class="site-footer" id="get-in-touch">
+    <div class="container site-footer__grid">
+      <p class="footer-cta">Open to new roles and projects — <strong>let's talk.</strong></p>
+      <ul class="footer-socials">
+        <li><a href="mailto:katarzynkamoszczynska@gmail.com">katarzynkamoszczynska@gmail.com</a></li>
+        <li><a class="footer-link--linkedin" href="https://www.linkedin.com/in/katarzyna-moszczynska/" target="_blank" rel="noopener">Let's connect on LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- ============ /FOOTER ============ -->
+
+  <!-- GSAP (micro-animations) — CDN, no install needed -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

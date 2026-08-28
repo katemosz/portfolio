@@ -1,0 +1,199 @@
+/* ==========================================================================
+   ANIMACJE
+   Stany startowe animacji sterowanych przez GSAP (assets/js/animations.js)
+   ustawiane są w JS, nie tutaj — dzięki temu strona wygląda i działa
+   normalnie nawet gdy JavaScript się nie wczyta (progressive enhancement).
+   Tu trzymamy tylko czyste animacje CSS: dekoracje, hover, marquee.
+   ========================================================================== */
+
+/* --- Dekoracyjne, rozmyte plamy w tle Hero --- */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.5;
+  z-index: -1;
+  animation: float 14s ease-in-out infinite;
+}
+
+.blob--1 {
+  width: 360px; height: 360px;
+  background: var(--color-accent-soft);
+  top: -80px; right: -60px;
+}
+
+.blob--2 {
+  width: 260px; height: 260px;
+  background: var(--color-bg-alt);
+  bottom: -60px; left: -40px;
+  animation-delay: -7s;
+}
+
+/* A barely-there wash of the accent color — for pages that want a hint of
+   color in the background without a visible "shape" (e.g. About bio). */
+.blob--accent {
+  width: 520px; height: 520px;
+  background: var(--color-accent);
+  opacity: 0.12;
+  filter: blur(110px);
+  top: calc(50% - 260px); /* centers the blob's middle on the section's middle */
+  right: -140px;
+}
+
+/* Attached to the left edge of the CTA section, centered exactly on the
+   viewport edge (half the blob bleeds off-screen) regardless of the
+   .container's own max-width/padding. Positioned with top/left/margin
+   only, deliberately not `transform` — `.blob`'s own `float` keyframes
+   already own `transform` (animations replace, not combine with, a
+   separately-declared transform), so a translate(-50%,-50%) here would
+   get silently clobbered by the animation every frame. */
+.blob--cta {
+  width: 420px; height: 420px;
+  background: var(--color-accent);
+  opacity: 0.3;
+  filter: blur(90px);
+  top: calc(50% - 210px);
+  left: 50%;
+  margin-left: calc(-50vw - 210px);
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -30px) scale(1.08); }
+}
+
+/* --- Homepage hero doodle: a plain crayon smiley, no sticky note, no
+   text — fills the empty right-hand side of the hero (team feedback:
+   the homepage read as empty on load). Replaced by a real testimonial
+   sticky note (.hero-note below) after she felt the plain doodle looked
+   too thin on its own — kept for reference in case a bare doodle is
+   wanted again elsewhere. */
+.hero-doodle {
+  position: absolute;
+  top: 46%;
+  right: 8%;
+  color: var(--color-accent);
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .hero-doodle {
+    display: none;
+  }
+}
+
+/* Homepage hero testimonial note — same .sticky-note motif as the case
+   study heroes. Deliberately a *design*-focused quote, not a leadership
+   one (she's currently applying to an IC role at Asana; the
+   leadership-heavy quotes are saved for when she applies to Decathlon's
+   Design Lead role instead — see memory before swapping this text). */
+.hero-note {
+  /* top/right/width/rotation are set per-note inline now that there are
+     two of them scattered at different spots — see index.html. */
+  position: absolute;
+  z-index: 1;
+}
+
+.hero-note__attr {
+  display: block;
+  margin-top: var(--space-2xs);
+  font-size: var(--fs-300);
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+@media (max-width: 900px) {
+  .hero-note {
+    display: none;
+  }
+}
+
+/* --- Kropka kursora (subtelny efekt na desktopie) --- */
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  pointer-events: none;
+  z-index: 999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .cursor-dot { display: none; }
+}
+
+/* --- Marquee: przewijany pasek umiejętności/narzędzi --- */
+.marquee {
+  overflow: hidden;
+  margin-top: 32px;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee__track {
+  display: flex;
+  gap: var(--space-lg);
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+  .blob { animation: none; }
+}
+
+/* A small hand-drawn breather between Learnings and the Appendix —
+   deliberately tilted, not a plain horizontal rule, and deliberately NOT
+   full-width. No margin of its own — the space around it comes entirely
+   from Learnings' and the Appendix's own (halved) section padding. */
+.squiggle-divider {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.squiggle-divider svg {
+  transform: rotate(-15deg);
+}
+
+/* --- Crayon marks: a playful tilt when you hover near them. Each mark
+   swings ~15° about its own centre. The trigger is a sensible hover area
+   per mark (the divider strip, the metric-board cell, the last experience
+   row, the bio text) — most marks keep pointer-events:none where they sit
+   over real text, so hovering the mark's own pixels isn't the trigger.
+   Each :hover value is a FULL replacement of the base transform (base tilt
+   + the ~15° swing written out) so nothing depends on transform/rotate
+   property composition. --- */
+.squiggle-divider svg,
+.crayon-scribble,
+.crayon-loop {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.squiggle-divider:hover svg {
+  transform: rotate(0deg); /* from the -15deg base → swings up to level */
+}
+
+.metric-board__squiggle:hover .crayon-loop {
+  transform: rotate(15deg);
+}
+
+.experience-item:hover .crayon-scribble {
+  transform: translateY(-50%) rotate(15deg); /* keep the -50% vertical centring */
+}
+
+.section:has(.bio-text:hover) > .crayon-loop {
+  transform: rotate(15deg);
+}
