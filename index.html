@@ -179,15 +179,15 @@
     <!-- ============ APPRECIATION NOTES ============
          Real quotes from colleagues, pull-quoted from longer written
          recommendations — verbatim excerpts, not rewritten. Alina, Jan,
-         Agata, and Bartek have real text; Adam and Michał are confirmed
-         but still waiting on actual quotes — their [bracketed] blockquote
-         is a placeholder, swap it for the real line before this goes
-         live, same as the other placeholder patterns on this site.
+         Agata, and Bartek have real text. Adam Waliszewski and Michał
+         Puchalski are confirmed but haven't sent their quotes yet — their
+         cards were removed for now (2026-09-28); re-add a <figure
+         class="testimonial-card"> for each once their line lands.
          Carousel: 2 cards per view + a peek of the next, floating
          prev/next buttons + dots, driven by assets/js/main.js
          (data-carousel*). Moved here (between About me and Tools &
          methods) 2026-08-27, was previously right before the footer. -->
-    <section class="section container" data-reveal>
+    <section class="section container" data-reveal style="padding-bottom: calc(var(--space-2xl) - 50px);">
       <p class="eyebrow" data-reveal>Kind words</p>
       <h2 data-reveal style="margin-top: 24px;">What it's like to work with me</h2>
       <div class="testimonial-carousel" data-carousel data-reveal-group>
@@ -218,22 +218,6 @@
           </figure>
           <figure class="testimonial-card" data-reveal>
             <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
-            <blockquote>[Quote from Adam — ask him for a one-line highlight about working together.]</blockquote>
-            <figcaption>
-              <span class="name">Adam Waliszewski</span>
-              <span class="role">Product Director</span>
-            </figcaption>
-          </figure>
-          <figure class="testimonial-card" data-reveal>
-            <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
-            <blockquote>[Quote from Michał — ask him for a one-line highlight about working together.]</blockquote>
-            <figcaption>
-              <span class="name">Michał Puchalski</span>
-              <span class="role">Lead Data Science</span>
-            </figcaption>
-          </figure>
-          <figure class="testimonial-card" data-reveal>
-            <span class="testimonial-card__mark" aria-hidden="true">&ldquo;</span>
             <blockquote>She doesn't just design screens — she maps out the full data flow, catches logic issues early, and prevents problems that would've surfaced much later in development. She's equally sharp in user research sessions and stakeholder meetings, always making sure everyone in the room walks away aligned.</blockquote>
             <figcaption>
               <span class="name">Bartek Kurzyński</span>
@@ -248,7 +232,7 @@
     </section>
 
     <!-- ============ TOOLS / SKILLS ============ -->
-    <section class="section container" data-reveal>
+    <section class="section container" data-reveal style="padding-block: calc(var(--space-2xl) - 50px);">
       <p class="eyebrow">Tools &amp; methods</p>
       <div class="marquee">
         <div class="marquee__track">
@@ -269,7 +253,7 @@
     </section>
 
     <!-- ============ CONTACT CTA ============ -->
-    <section class="section container text-center" data-reveal>
+    <section class="section container text-center" data-reveal style="padding-top: calc(var(--space-2xl) - 50px); position: relative;">
       <p class="eyebrow">Let's work together</p>
       <h2>Open to new opportunities.</h2>
       <p style="margin-inline:auto; max-width: 44ch; margin-top: 24px;">
@@ -279,6 +263,18 @@
         <a href="https://www.linkedin.com/in/katarzyna-moszczynska/" target="_blank" rel="noopener" style="color: var(--color-accent); font-weight: 500; text-decoration: underline; text-underline-offset: 3px;">LinkedIn</a>.
         I'm always up for a good problem — and I can't wait to hear what you're working on.
       </p>
+      <!-- New hand-drawn shape for the page's bottom-left — a coil, unlike
+           the horizontal squiggles used elsewhere. Self-contained filter
+           so it doesn't depend on DOM order. -->
+      <svg class="footer-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <filter id="crayon-texture-footer" x="-40%" y="-40%" width="180%" height="180%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+        <path d="M54,50 C54,43 45,42 43,49 C40,58 43,68 55,68 C70,68 76,53 72,39 C67,20 44,15 28,24 C7,36 8,64 27,79" stroke="currentColor" stroke-width="7" stroke-linecap="round" filter="url(#crayon-texture-footer)" />
+      </svg>
     </section>
   </main>
 

@@ -166,3 +166,24 @@
     transform: rotate(calc(var(--rotate, -6deg) + 3.5deg)) !important;
   }
 }
+
+/* Hand-drawn coil at the bottom-left of the homepage's closing section —
+   a new shape (every other crayon mark on the site is a horizontal
+   squiggle). Bleeds ~14px past the container's left edge (safe on mobile,
+   where the container padding is wider than that), sits behind the text. */
+.footer-mark {
+  position: absolute;
+  left: -14px;
+  bottom: 6px;
+  width: 118px;
+  height: auto;
+  color: var(--color-mark);
+  opacity: 0.85;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .footer-mark { transition: transform var(--duration-base) var(--ease-out); }
+  .section:hover > .footer-mark { transform: rotate(14deg); }
+}
