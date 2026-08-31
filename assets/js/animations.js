@@ -127,31 +127,7 @@
     });
 
     /* ---------------------------------------------------------------------
-       4) NIESTANDARDOWY KURSOR (tylko desktop, urządzenia z myszką)
-    --------------------------------------------------------------------- */
-    const cursor = document.querySelector(".cursor-dot");
-    if (cursor && window.matchMedia("(hover: hover)").matches) {
-      window.addEventListener("mousemove", (e) => {
-        gsap.to(cursor, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.15,
-          ease: "power2.out",
-        });
-      });
-
-      document.querySelectorAll("a, button").forEach((el) => {
-        el.addEventListener("mouseenter", () =>
-          gsap.to(cursor, { scale: 2.5, duration: 0.25 })
-        );
-        el.addEventListener("mouseleave", () =>
-          gsap.to(cursor, { scale: 1, duration: 0.25 })
-        );
-      });
-    }
-
-    /* ---------------------------------------------------------------------
-       5) "HI!" — click the About-page photo to say hello
+       4) "HI!" — click the About-page photo to say hello
        Photo fades out, a greeting fades in behind it, holds for a beat,
        then both reverse. Guarded against re-triggering mid-animation.
     --------------------------------------------------------------------- */

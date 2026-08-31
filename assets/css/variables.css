@@ -62,6 +62,11 @@
   --duration-fast: 0.25s;
   --duration-base: 0.5s;
   --duration-slow: 0.9s;
+
+  /* Hand-drawn "crayon" underline — same wave as the .eyebrow signature,
+     reused for the link-hover draw-in effect. Stroke colour baked in
+     (SVG can't read CSS vars), so there's a dark-mode override below. */
+  --crayon-underline: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='100'%20height='8'%20viewBox='0%200%20100%208'%20fill='none'%3E%3Cpath%20d='M1%205%20C%2012%201%2020%208%2032%204%20C%2044%200%2052%208%2064%204%20C%2076%201%2084%207%2099%203'%20stroke='%23f2542d'%20stroke-width='2.2'%20stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 /* Opcjonalny ciemny motyw — włącza się automatycznie wg ustawień systemu.
@@ -78,5 +83,6 @@
     --color-accent-soft: #0d2a25;
     --color-accent-contrast: #06231e;
     --color-mark: #ff6a44;         /* brighter warm for the marks on dark */
+    --crayon-underline: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='100'%20height='8'%20viewBox='0%200%20100%208'%20fill='none'%3E%3Cpath%20d='M1%205%20C%2012%201%2020%208%2032%204%20C%2044%200%2052%208%2064%204%20C%2076%201%2084%207%2099%203'%20stroke='%23ff6a44'%20stroke-width='2.2'%20stroke-linecap='round'/%3E%3C/svg%3E");
   }
 }

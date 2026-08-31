@@ -59,7 +59,6 @@
   <!-- ============ /PASSWORD GATE ============ -->
 
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="cursor-dot" aria-hidden="true"></div>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header">
@@ -77,7 +76,7 @@
       <ul class="nav__links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="index.html" aria-current="page">Work</a></li>
-        <li><a href="../how-i-work.html">How I work</a></li>
+        <li hidden><a href="../how-i-work.html">How I work</a></li>
         <li><a href="../about.html">About</a></li>
         <li><a class="btn btn--ghost" href="../assets/files/cv-katarzyna-moszczynska.pdf" target="_blank" rel="noopener">Download CV</a></li>
       </ul>
@@ -124,11 +123,15 @@
       </dl>
     </section>
 
-    <!-- ============ MAIN IMAGE ============ -->
+    <!-- ============ COVER ============
+         Designed cover graphic with a baked-in light + dark version — the
+         <picture> serves whichever matches the visitor's prefers-color-scheme
+         (same signal the rest of the site follows; no JS, no toggle). -->
     <section class="container" style="padding-block: var(--space-2xl);" data-reveal>
-      <div class="media-card">
-        <img src="../assets/images/projects/project-3/express-v2.jpg" alt="The redesigned Express Scenarios screen — a simplified setup and a results view with two scenarios" style="width:100%;display:block;" />
-      </div>
+      <picture>
+        <source srcset="../assets/images/projects/project-3/cover-dark.jpg" media="(prefers-color-scheme: dark)" />
+        <img src="../assets/images/projects/project-3/cover-light.jpg" alt="Express Scenarios — a media plan built in three minutes instead of three weeks" style="width: 100%; height: auto; display: block; border-radius: var(--radius-lg);" />
+      </picture>
     </section>
 
     <!-- ============ CONTEXT / PROBLEM ============ -->
@@ -453,8 +456,10 @@
       </div>
     </section>
 
-    <!-- ============ HOW I WORK (teaser → methodology page) ============ -->
-    <section class="case-section container" data-reveal-group style="border-bottom: none;">
+    <!-- ============ HOW I WORK (teaser → methodology page) ============
+         HIDDEN 2026-09-28 — the How I work page is still being finished and
+         is unlinked from the nav. Remove `hidden` to bring this back. -->
+    <section class="case-section container" data-reveal-group hidden style="border-bottom: none;">
       <div class="case-section__body">
         <h2 data-reveal>How I work</h2>
         <div data-reveal>

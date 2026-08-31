@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frequency Capping — Katarzyna Moszczyńska</title>
-  <meta name="description" content="Case study: six in-depth interviews reframed a feature request and changed which of two technical directions the team pursued." />
+  <title>A run of smaller problems — Katarzyna Moszczyńska</title>
+  <meta name="description" content="A skim-first catalogue of shorter product work: an AI validation helper, a benchmark ROI library, budget constraints from history, a market-data review flow, and an audience builder rebuild." />
   <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,7 +55,6 @@
   <!-- ============ /PASSWORD GATE ============ -->
 
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="cursor-dot" aria-hidden="true"></div>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header">
@@ -73,7 +72,7 @@
       <ul class="nav__links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="index.html" aria-current="page">Work</a></li>
-        <li><a href="../how-i-work.html">How I work</a></li>
+        <li hidden><a href="../how-i-work.html">How I work</a></li>
         <li><a href="../about.html">About</a></li>
         <li><a class="btn btn--ghost" href="../assets/files/cv-katarzyna-moszczynska.pdf" target="_blank" rel="noopener">Download CV</a></li>
       </ul>
@@ -82,165 +81,542 @@
   <!-- ============ /HEADER ============ -->
 
   <main id="main">
-    <!-- ============ CASE HERO ============ -->
-    <section class="case-hero container">
-      <p class="eyebrow" data-anim="hero-eyebrow">Case study · Business discovery</p>
-      <h1 class="hero__title" data-anim="hero-title">Frequency Capping</h1>
+    <!-- ============ HERO ============ -->
+    <section class="case-hero container" style="border-bottom: none;">
+      <p class="eyebrow" data-anim="hero-eyebrow">Selected work</p>
+      <h1 class="hero__title" data-anim="hero-title">A run of smaller problems</h1>
       <p class="hero__lede" data-anim="hero-lede">
-        Six in-depth interviews with senior media planners — before a single
-        screen was designed — reframed a long-standing feature request and
-        changed which of two technical directions the team pursued.
+        Shorter pieces of work — mostly fixing things that were quietly
+        broken. A validation error nobody could read. Benchmark data locked
+        behind a file upload. A review screen people dreaded. Skim the
+        cards; each one is a problem, a fix, and what the business got.
       </p>
-
-      <dl class="case-meta" data-anim="hero-actions">
-        <div>
-          <dt>Role</dt>
-          <dd>Research Lead</dd>
-        </div>
-        <div>
-          <dt>Team</dt>
-          <dd>Product Owner, Data Science</dd>
-        </div>
-        <div>
-          <dt>Timeframe</dt>
-          <dd>September 2025</dd>
-        </div>
-        <div>
-          <dt>Methods</dt>
-          <dd>In-depth interviews, hypothesis-driven discovery</dd>
-        </div>
-      </dl>
     </section>
 
-    <!-- ============ MAIN IMAGE ============ -->
+    <!-- ============ COVER ============
+         Designed cover graphic with a baked-in light + dark version — the
+         <picture> serves whichever matches the visitor's prefers-color-scheme
+         (same signal the rest of the site follows; no JS, no toggle). -->
     <section class="container" style="padding-block: var(--space-2xl);" data-reveal>
-      <div class="project-card__media" style="aspect-ratio: 16/9; border-radius: var(--radius-lg);">
-        <div class="img-placeholder">Main visual — e.g. the research repository or TL;DR summary page<br />(assets/images/projects/project-2/cover.jpg)</div>
-      </div>
+      <picture>
+        <source srcset="../assets/images/projects/project-2/cover-dark.jpg" media="(prefers-color-scheme: dark)" />
+        <img src="../assets/images/projects/project-2/cover-light.jpg" alt="A run of smaller problems — selected fixes across the media-planning platform" style="width: 100%; height: auto; display: block; border-radius: var(--radius-lg);" />
+      </picture>
     </section>
 
-    <!-- ============ CONTEXT / PROBLEM ============ -->
-    <section class="case-section case-section--divide container" data-reveal-group>
-      <div class="case-section__body">
-        <h2 data-reveal>Context &amp; problem</h2>
-        <div data-reveal>
-          <p>
-            For a long time, planners had been asking for "frequency
-            capping" — a way to stop the same person from seeing an ad too
-            many times. The obvious response is to build a cap: a maximum
-            number, one setting, one control.
-          </p>
-          <p>
-            Before committing engineering time to that, we wanted to test a
-            real hypothesis first: were senior planners actually asking for
-            a literal cap, or using "frequency capping" as a proxy for a
-            bigger, less obvious problem?
-          </p>
+    <!-- ============ JUMP TILES ============ -->
+    <section class="mini-intro container" data-reveal-group>
+      <p class="eyebrow" data-reveal>Jump to</p>
+      <ul class="mini-nav" data-reveal>
+        <li>
+          <a class="mini-nav__card" href="#ai-validation">
+            <span class="mini-nav__num">01</span>
+            <span class="mini-nav__kicker">Touchpoints · AI</span>
+            <span class="mini-nav__title">AI reads the rejection</span>
+          </a>
+        </li>
+        <li>
+          <a class="mini-nav__card" href="#roi-library">
+            <span class="mini-nav__num">02</span>
+            <span class="mini-nav__kicker">Touchpoints · Data Science</span>
+            <span class="mini-nav__title">A benchmark ROI library</span>
+          </a>
+        </li>
+        <li>
+          <a class="mini-nav__card" href="#budget-constraints">
+            <span class="mini-nav__num">03</span>
+            <span class="mini-nav__kicker">Campaigns · Optimisation</span>
+            <span class="mini-nav__title">Budget limits from history</span>
+          </a>
+        </li>
+        <li>
+          <a class="mini-nav__card" href="#admin-data">
+            <span class="mini-nav__num">04</span>
+            <span class="mini-nav__kicker">Touchpoints · Data governance</span>
+            <span class="mini-nav__title">Reviewing a data update</span>
+          </a>
+        </li>
+        <li>
+          <a class="mini-nav__card" href="#audience-builder">
+            <span class="mini-nav__num">05</span>
+            <span class="mini-nav__kicker">Audience Origin · Rebuild</span>
+            <span class="mini-nav__title">Rebuilding the audience builder</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ---------- 01 · AI validation helper ---------- -->
+    <section class="mini-case container" id="ai-validation" data-reveal-group>
+      <p class="mini-case__kicker" data-reveal>01 · Touchpoints · AI</p>
+      <h2 class="mini-case__title" data-reveal>AI reads the rejection</h2>
+      <p class="mini-case__summary" data-reveal>
+        <strong>I added an AI explainer to a data upload that used to fail
+        with one cryptic line.</strong> It names the exact cells and says,
+        in plain words, what to fix.
+      </p>
+      <p class="mini-case__with" data-reveal>Worked with: Backend · Data Science</p>
+
+      <div class="mini-case__card" data-reveal>
+        <div class="mini-case__points">
+          <div class="mini-case__block">
+            <h3>The problem</h3>
+            <p>
+              RF-curve files were rejected with <strong>one red
+              sentence</strong> and no pointer to <strong>which of dozens
+              of cells</strong> was wrong. Planners fixed blind,
+              re-uploaded, failed again — <strong>the module's most common
+              support ticket</strong>.
+            </p>
+          </div>
+          <div class="mini-case__block">
+            <h3>What I did</h3>
+            <p>
+              With backend, defined the AI's reply: <strong>what's wrong,
+              why, the exact cells, a correct example</strong> —
+              <strong>one error type at a time</strong>, capped at 15 cells
+              so it never becomes a wall of red. Tuned it on real rejected
+              files pulled from the database.
+            </p>
+          </div>
+          <div class="mini-case__block">
+            <h3>Why it works</h3>
+            <p>
+              An opaque rejection turns into a <strong>short, ordered fix
+              list</strong> — written for a planner, not a validator.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ PROCESS ============ -->
-    <section class="case-section container" data-reveal-group>
-      <div class="case-section__body">
-        <h2 data-reveal>Process</h2>
-        <div data-reveal>
-          <p>
-            Instead of a standard discovery guide, I wrote the research
-            around two explicit, falsifiable hypotheses:
-          </p>
-          <p>
-            <strong>Hypothesis 1 — The Strategic Imperative:</strong>
-            decisions about frequency are made at the planning-strategy
-            stage, not as a tactical afterthought — planners already have a
-            "frequency philosophy" before they ever touch a platform
-            setting.
-          </p>
-          <p>
-            <strong>Hypothesis 2 — The Proxy Problem:</strong> when senior
-            planners ask for "frequency capping," they aren't literally
-            asking for a cap button. They're using the term as a stand-in
-            for their real goal — stopping the optimizer from
-            over-saturating one channel and wasting budget.
-          </p>
-          <p>
-            I interviewed six senior users — from strategic planning
-            directors to highly tactical buyers, across EU and US markets —
-            with structured follow-up probes designed to surface which
-            hypothesis actually held.
-          </p>
-          <div class="case-gallery" style="grid-template-columns: repeat(2, 1fr);">
-            <div class="project-card__media" style="aspect-ratio: 4/3;">
-              <div class="img-placeholder">Research plan / hypotheses doc (Confluence)</div>
+        <div class="mini-case__bands">
+          <div class="mini-case__band mini-case__band--outcome">
+            <svg class="mini-case__band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 17l6-6 4 4 8-8" />
+              <path d="M15 7h6v6" />
+            </svg>
+            <div class="mini-case__band-body">
+              <span class="mini-case__band-label">Business outcome</span>
+              <p>
+                <strong>Zero RF-curve support tickets since launch</strong>
+                (March 2026) — down from the single most frequent escalation
+                in the module. Planners unblock themselves instead of
+                waiting on data science.
+              </p>
             </div>
-            <div class="project-card__media" style="aspect-ratio: 4/3;">
-              <div class="img-placeholder">Interview script &amp; probes</div>
+          </div>
+          <div class="mini-case__band mini-case__band--skill">
+            <svg class="mini-case__band-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 1.5c.7 5.6 2.1 7 7.7 7.7-5.6.7-7 2.1-7.7 7.7-.7-5.6-2.1-7-7.7-7.7 5.6-.7 7-2.1 7.7-7.7z" />
+            </svg>
+            <div class="mini-case__band-body">
+              <span class="mini-case__band-label">Skill gained</span>
+              <p>
+                <em>Draft — Kasia to refine:</em> how to structure an AI's
+                answers — the fixed response template, token and model
+                limits, and a real feel for where an LLM's limits sit.
+              </p>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="mini-case__shots mini-case__shots--pair" data-reveal>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/ai-rf-1-error.jpg"
+               alt="RF-curve upload screen with a red validation error and a new 'Analyze the problem' action." loading="lazy" />
+          <figcaption>The rejection, with the new "Analyze the problem" action.</figcaption>
+        </figure>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/ai-rf-3-explanation.jpg"
+               alt="AI explanation panel: what went wrong, why it matters, the exact cells with values, and an expected value." loading="lazy" />
+          <figcaption>What's wrong, why it matters, the exact cells, a correct value.</figcaption>
+        </figure>
+      </div>
     </section>
 
-    <!-- ============ WHAT THE INTERVIEWS SHOWED ============
-         The old "Solution" section, kept between Process and Impact — the
-         findings need to come before the outcome, so on this page Impact
-         doesn't sit immediately after Process. -->
-    <section class="case-section container" data-reveal-group>
-      <div class="case-section__body">
-        <h2 data-reveal>What the interviews showed</h2>
-        <div data-reveal>
-          <p class="measure">
-            The interviews were unanimous: a cross-channel, budget-efficiency
-            solution was seen as far more valuable and strategic than a
-            simple platform-specific cap. Four things stood out:
-          </p>
-          <ul class="measure" style="margin-top: var(--space-sm); display:grid; gap: var(--space-xs); color: var(--color-text-muted); padding-left: 1.2em; list-style: disc;">
-            <li>The real problem is waste, not capping — described as "contact pollution" or "controlling investment levels," not a cap for its own sake.</li>
-            <li>The unsolved problem is cross-media — even the most digital-focused participant chose the cross-channel option, because real campaigns mix TV, out-of-home, and digital.</li>
-            <li>A single-platform cap would have solved a problem several users already considered minor or handled elsewhere.</li>
-            <li>"Frequency capping" was consistently shorthand for a bigger, unsolved budget-efficiency problem.</li>
-          </ul>
-          <div class="media-card" style="margin-top: var(--space-lg);">
-            <div class="img-placeholder" style="aspect-ratio: 16/9;">TL;DR summary &amp; key findings</div>
+    <!-- ---------- 02 · ROI library ---------- -->
+    <section class="mini-case container" id="roi-library" data-reveal-group>
+      <p class="mini-case__kicker" data-reveal>02 · Touchpoints · Data Science</p>
+      <h2 class="mini-case__title" data-reveal>A benchmark ROI library</h2>
+      <p class="mini-case__summary" data-reveal>
+        <strong>I turned a rarely-usable feature into a self-serve
+        library.</strong> Planners pick a few familiar attributes and get
+        benchmark ROI curves, auto-matched to their channels — no data
+        science request, no file.
+      </p>
+      <p class="mini-case__with" data-reveal>Worked with: Data Science · Backend · a co-researcher</p>
+
+      <div class="mini-case__card" data-reveal>
+        <div class="mini-case__points">
+          <div class="mini-case__block">
+            <h3>The problem</h3>
+            <p>
+              To see ROI curves you had to <strong>upload your own
+              econometric model</strong> — which almost no team has. Data
+              Science had circled a benchmark version for a long time
+              without it landing.
+            </p>
+          </div>
+          <div class="mini-case__block">
+            <h3>What I did</h3>
+            <p>
+              Ran the discovery that unblocked it — <strong>~10
+              interviews</strong> with ROI planners across five regions —
+              then shaped the flow: <strong>pick category, brand size and
+              online-sales share; curves auto-match to your
+              touchpoints</strong>, editable per row.
+            </p>
+          </div>
+          <div class="mini-case__block">
+            <h3>Why it works</h3>
+            <p>
+              ROI-based planning becomes a <strong>starting point, not a
+              locked door</strong> — and sensitive client data is never
+              shared one-to-one.
+            </p>
+          </div>
+        </div>
+        <div class="mini-case__bands">
+          <div class="mini-case__band mini-case__band--outcome">
+            <svg class="mini-case__band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 17l6-6 4 4 8-8" />
+              <path d="M15 7h6v6" />
+            </svg>
+            <div class="mini-case__band-body">
+              <span class="mini-case__band-label">Business outcome</span>
+              <p>
+                <strong>In production with one of the firm's largest
+                clients</strong>, whose planners now add library curves to
+                live plans. Cleared econometrician sign-off after nine
+                months of cross-market modelling.
+              </p>
+            </div>
+          </div>
+          <div class="mini-case__band mini-case__band--skill">
+            <svg class="mini-case__band-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 1.5c.7 5.6 2.1 7 7.7 7.7-5.6.7-7 2.1-7.7 7.7-.7-5.6-2.1-7-7.7-7.7 5.6-.7 7-2.1 7.7-7.7z" />
+            </svg>
+            <div class="mini-case__band-body">
+              <span class="mini-case__band-label">Skill gained</span>
+              <p>
+                <em>Draft — Kasia to refine:</em> a seat in the senior,
+                business-side roadmap discussions a PO usually owns — and a
+                closer working partnership with Data Science.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- ============ IMPACT ============
-         Merged old "Results" into an accent panel (design-team feedback:
-         make the outcome the headline). Framed as decision-impact — this
-         research deliberately has no usage metric (see content strategy). -->
-    <section class="case-section container" data-reveal-group style="border-bottom: none;">
-      <div class="impact-panel" data-reveal>
-        <h2>Impact</h2>
-        <p class="impact-panel__intro">No feature shipped yet — but the direction did. What changed:</p>
-        <ul class="impact-panel__list">
-          <li>
-            <strong>The team committed to the right build before starting it.</strong>
-            Six interviews settled which of two technical directions to
-            pursue — the cross-channel, budget-efficiency one — at the
-            discovery stage, not mid-sprint.
-          </li>
-          <li>
-            <strong>A long-standing request got decoded.</strong>
-            "Frequency capping" turned out to be shorthand for a bigger,
-            unsolved efficiency problem. Naming the real goal changed what
-            went on the roadmap.
-          </li>
-        </ul>
+      <div class="mini-case__shots mini-case__shots--grid2" data-reveal>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/roi-1-empty.jpg"
+               alt="ROI curves step with an empty state offering 'Apply from ROI library'." loading="lazy" />
+          <figcaption>Before: your own upload, or nothing.</figcaption>
+        </figure>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/roi-3-metric.jpg"
+               alt="ROI library step one: choosing a metric by data source, category, online-sales share and brand size." loading="lazy" />
+          <figcaption>Step 1 — pick a metric by a few familiar attributes.</figcaption>
+        </figure>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/roi-5-match.jpg"
+               alt="ROI library step two, a two-column side modal matching each selected touchpoint to a library ROI curve, editable per row." loading="lazy" />
+          <figcaption>Step 2 — touchpoints auto-matched to library curves, editable per row.</figcaption>
+        </figure>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/roi-6-chart.jpg"
+               alt="Populated ROI curves chart, one curve per touchpoint, sales against budget." loading="lazy" />
+          <figcaption>Curves applied, one per touchpoint.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- ============ HOW I WORK (teaser → methodology page) ============ -->
-    <section class="case-section container" data-reveal-group style="border-bottom: none;">
+    <!-- ---------- 03 · Budget constraints ---------- -->
+    <section class="mini-case container" id="budget-constraints" data-reveal-group>
+      <p class="mini-case__kicker" data-reveal>03 · Campaigns · Budget optimisation</p>
+      <h2 class="mini-case__title" data-reveal>Budget limits, backed by history</h2>
+      <p class="mini-case__summary" data-reveal>
+        <strong>I gave planners a way to pull budget constraints in
+        instead of typing them</strong> — their team's own limits, or
+        benchmarks Data Science built from thousands of past campaigns.
+      </p>
+      <p class="mini-case__with" data-reveal>Worked with: Data Science · Product Owner</p>
+
+      <div class="mini-case__card" data-reveal>
+        <div class="mini-case__points">
+          <div class="mini-case__block">
+            <h3>The problem</h3>
+            <p>
+              Constraints were <strong>manual entry, one row per
+              channel</strong> — from a client, an investment team, or a
+              hunch.
+            </p>
+          </div>
+          <div class="mini-case__block">
+            <h3>What I did</h3>
+            <p>
+              Added constraint entry where standing limits belong, and
+              <strong>argued the benchmark model out of the module where
+              it couldn't work</strong> — pivoting it into the Campaigns
+              step that knows campaign duration. PO and the Data Science
+              director signed off. The result: a two-tab panel — your
+              team's limits / smart benchmarks — each shown only when data
+              exists.
+            </p>
+          </div>
+          <div class="mini-case__block">
+            <h3>Why it works</h3>
+            <p>
+              The numbers sit <strong>where the context is</strong>, and a
+              gut call can be checked against real history.
+            </p>
+          </div>
+        </div>
+        <div class="mini-case__bands">
+          <div class="mini-case__band mini-case__band--outcome">
+            <svg class="mini-case__band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 17l6-6 4 4 8-8" />
+              <path d="M15 7h6v6" />
+            </svg>
+            <div class="mini-case__band-body">
+              <span class="mini-case__band-label">Business outcome</span>
+              <p>
+                <strong>Shipped on direct demand from a top client and
+                several teams</strong> — standing constraints set once, not
+                re-keyed from a spreadsheet into every campaign.
+              </p>
+            </div>
+          </div>
+          <div class="mini-case__band mini-case__band--skill">
+            <svg class="mini-case__band-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 1.5c.7 5.6 2.1 7 7.7 7.7-5.6.7-7 2.1-7.7 7.7-.7-5.6-2.1-7-7.7-7.7 5.6-.7 7-2.1 7.7-7.7z" />
+            </svg>
+            <div class="mini-case__band-body">
+              <span class="mini-case__band-label">Skill gained</span>
+              <p>
+                <em>Draft — Kasia to refine:</em> coordinating one feature
+                across several teams building in parallel — running the
+                shared refinements, keeping every squad clear on the next
+                implementation steps.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini-case__shots" data-reveal>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/constraints-1-table.jpg"
+               alt="Campaign constraints step: a table of budget limits per touchpoint, with a new 'Constraints suggestions' entry point." loading="lazy" />
+          <figcaption>The constraints step, with the new "Constraints suggestions" entry point.</figcaption>
+        </figure>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/constraints-2-touchpoints.jpg"
+               alt="Constraints suggestions panel, 'Touchpoints constraints' tab: limits the team defined, shown as values and as a percentage of the plan budget." loading="lazy" />
+          <figcaption>Tab one — the limits your team already defined.</figcaption>
+        </figure>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/constraints-3-benchmarks.jpg"
+               alt="Constraints suggestions panel, 'Smart benchmarks' tab: soft thresholds developed from thousands of historical campaigns for the market and category." loading="lazy" />
+          <figcaption>Tab two — smart benchmarks, where the market has enough history.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ---------- 04 · Admin data update ---------- -->
+    <section class="mini-case container" id="admin-data" data-reveal-group>
+      <p class="mini-case__kicker" data-reveal>04 · Touchpoints · Data governance</p>
+      <h2 class="mini-case__title" data-reveal>Reviewing a data update</h2>
+      <p class="mini-case__summary" data-reveal>
+        <strong>I redesigned how planners apply market-admin data
+        updates</strong> — from scattered icons and a blind "apply all" to
+        one panel that shows exactly what changes.
+      </p>
+      <p class="mini-case__with" data-reveal>Worked with: Frontend · Data Science</p>
+
+      <div class="mini-case__card" data-reveal>
+        <div class="mini-case__points">
+          <div class="mini-case__block">
+            <h3>The problem</h3>
+            <p>
+              Update icons littered the list; <strong>"apply all" had no
+              preview</strong>, so you accepted blind. Details hid in a
+              cramped, scrolling popover. Engineering had flagged the code
+              as <strong>unmaintainable</strong>.
+            </p>
+          </div>
+          <div class="mini-case__block">
+            <h3>What I did</h3>
+            <p>
+              One banner, no per-row icons. <strong>"Review data &amp;
+              update" opens a single panel</strong> showing every change
+              <strong>current vs. incoming</strong>, with a
+              <strong>plain-language warning</strong> on risky ones ("this
+              removes the RF curves on this audience"). Take everything, or
+              pick parameter by parameter.
+            </p>
+          </div>
+          <div class="mini-case__block">
+            <h3>Why it works</h3>
+            <p>
+              You see <strong>exactly what's about to change</strong> —
+              and what it costs — before it changes.
+            </p>
+          </div>
+        </div>
+        <div class="mini-case__bands">
+          <div class="mini-case__band mini-case__band--outcome">
+            <svg class="mini-case__band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 17l6-6 4 4 8-8" />
+              <path d="M15 7h6v6" />
+            </svg>
+            <div class="mini-case__band-body">
+              <span class="mini-case__band-label">Business outcome</span>
+              <p>
+                <strong>A clean model engineering could rebuild on</strong>
+                — shipped in about a month, early 2026, replacing a flow the
+                team couldn't safely maintain and users didn't trust.
+              </p>
+            </div>
+          </div>
+          <div class="mini-case__band mini-case__band--skill">
+            <svg class="mini-case__band-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 1.5c.7 5.6 2.1 7 7.7 7.7-5.6.7-7 2.1-7.7 7.7-.7-5.6-2.1-7-7.7-7.7 5.6-.7 7-2.1 7.7-7.7z" />
+            </svg>
+            <div class="mini-case__band-body">
+              <span class="mini-case__band-label">Skill gained</span>
+              <p>
+                <em>Draft — Kasia to refine:</em> working close to backend
+                — mapping, with engineering, how data actually moves
+                through our applications.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini-case__shots mini-case__shots--pair" data-reveal>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/admin-before.jpg"
+               alt="The earlier design: persistent update icons next to touchpoint names, an 'apply all' banner with no preview, and a small scrolling popover." loading="lazy" />
+          <figcaption>Before — persistent icons, a blind "apply all", a nine-row popover.</figcaption>
+        </figure>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/admin-3-expanded.jpg"
+               alt="The redesign: one side panel listing affected touchpoints, expanded to show each changed parameter with current value beside incoming admin value." loading="lazy" />
+          <figcaption>After — one panel, current value against incoming, per parameter.</figcaption>
+        </figure>
+      </div>
+      <div class="mini-case__shots mini-case__shots--solo" data-reveal>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/admin-4-warning.jpg"
+               alt="A contextual warning on a risky parameter change: updating Max reach will remove the RF curves currently applied to the audience." loading="lazy" />
+          <figcaption>The consequence of a risky change, called out in place.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ---------- 05 · Audience builder ---------- -->
+    <section class="mini-case container" id="audience-builder" data-reveal-group>
+      <p class="mini-case__kicker" data-reveal>05 · Audience Origin · Rebuild</p>
+      <h2 class="mini-case__title" data-reveal>Rebuilding the audience builder</h2>
+      <p class="mini-case__summary" data-reveal>
+        <strong>I rebuilt one of the platform's most-used tools</strong>
+        on shared components — and fixed the navigation while it was open.
+      </p>
+      <p class="mini-case__with" data-reveal>Role: Lead designer · with the design-system team</p>
+
+      <div class="mini-case__card" data-reveal>
+        <div class="mini-case__points">
+          <div class="mini-case__block">
+            <h3>The problem</h3>
+            <p>
+              The builder still ran on an <strong>old design
+              system</strong>, adrift from everything around it, and its
+              <strong>navigation was hard to follow</strong>.
+            </p>
+          </div>
+          <div class="mini-case__block">
+            <h3>What I did</h3>
+            <p>
+              Rebuilt it on shared components and <strong>reworked the
+              flow</strong> — a data-source tree, a canvas where AND/OR
+              logic stays visible as you build, a live audience size.
+              Creating an audience is now a short side panel.
+            </p>
+          </div>
+          <div class="mini-case__block">
+            <h3>Why it works</h3>
+            <p>
+              It looks like the rest of the platform, and the path from
+              <strong>attributes to a saved audience got shorter</strong>.
+            </p>
+          </div>
+        </div>
+        <div class="mini-case__bands">
+          <div class="mini-case__band mini-case__band--outcome">
+            <svg class="mini-case__band-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 17l6-6 4 4 8-8" />
+              <path d="M15 7h6v6" />
+            </svg>
+            <div class="mini-case__band-body">
+              <span class="mini-case__band-label">Business outcome</span>
+              <p>
+                <strong>Shipped early 2025 to the platform's largest user
+                base</strong> — the most-used module of the set (exact
+                figures confidential).
+              </p>
+            </div>
+          </div>
+          <div class="mini-case__band mini-case__band--skill">
+            <svg class="mini-case__band-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 1.5c.7 5.6 2.1 7 7.7 7.7-5.6.7-7 2.1-7.7 7.7-.7-5.6-2.1-7-7.7-7.7 5.6-.7 7-2.1 7.7-7.7z" />
+            </svg>
+            <div class="mini-case__band-body">
+              <span class="mini-case__band-label">Skill gained</span>
+              <p>
+                <em>Draft — Kasia to refine:</em> data visualisation in
+                depth — many chart types, and how each should behave when
+                the layout flexes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-slider" data-compare-slider data-reveal style="--pos: 50%;">
+        <img class="compare-slider__after" src="../assets/images/projects/project-2/audience-4-logic.jpg" alt="After: the builder rebuilt on shared components, with AND/OR logic visible as you build" />
+        <img class="compare-slider__before" src="../assets/images/projects/project-2/audience-before.jpg" alt="Before: the builder on the older design system, visually inconsistent with the rest of the platform" />
+        <span class="compare-slider__label compare-slider__label--before">Before</span>
+        <span class="compare-slider__label compare-slider__label--after">After</span>
+        <div class="compare-slider__handle">
+          <svg class="compare-slider__handle-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="mini-case__shots mini-case__shots--solo" data-reveal>
+        <figure>
+          <img class="mini-shot" src="../assets/images/projects/project-2/audience-results-cover.jpg"
+               alt="The audience read back as a profile: demographics, generation, region, working status, household income and more, as charts." loading="lazy" />
+          <figcaption>The audience it produces, read back as a profile.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ HOW I WORK (teaser → methodology page) ============
+         HIDDEN 2026-09-28 — the How I work page is still being finished and
+         is unlinked from the nav. Remove `hidden` to bring this back. -->
+    <section class="case-section container" data-reveal-group hidden style="border-bottom: none;">
       <div class="case-section__body">
         <h2 data-reveal>How I work</h2>
         <div data-reveal>
           <p class="measure" style="color: var(--color-text-muted);">
-            This case is the decision, not the machinery. How I write
-            falsifiable hypotheses and structure interview probes to test
-            them lives on its own page, with real artefacts.
+            The longer research stories live on the How I work page — including
+            a set of interviews that reframed a "frequency capping" feature
+            request before any design started, and changed which of two
+            technical directions the team built.
           </p>
           <p style="margin-top: var(--space-lg);">
             <a class="btn btn--primary" href="../how-i-work.html">See how I work &rarr;</a>
@@ -254,6 +630,19 @@
       <a class="btn btn--ghost" href="project-1.html">← Previous project</a>
       <a class="btn btn--primary" href="project-3.html">Next project →</a>
     </nav>
+
+    <!-- Shared lightbox: click any .mini-shot / .media-card / .case-gallery
+         image to see it at ~75% of the viewport. Wiring lives in main.js. -->
+    <div class="lightbox" data-lightbox-overlay hidden>
+      <div class="lightbox__box">
+        <button class="lightbox__close" type="button" data-lightbox-close aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+        <img class="lightbox__image" data-lightbox-image src="" alt="" />
+      </div>
+    </div>
   </main>
 
   <!-- ============ FOOTER ============ -->

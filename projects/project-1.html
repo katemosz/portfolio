@@ -57,7 +57,6 @@
   <!-- ============ /PASSWORD GATE ============ -->
 
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="cursor-dot" aria-hidden="true"></div>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header">
@@ -75,7 +74,7 @@
       <ul class="nav__links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="index.html" aria-current="page">Work</a></li>
-        <li><a href="../how-i-work.html">How I work</a></li>
+        <li hidden><a href="../how-i-work.html">How I work</a></li>
         <li><a href="../about.html">About</a></li>
         <li><a class="btn btn--ghost" href="../assets/files/cv-katarzyna-moszczynska.pdf" target="_blank" rel="noopener">Download CV</a></li>
       </ul>
@@ -507,8 +506,10 @@
       </div>
     </section>
 
-    <!-- ============ HOW I WORK (teaser → methodology page) ============ -->
-    <section class="case-section container" data-reveal-group style="border-bottom: none;">
+    <!-- ============ HOW I WORK (teaser → methodology page) ============
+         HIDDEN 2026-09-28 — the How I work page is still being finished and
+         is unlinked from the nav. Remove `hidden` to bring this back. -->
+    <section class="case-section container" data-reveal-group hidden style="border-bottom: none;">
       <div class="case-section__body">
         <h2 data-reveal>How I work</h2>
         <div data-reveal>

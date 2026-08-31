@@ -61,24 +61,6 @@
   }
 }
 
-/* --- Kropka kursora (subtelny efekt na desktopie) --- */
-.cursor-dot {
-  position: fixed;
-  top: 0; left: 0;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  pointer-events: none;
-  z-index: 999;
-  mix-blend-mode: difference;
-  transform: translate(-50%, -50%);
-  will-change: transform;
-}
-
-@media (hover: none), (prefers-reduced-motion: reduce) {
-  .cursor-dot { display: none; }
-}
-
 /* --- Marquee: przewijany pasek umiejętności/narzędzi --- */
 .marquee {
   overflow: hidden;
