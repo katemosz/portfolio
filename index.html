@@ -111,8 +111,11 @@
 
       <div class="project-grid" data-reveal-group>
         <a class="project-card" href="projects/project-1.html" data-reveal>
-          <div class="project-card__media project-card__media--blurred">
-            <img src="assets/images/projects/project-1/after-audience-selection.jpg" alt="The redesigned campaign-planning flow" style="width:100%;height:100%;object-fit:cover;" />
+          <div class="project-card__media">
+            <picture>
+              <source srcset="assets/images/projects/project-1/teaser-dark.jpg" media="(prefers-color-scheme: dark)" />
+              <img src="assets/images/projects/project-1/teaser-light.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" />
+            </picture>
           </div>
           <div class="project-card__body">
             <div class="project-card__tags">
