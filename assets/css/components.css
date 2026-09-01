@@ -1057,7 +1057,8 @@
 
 /* Anything openable in the lightbox gets an affordance cursor. */
 .media-card img,
-.case-gallery img {
+.case-gallery img,
+.passions img {
   cursor: zoom-in;
 }
 

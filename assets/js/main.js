@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = "";
     }
 
-    document.querySelectorAll(".media-card img, .case-gallery img, .mini-shot").forEach((img) => {
+    document.querySelectorAll(".media-card img, .case-gallery img, .mini-shot, .passions img").forEach((img) => {
       img.addEventListener("click", () => openLightbox(img.currentSrc || img.src, img.alt));
     });
 
