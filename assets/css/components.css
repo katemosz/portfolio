@@ -195,15 +195,20 @@
   line-height: 1.35;
   color: #3a3620;
   background: #fde68a;
-  box-shadow: 0 14px 28px -12px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 16px -10px rgba(0, 0, 0, 0.22);
   transform: rotate(var(--rotate, -6deg));
 }
 
-/* A plain dark drop-shadow disappears against a dark background — swap
-   it for a soft accent-colored glow in dark mode instead of just losing
-   the shadow entirely. */
+/* A plain dark drop-shadow disappears against a dark background — swap it
+   for a soft accent glow there. Scope it to *real* dark mode: the bare
+   `@media (prefers-color-scheme: dark)` would also fire for an OS-dark
+   visitor who forces the site light via the toggle, leaving an orange
+   halo on a white page. */
+:root[data-theme="dark"] .sticky-note {
+  box-shadow: 0 0 32px 2px color-mix(in srgb, var(--color-mark) 40%, transparent);
+}
 @media (prefers-color-scheme: dark) {
-  .sticky-note {
+  :root:not([data-theme="light"]) .sticky-note {
     box-shadow: 0 0 32px 2px color-mix(in srgb, var(--color-mark) 40%, transparent);
   }
 }
