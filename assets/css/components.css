@@ -604,6 +604,23 @@
   transform: scale(1.02);
 }
 
+/* --- Theme-aware images ---
+   A <picture> with media="(prefers-color-scheme: dark)" only follows the
+   OS setting — it can't see our on-page [data-theme] toggle. So ship the
+   light and dark file as sibling <img>s and show one with the same
+   light/dark logic the design tokens use. loading="lazy" keeps the hidden
+   one from fetching until it's actually shown (e.g. after a toggle). */
+.theme-img { display: block; }
+.theme-img--dark { display: none; }
+
+:root[data-theme="dark"] .theme-img--light { display: none; }
+:root[data-theme="dark"] .theme-img--dark { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-img--light { display: none; }
+  :root:not([data-theme="light"]) .theme-img--dark { display: block; }
+}
+
 .project-card__body {
   padding: var(--space-md);
 }

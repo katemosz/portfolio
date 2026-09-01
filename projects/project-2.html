@@ -113,14 +113,12 @@
     </section>
 
     <!-- ============ COVER ============
-         Designed cover graphic with a baked-in light + dark version — the
-         <picture> serves whichever matches the visitor's prefers-color-scheme
-         (same signal the rest of the site follows; no JS, no toggle). -->
+         Designed cover graphic with a baked-in light + dark version. Two
+         <img>s swapped by CSS (.theme-img--light/--dark) so it follows the
+         on-page theme toggle, not just the OS prefers-color-scheme. -->
     <section class="container" style="padding-block: var(--space-2xl);" data-reveal>
-      <picture>
-        <source srcset="../assets/images/projects/project-2/cover-dark.jpg" media="(prefers-color-scheme: dark)" />
-        <img src="../assets/images/projects/project-2/cover-light.jpg" alt="A run of smaller problems — selected fixes across the media-planning platform" style="width: 100%; height: auto; display: block; border-radius: var(--radius-lg);" />
-      </picture>
+      <img class="theme-img theme-img--light" src="../assets/images/projects/project-2/cover-light.jpg" alt="A run of smaller problems — selected fixes across the media-planning platform" loading="lazy" decoding="async" style="width: 100%; height: auto; border-radius: var(--radius-lg);" />
+      <img class="theme-img theme-img--dark" src="../assets/images/projects/project-2/cover-dark.jpg" alt="" loading="lazy" decoding="async" style="width: 100%; height: auto; border-radius: var(--radius-lg);" />
     </section>
 
     <!-- ============ JUMP TILES ============ -->
