@@ -36,7 +36,7 @@
       </button>
       <ul class="nav__links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="index.html" aria-current="page">Work</a></li>
+        <li><a href="index.html" aria-current="page">Portfolio</a></li>
         <li hidden><a href="../how-i-work.html">How I work</a></li>
         <li><a href="../about.html">About Me</a></li>
         <li>
@@ -64,7 +64,7 @@
   <!-- ============ /HEADER ============ -->
 
   <main id="main">
-    <section class="hero container">
+    <section class="hero container" style="padding-top: var(--space-xl); padding-bottom: var(--space-lg);">
       <p class="eyebrow" data-anim="hero-eyebrow">Portfolio</p>
       <h1 class="hero__title" data-anim="hero-title">Selected work</h1>
       <p class="hero__lede" data-anim="hero-lede">
@@ -75,9 +75,11 @@
       </p>
     </section>
 
-    <section class="section container">
-      <div class="project-grid" data-reveal-group>
-        <a class="project-card" href="project-1.html" data-reveal>
+    <section class="section container" style="padding-top: var(--space-md);">
+      <!-- One reveal on the grid itself, not per-card — a per-card stagger
+           briefly leaves the first card higher than the rest. -->
+      <div class="project-grid" data-reveal>
+        <a class="project-card" href="project-1.html">
           <div class="project-card__media">
             <picture>
               <source srcset="../assets/images/projects/project-1/teaser-dark.jpg" media="(prefers-color-scheme: dark)" />
@@ -94,7 +96,7 @@
           </div>
         </a>
 
-        <a class="project-card" href="project-2.html" data-reveal>
+        <a class="project-card" href="project-2.html">
           <div class="project-card__media">
             <picture>
               <source srcset="../assets/images/projects/project-2/teaser-dark.jpg" media="(prefers-color-scheme: dark)" />
@@ -111,7 +113,7 @@
           </div>
         </a>
 
-        <a class="project-card" href="project-3.html" data-reveal>
+        <a class="project-card" href="project-3.html">
           <div class="project-card__media">
             <picture>
               <source srcset="../assets/images/projects/project-3/teaser-dark.jpg" media="(prefers-color-scheme: dark)" />
