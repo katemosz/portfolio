@@ -176,7 +176,7 @@
   display: block;
   font-family: var(--font-mono);
   font-size: var(--fs-300);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--color-accent);
@@ -326,7 +326,7 @@
     display: block;
     font-family: var(--font-mono);
     font-size: var(--fs-300);
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.02em;
     color: var(--color-text-muted);
@@ -507,6 +507,10 @@
 .compare-slider__label.is-hidden { opacity: 0; }
 
 /* --- Przyciski --- */
+/* Rounded (the friendly vibe stays) with a thin dark-grey outline and a
+   small offset shadow in the same grey — a light "cut-out" feel, not a
+   heavy black sticker. Hover nudges it into the page; :active presses it
+   flat. No blur. */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -515,38 +519,44 @@
   border-radius: 999px;
   font-size: var(--fs-300);
   font-weight: 600;
-  border: 1px solid transparent;
+  border: 1px solid var(--btn-edge);
+  box-shadow: 2px 2px 0 var(--btn-edge);
   transition: transform var(--duration-fast) var(--ease-out),
-              background var(--duration-fast) var(--ease-out),
               box-shadow var(--duration-fast) var(--ease-out);
-  will-change: transform;
+}
+
+.btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--btn-edge);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--btn-edge);
 }
 
 .btn--primary {
   background: var(--color-text);
   color: var(--color-bg);
+  box-shadow: 2px 2px 0 var(--color-accent);
 }
-.btn--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px -8px color-mix(in srgb, var(--color-text) 45%, transparent);
-}
+.btn--primary:hover { box-shadow: 1px 1px 0 var(--color-accent); }
+.btn--primary:active { box-shadow: 0 0 0 var(--color-accent); }
 
 .btn--accent {
   background: var(--color-accent);
   color: var(--color-accent-contrast);
 }
-.btn--accent:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px -8px color-mix(in srgb, var(--color-accent) 55%, transparent);
-}
 
 .btn--ghost {
-  border-color: var(--color-border);
+  background: var(--color-surface);
   color: var(--color-text);
 }
-.btn--ghost:hover {
-  border-color: var(--color-text);
-  transform: translateY(-2px);
+
+@media (prefers-reduced-motion: reduce) {
+  /* No press animation — and freeze the shadow too, so nothing shifts. */
+  .btn:hover, .btn:active { transform: none; box-shadow: 2px 2px 0 var(--btn-edge); }
+  .btn--primary:hover, .btn--primary:active { box-shadow: 2px 2px 0 var(--color-accent); }
 }
 
 /* --- Karta projektu --- */
@@ -856,14 +866,17 @@
   }
 }
 
+/* Same "sticker" language as .btn / .theme-toggle — grey outline + hard
+   offset shadow that presses in on hover. (Vertical centering lives in
+   the transform, so the press has to keep the -50% in place.) */
 .carousel-btn {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(0, -50%);
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--btn-edge);
   background: var(--color-surface);
   color: var(--color-text);
   display: flex;
@@ -872,13 +885,27 @@
   font-size: var(--fs-500);
   line-height: 1;
   cursor: pointer;
-  box-shadow: 0 12px 28px -14px color-mix(in srgb, var(--color-text) 35%, transparent);
+  box-shadow: 2px 2px 0 var(--btn-edge);
   z-index: 2;
-  transition: background var(--duration-fast) var(--ease-out);
+  transition: transform var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
 }
 
 .carousel-btn:hover {
-  background: var(--color-accent-soft);
+  transform: translate(1px, calc(-50% + 1px));
+  box-shadow: 1px 1px 0 var(--btn-edge);
+}
+
+.carousel-btn:active {
+  transform: translate(2px, calc(-50% + 2px));
+  box-shadow: 0 0 0 var(--btn-edge);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-btn:hover, .carousel-btn:active {
+    transform: translate(0, -50%);
+    box-shadow: 2px 2px 0 var(--btn-edge);
+  }
 }
 
 .carousel-btn--prev { left: -18px; }
@@ -1293,7 +1320,7 @@
 .mini-case__block h3 {
   font-family: var(--font-mono);
   font-size: var(--fs-400);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--color-text);
   margin-bottom: var(--space-xs);
@@ -1439,4 +1466,230 @@
   .site-footer a,
   .password-gate p a,
   .crayon-link { transition: none; }
+}
+
+/* ============ THEME TOGGLE ============
+   A small round sticker-button in the nav with a hand-drawn (crayon
+   feTurbulence) sun / moon. Shows the icon of the theme you'd switch TO:
+   moon while light, sun while dark. Visibility follows the same
+   effective-theme logic as the tokens in variables.css. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  border: 1px solid var(--btn-edge);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 2px 2px 0 var(--btn-edge);
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.theme-toggle:hover { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--btn-edge); }
+.theme-toggle:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--btn-edge); }
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle:hover, .theme-toggle:active { transform: none; }
+}
+
+.theme-toggle svg { width: 20px; height: 20px; display: block; }
+
+/* default (light look): show the moon, hide the sun */
+.theme-toggle__sun { display: none; }
+.theme-toggle__moon { display: block; }
+
+/* effective dark → show the sun instead */
+:root[data-theme="dark"] .theme-toggle__sun { display: block; }
+:root[data-theme="dark"] .theme-toggle__moon { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle__sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle__moon { display: none; }
+}
+
+/* ============ CV PAGE (cv.html) ============ */
+.cv-hero {
+  padding-block: var(--space-3xl) var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cv-roles {
+  display: grid;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+/* accent-dot bullet list, matching .impact-panel__list */
+.cv-list {
+  list-style: none;
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 68ch;
+}
+
+.cv-list li {
+  position: relative;
+  padding-left: 1.3em;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.cv-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.cv-list strong { color: var(--color-text); font-weight: 700; }
+
+.cv-defs {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.cv-defs > div { display: grid; gap: var(--space-3xs); }
+
+@media (min-width: 720px) {
+  .cv-defs > div {
+    grid-template-columns: minmax(160px, 220px) 1fr;
+    gap: var(--space-lg);
+    align-items: baseline;
+  }
+}
+
+.cv-defs dt {
+  font-family: var(--font-mono);
+  font-size: var(--fs-300);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+}
+
+.cv-defs dd {
+  margin: 0;
+  color: var(--color-text);
+  max-width: 64ch;
+}
+
+@media (max-width: 640px) {
+  .experience-item { grid-template-columns: 1fr; gap: var(--space-2xs); }
+}
+
+/* ============ ABOUT: expandable experience detail ============ */
+.exp-more {
+  margin-top: var(--space-sm);
+}
+
+.exp-more > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  cursor: pointer;
+  list-style: none;
+  /* Same family as the date column beside it (body / Roboto), not mono —
+     the accent colour still carries the "this is a control" affordance. */
+  font-family: var(--font-body);
+  font-size: var(--fs-300);
+  color: var(--color-accent);
+  padding-block: var(--space-3xs);
+}
+
+.exp-more > summary::-webkit-details-marker { display: none; }
+
+/* Chevron sits BEFORE the label (::before, first flex child). Points right
+   when closed, down when open — the standard disclosure affordance. */
+.exp-more > summary::before {
+  content: "";
+  flex: none;
+  width: 0.5em;
+  height: 0.5em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.exp-more[open] > summary::before { transform: rotate(45deg); }
+
+.exp-more[open] > summary { margin-bottom: var(--space-sm); }
+
+.exp-more .cv-list { margin-top: 0; }
+
+/* ============ ABOUT: Key skills groups ============ */
+.skill-groups {
+  display: grid;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.skill-groups > div {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 760px) {
+  .skill-groups > div {
+    grid-template-columns: minmax(160px, 200px) 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+}
+
+.skill-groups dt {
+  font-family: var(--font-mono);
+  font-size: var(--fs-300);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  padding-top: 0.35em;
+}
+
+/* Plain running text (middot-separated) — pills were too hard to scan. */
+.skill-groups dd {
+  margin: 0;
+  padding-top: 0.35em;
+  color: var(--color-text);
+  line-height: 1.75;
+}
+
+/* ============ ABOUT: "Off the clock" passions ============ */
+.passions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.passions figure { margin: 0; }
+
+.passion-media {
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.passion-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.passions figcaption {
+  margin-top: var(--space-2xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-300);
+  color: var(--color-text-muted);
+  line-height: 1.4;
 }

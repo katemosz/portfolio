@@ -176,4 +176,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- Przełącznik motywu (jasny / ciemny) ---
+  // Ustawia data-theme na <html>, zapisuje wybór w localStorage. Brak
+  // wyboru = strona idzie za ustawieniem systemu (patrz variables.css).
+  // Skrypt anty-migotający w <head> ustawia data-theme jeszcze przed
+  // pierwszym malowaniem.
+  const themeToggle = document.querySelector("[data-theme-toggle]");
+  if (themeToggle) {
+    const root = document.documentElement;
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+    const effectiveTheme = () =>
+      root.getAttribute("data-theme") || (prefersDark.matches ? "dark" : "light");
+    const label = () => {
+      themeToggle.setAttribute(
+        "aria-label",
+        effectiveTheme() === "dark" ? "Switch to light theme" : "Switch to dark theme"
+      );
+    };
+    label();
+    themeToggle.addEventListener("click", () => {
+      const next = effectiveTheme() === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem("theme", next);
+      } catch (e) {}
+      label();
+    });
+  }
+
+  // --- Sticky header: shrink slightly once the page is scrolled ---
+  // Toggles `body.nav-compact`; the size change + transitions live in
+  // layout.css. rAF-throttled so the scroll handler stays cheap.
+  const header = document.querySelector(".site-header");
+  if (header) {
+    const SHRINK_AT = 32;
+    let ticking = false;
+    const syncCompact = () => {
+      document.body.classList.toggle("nav-compact", window.scrollY > SHRINK_AT);
+      ticking = false;
+    };
+    syncCompact();
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(syncCompact);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+  }
+
 });

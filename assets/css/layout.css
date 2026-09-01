@@ -51,6 +51,9 @@
 
 .nav__name {
   margin-left: 4px;
+  font-family: var(--font-wordmark);
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 /* Name, role, and city now sit on one line (she flattened this from an
@@ -137,6 +140,38 @@
     transform: translateY(0);
     pointer-events: auto;
   }
+}
+
+/* --- Sticky header shrinks a little once the page is scrolled ---
+   JS (main.js) toggles `body.nav-compact` past a small scroll offset. The
+   bar loses a bit of height and its contents scale down proportionally, so
+   it stays balanced rather than just clipping. Desktop only — the mobile
+   header is already compact and its fixed menu overlay assumes a set top. */
+@media (min-width: 721px) {
+  .nav { transition: padding-block var(--duration-fast) var(--ease-out); }
+  .nav__avatar {
+    transition: width var(--duration-fast) var(--ease-out),
+                height var(--duration-fast) var(--ease-out);
+  }
+  .nav__logo { transition: font-size var(--duration-fast) var(--ease-out); }
+  .nav__role,
+  .nav__links a { transition: font-size var(--duration-fast) var(--ease-out); }
+  .theme-toggle {
+    transition: width var(--duration-fast) var(--ease-out),
+                height var(--duration-fast) var(--ease-out);
+  }
+
+  body.nav-compact .nav { padding-block: 10px; }
+  body.nav-compact .nav__avatar { width: 26px; height: 26px; }
+  body.nav-compact .nav__logo { font-size: var(--fs-500); }
+  body.nav-compact .nav__role { font-size: calc(var(--fs-300) * 0.9); }
+  body.nav-compact .nav__links a { font-size: calc(var(--fs-300) * 0.9); }
+  body.nav-compact .theme-toggle { width: 32px; height: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav, .nav__avatar, .nav__logo, .nav__role,
+  .nav__links a, .theme-toggle { transition: none; }
 }
 
 /* Shared reading-width utility — matches .bio-text and .experience-item__body
@@ -394,10 +429,16 @@
   border-color: var(--color-accent);
 }
 
-/* --- Stopka --- */
+/* --- Stopka ---
+   Locked to ~100px on desktop (min-height + vertical centring, little
+   padding). On narrow screens the grid wraps to a few rows and the footer
+   simply grows past 100px to fit — min-height never clips content. */
 .site-footer {
   border-top: 1px solid var(--color-border);
-  padding-block: var(--space-xl);
+  min-height: 100px;
+  padding-block: var(--space-sm);
+  display: flex;
+  align-items: center;
 }
 
 .site-footer__grid {

@@ -95,9 +95,14 @@ button { cursor: pointer; }
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
+  /* When the eyebrow is a grid/flex item (e.g. the About hero), don't let it
+     stretch to the track width — otherwise the underline below runs the full
+     column and reads as a mark floating off to the right of the text. */
+  justify-self: start;
+  align-self: start;
   font-family: var(--font-mono);
   font-size: var(--fs-300);
-  font-weight: 700;
+  font-weight: 500; /* DM Mono's heaviest real weight */
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-accent);
@@ -125,6 +130,14 @@ button { cursor: pointer; }
   border-radius: 50%;
   background: currentColor;
   flex: none;
+}
+
+/* About hero: a short, straight orange rule tucked right under the words —
+   not the crayon wave used elsewhere, and no longer running off to the right. */
+.hero--about .eyebrow {
+  background-image: none;
+  padding-bottom: 0.25em;
+  border-bottom: 2px solid var(--color-mark);
 }
 
 .visually-hidden {

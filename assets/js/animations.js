@@ -49,7 +49,9 @@
       )
       .from(
         "[data-anim='hero-actions'] > *",
-        { y: 16, opacity: 0, stagger: 0.1 },
+        // clearProps: GSAP otherwise leaves an inline transform:translate(0,0)
+        // on the hero button, which beats the CSS .btn:hover press.
+        { y: 16, opacity: 0, stagger: 0.1, clearProps: "transform" },
         "-=0.6"
       );
 
@@ -61,7 +63,10 @@
        ago and this is a harmless no-op. */
     window.addEventListener("load", () => {
       window.setTimeout(() => {
-        gsap.set("[data-anim]", { opacity: 1, clearProps: "transform" });
+        gsap.set("[data-anim], [data-anim='hero-actions'] > *", {
+          opacity: 1,
+          clearProps: "transform",
+        });
       }, 2500);
     });
 
@@ -103,31 +108,7 @@
     });
 
     /* ---------------------------------------------------------------------
-       3) MAGNETYCZNE PRZYCISKI
-       Przyciski z klasą .btn lekko "podążają" za kursorem.
-    --------------------------------------------------------------------- */
-    document.querySelectorAll(".btn").forEach((btn) => {
-      const strength = 18;
-
-      btn.addEventListener("mousemove", (e) => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        gsap.to(btn, {
-          x: (x / rect.width) * strength,
-          y: (y / rect.height) * strength,
-          duration: 0.4,
-          ease: "power2.out",
-        });
-      });
-
-      btn.addEventListener("mouseleave", () => {
-        gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.4)" });
-      });
-    });
-
-    /* ---------------------------------------------------------------------
-       4) "HI!" — click the About-page photo to say hello
+       3) "HI!" — click the About-page photo to say hello
        Photo fades out, a greeting fades in behind it, holds for a beat,
        then both reverse. Guarded against re-triggering mid-animation.
     --------------------------------------------------------------------- */
