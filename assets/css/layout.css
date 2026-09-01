@@ -143,35 +143,29 @@
 }
 
 /* --- Sticky header shrinks a little once the page is scrolled ---
-   JS (main.js) toggles `body.nav-compact` past a small scroll offset. The
-   bar loses a bit of height and its contents scale down proportionally, so
-   it stays balanced rather than just clipping. Desktop only — the mobile
-   header is already compact and its fixed menu overlay assumes a set top. */
+   JS (main.js) toggles `body.nav-compact` (with hysteresis, so it can't
+   flip-flop at the threshold). Only two things move: the nav's vertical
+   padding and the avatar's size. Font sizes are left alone on purpose —
+   animating them reflowed the whole nav row and the link underlines every
+   frame, which read as a judder. Desktop only (the mobile header is already
+   compact and its fixed menu overlay assumes a set top).
+   `nav-compact-init` suppresses the transition for the very first state set
+   on load, so a page opened already-scrolled doesn't animate the shrink. */
 @media (min-width: 721px) {
-  .nav { transition: padding-block var(--duration-fast) var(--ease-out); }
+  .nav { transition: padding-block 0.22s cubic-bezier(0.4, 0, 0.2, 1); }
   .nav__avatar {
-    transition: width var(--duration-fast) var(--ease-out),
-                height var(--duration-fast) var(--ease-out);
+    transition: width 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                height 0.22s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .nav__logo { transition: font-size var(--duration-fast) var(--ease-out); }
-  .nav__role,
-  .nav__links a { transition: font-size var(--duration-fast) var(--ease-out); }
-  .theme-toggle {
-    transition: width var(--duration-fast) var(--ease-out),
-                height var(--duration-fast) var(--ease-out);
-  }
+  body.nav-compact-init .nav,
+  body.nav-compact-init .nav__avatar { transition: none; }
 
-  body.nav-compact .nav { padding-block: 10px; }
-  body.nav-compact .nav__avatar { width: 26px; height: 26px; }
-  body.nav-compact .nav__logo { font-size: var(--fs-500); }
-  body.nav-compact .nav__role { font-size: calc(var(--fs-300) * 0.9); }
-  body.nav-compact .nav__links a { font-size: calc(var(--fs-300) * 0.9); }
-  body.nav-compact .theme-toggle { width: 32px; height: 32px; }
+  body.nav-compact .nav { padding-block: var(--space-2xs); }
+  body.nav-compact .nav__avatar { width: 28px; height: 28px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nav, .nav__avatar, .nav__logo, .nav__role,
-  .nav__links a, .theme-toggle { transition: none; }
+  .nav, .nav__avatar { transition: none; }
 }
 
 /* Shared reading-width utility — matches .bio-text and .experience-item__body

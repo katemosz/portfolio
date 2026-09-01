@@ -206,21 +206,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Sticky header: shrink slightly once the page is scrolled ---
   // Toggles `body.nav-compact`; the size change + transitions live in
-  // layout.css. rAF-throttled so the scroll handler stays cheap.
+  // layout.css. Hysteresis (separate on/off thresholds) keeps it from
+  // flip-flopping when you hover the boundary. rAF-throttled.
   const header = document.querySelector(".site-header");
   if (header) {
-    const SHRINK_AT = 32;
+    const ON_AT = 56; // scrolled past this -> compact
+    const OFF_AT = 24; // scrolled back above this -> full size
+    let compact = false;
     let ticking = false;
-    const syncCompact = () => {
-      document.body.classList.toggle("nav-compact", window.scrollY > SHRINK_AT);
+
+    const apply = () => {
+      const y = window.scrollY || window.pageYOffset;
+      if (!compact && y > ON_AT) {
+        compact = true;
+        document.body.classList.add("nav-compact");
+      } else if (compact && y < OFF_AT) {
+        compact = false;
+        document.body.classList.remove("nav-compact");
+      }
       ticking = false;
     };
-    syncCompact();
+
+    // Set the initial state with the transition muted, so a page loaded
+    // already scrolled down doesn't play the shrink animation on arrival.
+    document.body.classList.add("nav-compact-init");
+    apply();
+    window.requestAnimationFrame(() =>
+      window.requestAnimationFrame(() =>
+        document.body.classList.remove("nav-compact-init")
+      )
+    );
+
     window.addEventListener(
       "scroll",
       () => {
         if (!ticking) {
-          window.requestAnimationFrame(syncCompact);
+          window.requestAnimationFrame(apply);
           ticking = true;
         }
       },
