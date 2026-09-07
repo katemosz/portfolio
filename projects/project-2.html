@@ -178,6 +178,27 @@
       font-size: clamp(1.8rem, 3.6vw, 3rem); line-height: 1.1; letter-spacing: -0.015em; margin: 0;
     }
     .es-lede { margin: var(--space-md) 0 0; color: var(--color-text-muted); max-width: 52ch; font-size: var(--fs-500); }
+    /* back-to-top: same physical-button language as .btn — a hard offset
+       shadow that shrinks as the button presses toward the surface. */
+    .case-nav__end { display: inline-flex; align-items: center; gap: var(--space-md); }
+    .es-totop {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 46px; height: 46px; flex: none; padding: 0;
+      border-radius: 50%;
+      border: 1px solid var(--btn-edge);
+      background: var(--color-surface); color: var(--color-text); cursor: pointer;
+      box-shadow: 2px 2px 0 var(--color-accent);
+      transition: transform var(--duration-fast) var(--ease-out),
+                  box-shadow var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out);
+    }
+    .es-totop:hover { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--color-accent); color: var(--color-accent); }
+    .es-totop:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--color-accent); }
+    .es-totop:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    .es-totop svg { width: 18px; height: 18px; display: block; }
+    @media (prefers-reduced-motion: reduce) {
+      .es-totop:hover, .es-totop:active { transform: none; box-shadow: 2px 2px 0 var(--color-accent); }
+    }
   </style>
 </head>
 <body class="is-locked">
@@ -491,7 +512,12 @@
     <!-- ==================== PROJECT NAVIGATION ==================== -->
     <nav class="case-nav container" aria-label="Project navigation">
       <a class="btn btn--ghost" href="project-3.html">&larr; Previous project</a>
+      <span class="case-nav__end">
+        <button type="button" class="es-totop" data-totop aria-label="Back to top">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
       <a class="btn btn--primary" href="project-1.html">Next project &rarr;</a>
+      </span>
     </nav>
 
     <!-- ============ LIGHTBOX ============ -->
@@ -524,5 +550,16 @@
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/animations.js"></script>
   <script src="../assets/js/password-gate.js"></script>
+  <!-- Back-to-top button in the project nav. -->
+  <script>
+    (function () {
+      var b = document.querySelector("[data-totop]");
+      if (!b) return;
+      b.addEventListener("click", function () {
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      });
+    })();
+  </script>
 </body>
 </html>

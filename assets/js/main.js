@@ -154,23 +154,32 @@ document.addEventListener("DOMContentLoaded", () => {
       lightboxImage.src = src;
       lightboxImage.alt = alt || "";
       lightbox.hidden = false;
-      document.body.style.overflow = "hidden";
+      // Only the vertical axis — pages rely on body's own overflow-x.
+      document.body.style.overflowY = "hidden";
     }
 
     function closeLightbox() {
       lightbox.hidden = true;
       lightboxImage.src = "";
-      document.body.style.overflow = "";
+      document.body.style.overflowY = "";
+      // Locking the scroller invalidates ScrollTrigger's measurements.
+      if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
     }
 
-    document.querySelectorAll(".media-card img, .case-gallery img, .mini-shot, .passions img").forEach((img) => {
+    // Every image the case studies want enlargeable. Deliberately excluded:
+    // .es-scrolly__img (that one is the scroll-driven pan) and the
+    // before/after .compare-slider images (those are drag targets).
+    document.querySelectorAll(
+      ".media-card img, .case-gallery img, .mini-shot, .passions img, " +
+      ".es-cover img, .es-hero-shot img, .es-herofx__mock--front, .es-aifx__base, " +
+      ".es-feature__media img, .es-decision__media img, .es-wide__media img, " +
+      ".es-step__img img, .es-split__media img, .es-fig img, .es-survey-grid img"
+    ).forEach((img) => {
       img.addEventListener("click", () => openLightbox(img.currentSrc || img.src, img.alt));
     });
 
     closeBtn.addEventListener("click", closeLightbox);
-    lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) closeLightbox();
-    });
+    lightbox.addEventListener("click", closeLightbox);   // backdrop or the image
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && !lightbox.hidden) closeLightbox();
     });

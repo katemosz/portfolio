@@ -31,14 +31,14 @@
        IDI + 82-response survey Jan 2025 (10) · V3 + agentic from 2026.
        Role: research & design lead 2022–early 2025 → support + reviews.
 
-       IMAGE PLACEHOLDERS still open (.img-placeholder blocks) — drop a
-       real file into assets/images/projects/project-3/ with the name in
-       [brackets] and it can be wired in:
-         · V3 scrolly still uses express-v3-support.jpg as a stand-in
-       WIRED THIS PASS: miro-usage-data.png ("Reading the data straight"),
-       votes-tied.png (replaces survey-outcome.jpg in "The votes tied"),
-       survey-pmf/recommend/value.png ("The survey, unspun" — order is
-       pmf → recommend → value; each figure keeps its own caption).
+       IMAGE PLACEHOLDERS: none open. Every .img-placeholder is wired and the
+       V3 scrolly uses the real tall export v3-4-groups.png (was the
+       express-v3-support.jpg stand-in).
+       WIRED 2026-09-06: v3-4-groups.png (V3 scrolly), miro-usage-data.png
+       ("Reading the data straight"), votes-tied.png (replaces
+       survey-outcome.jpg in "The votes tied"), survey-pmf/recommend/value.png
+       ("The survey, unspun" — order pmf → recommend → value, each figure
+       keeps its own caption).
        PREVIOUS PASS: wireframe-setup.png, wireframe-many-scenarios.png,
        option-a..d.jpg, measuring-success-wip.jpg, express-v1-setup.jpg,
        signal-board.jpg.
@@ -88,9 +88,47 @@
       pointer-events: none; transform: rotate(-4deg);
     }
     @media (max-width: 900px) { .es-crayon-dot, .es-crayon-wave { display: none; } }
+
+    /* hero: crayon squiggle + quote post-it beside the title (see markup).
+       .es-hero prefix on the note beats .es-postit's own top/right/width,
+       which is defined later in the sheet. */
+    .es-hero__mark {
+      position: absolute; z-index: 0; pointer-events: none;
+      right: clamp(24px, 7vw, 104px); top: clamp(430px, 44vw, 600px);
+      width: clamp(120px, 15vw, 190px); height: auto;
+      color: var(--color-mark); opacity: 0.9;
+      transform: rotate(12deg); transform-origin: 50% 50%;
+    }
+    .es-hero .es-hero__note {
+      top: clamp(238px, 20vw, 276px); right: 0;
+      width: clamp(232px, 22vw, 280px);
+    }
+    @media (max-width: 900px) { .es-hero__mark { display: none; } }
     @media (prefers-reduced-motion: no-preference) {
       .es-crayon-wave { transition: transform var(--duration-base, .3s) var(--ease-out, ease); }
       .es-section:hover > .es-crayon-wave { transform: rotate(6deg); }
+    }
+
+    /* back-to-top: same physical-button language as .btn — a hard offset
+       shadow that shrinks as the button presses toward the surface. */
+    .case-nav__end { display: inline-flex; align-items: center; gap: var(--space-md); }
+    .es-totop {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 46px; height: 46px; flex: none; padding: 0;
+      border-radius: 50%;
+      border: 1px solid var(--btn-edge);
+      background: var(--color-surface); color: var(--color-text); cursor: pointer;
+      box-shadow: 2px 2px 0 var(--color-accent);
+      transition: transform var(--duration-fast) var(--ease-out),
+                  box-shadow var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out);
+    }
+    .es-totop:hover { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--color-accent); color: var(--color-accent); }
+    .es-totop:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--color-accent); }
+    .es-totop:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    .es-totop svg { width: 18px; height: 18px; display: block; }
+    @media (prefers-reduced-motion: reduce) {
+      .es-totop:hover, .es-totop:active { transform: none; box-shadow: 2px 2px 0 var(--color-accent); }
     }
 
     /* cover: her designed 1180×650 graphic, shown at its own ratio (no crop) */
@@ -123,13 +161,15 @@
       box-shadow: 0 26px 60px -28px rgba(0, 0, 0, 0.38);
       will-change: transform;
     }
-    /* bottom-left: the Scenarios view (clipped a little at the bottom) */
+    /* bottom-left: the V2 results screen — a tall grab, so only its top
+       (header + the two scenario cards) shows; the frame clips the rest */
     .es-herofx__mock--back  { left: 3%;  top: 15%;  width: 50%; }
-    /* top-right: the budget-options view (clipped a little at the top) */
-    .es-herofx__mock--front { right: 2%; top: -12%; width: 55%; }
+    /* top-right: the budget-options view — sits just inside the frame top so
+       its own header ("Explore other budget options") isn't clipped */
+    .es-herofx__mock--front { right: 2%; top: 3%; width: 55%; }
     @media (max-width: 760px) {
       .es-herofx__mock--back  { left: 2%;  width: 58%; top: 18%; }
-      .es-herofx__mock--front { right: 1%; width: 64%; top: -16%; }
+      .es-herofx__mock--front { right: 1%; width: 64%; top: 1%; }
     }
     :root[data-theme="dark"] .es-herofx { background: #16241d; }
     @media (prefers-color-scheme: dark) {
@@ -138,8 +178,10 @@
 
     .es-meta {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg);
-      margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding-top: var(--space-lg);
+      margin: clamp(2.5rem, 5vw, 4rem) 0;
+      padding-block: var(--space-lg);
       border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
     }
     .es-meta dt {
       font-family: var(--font-mono); font-size: calc(var(--fs-300) * 0.92);
@@ -212,12 +254,16 @@
     @media (max-width: 760px) { .es-stats--5 { grid-template-columns: 1fr; gap: var(--space-xl); } }
 
     /* =================== SCROLLYTELLING (pinned) ===================
-       .es-scrolly is a tall section. Inside, .es-scrolly__stage is
-       position:sticky, so it pins while you scroll the section's extra
-       height. GSAP (inline script) scrubs the mockup's translateY inside
-       its masked frame and crossfades the captions. Below 900px or with
-       reduced motion, it degrades to a normal stacked block. */
-    .es-scrolly { position: relative; }
+       The pan is driven NATIVELY by the browser (CSS scroll-driven
+       animation) — no JavaScript measures anything, so the pin and the pan
+       cannot drift out of sync. The section's own min-height is the scroll
+       runway; tune it per section with an inline min-height (a taller
+       screenshot needs a longer runway).
+
+       The `-84px` in animation-range must match .es-scrolly__stage's `top`.
+       Browsers without scroll-driven animations (Firefox today) simply show
+       the top of the screenshot, static — a clean fallback. */
+    .es-scrolly { position: relative; min-height: 240vh; }
     .es-scrolly__stage {
       position: sticky; top: 84px;
       min-height: calc(100vh - 120px);
@@ -226,6 +272,22 @@
       gap: clamp(2rem, 5vw, 4rem);
       align-items: center;
       padding-block: clamp(1.5rem, 3vw, 2.5rem);
+    }
+    @supports (animation-timeline: view()) {
+      @media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+        .es-scrolly { view-timeline: --es-scrolly block; }
+        .es-scrolly__img {
+          animation: es-scrolly-pan linear both;
+          animation-timeline: --es-scrolly;
+          animation-range: contain -84px contain calc(100% - 120px);
+        }
+        @keyframes es-scrolly-pan {
+          from { transform: translateY(0); }
+          /* 100% = the image's own height, so this is exactly
+             (frame height − image height) = the full pan, with no measuring. */
+          to   { transform: translateY(calc(min(72vh, 680px) - 100%)); }
+        }
+      }
     }
     .es-scrolly__caps .n {
       font-family: var(--font-mono); font-size: var(--fs-300); color: var(--color-accent);
@@ -663,18 +725,33 @@
       <p class="es-kicker" data-anim="hero-eyebrow">Case study · Research &amp; design lead &rarr; support · 2022&ndash;now</p>
       <h1 class="es-h1" data-anim="hero-title">Express&nbsp;Scenarios</h1>
       <p class="es-tagline" data-anim="hero-lede">
-        A 0&rarr;1 tool I led on research and design &mdash; and let the
-        studies keep proving us wrong.
+        A media-planning tool I&rsquo;ve shaped from the first concept &mdash;
+        through the research rounds that kept redirecting it.
       </p>
       <p class="es-hero__sub" data-anim="hero-lede">
-        Four years on one product. I planned and led the research end to end
-        &mdash; discovery, a concept test, and three rounds on the live tool,
-        one of them a year after launch that turned a shipped design around.
-        This is how I worked with the PO and the business, not a feature tour.
+        I&rsquo;m the research and design lead on Express Scenarios, a light
+        tool for planning short campaigns. Over four years I ran the discovery,
+        designed V1 and V2, and led the studies that reset the brief each time
+        &mdash; working closely with the Product Owner and the business as a
+        partner in the calls, not just a supplier of findings. This page is the
+        methods and the decisions behind the versions, not a feature tour.
       </p>
 
+      <!-- hand-made touches beside the title: a crayon squiggle + a real
+           quote from an in-depth interview, same motif as the rest of the
+           site; both hidden below 900px (see .es-postit / .es-hero__mark). -->
+      <svg class="es-hero__mark" viewBox="0 0 182 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6,23 C18,9 30,9 36,23 C48,37 60,37 66,23 C78,9 90,9 96,23 C108,37 120,37 126,23 C138,9 150,9 156,23 C165,32 171,29 176,25" stroke="currentColor" stroke-width="7" stroke-linecap="round" filter="url(#es-crayon)" />
+      </svg>
+      <div class="sticky-note sticky-note--pink es-postit es-hero__note" data-reveal style="--rotate: 5deg;">
+        &ldquo;Building all the budget scenarios by hand used to take real time.
+        Here they&rsquo;re ready &mdash; so I get back to the client faster.
+        I&rsquo;m a big fan.&rdquo;
+        <span class="es-postit__by">&mdash; senior media planner, in-depth interview</span>
+      </div>
+
       <div class="es-herofx" data-reveal data-herofx>
-        <img class="es-herofx__mock es-herofx__mock--back" src="../assets/images/projects/project-3/hero-scenarios.jpg" alt="" loading="eager" decoding="async" />
+        <img class="es-herofx__mock es-herofx__mock--back" src="../assets/images/projects/project-3/v2-hero.jpg" alt="" loading="eager" decoding="async" />
         <img class="es-herofx__mock es-herofx__mock--front" src="../assets/images/projects/project-3/explore-budget-options.jpg" alt="Express Scenarios — building goal-scenarios and comparing budget variants side by side" loading="eager" decoding="async" />
       </div>
 
@@ -686,68 +763,30 @@
       </dl>
     </section>
 
-    <!-- ===================== THE PROBLEM ===================== -->
-    <section class="es-wrap es-section" data-reveal-group>
-      <h2 class="es-h2" data-reveal>The problem</h2>
-      <div class="es-problem-row" data-reveal>
-        <div class="es-prose">
-          <p>
-            Planners build media plans in <strong>Campaigns</strong> &mdash;
-            the heavier planning app, built for year-long strategies and large
-            budgets, and excellent at that. In a two-hour workshop with
-            planners from markets around the world, one thing was clear: for a
-            short, tactical campaign it is <strong>too heavy, with a high
-            barrier to entry</strong>.
-          </p>
-          <p>
-            We started with two bets. One: a lighter tool would let a
-            <strong>junior planner</strong> plan without the full machinery
-            &mdash; persona work had given us three planner types who use our
-            tools daily, plus a fourth, a junior in a media house. Two: the
-            same simplicity would give <strong>experienced planners</strong> a
-            fast way to handle short campaigns and answer a client&rsquo;s
-            budget &ldquo;what if&rdquo; on the spot.
-          </p>
-          <p>
-            <strong>The first bet was wrong</strong>, and it took the research
-            a year to prove it &mdash; more on that below. The second one
-            carried the product.
-          </p>
+    <!-- ===================== WHAT I OWNED ===================== -->
+    <section class="es-wrap es-section es-section--tight" data-reveal-group>
+      <h2 class="es-h2" data-reveal>What I owned</h2>
+      <p class="es-lede" data-reveal>
+        Four years, one product &mdash; from the first concept to a shipped
+        tool the research kept redirecting.
+      </p>
+      <div class="es-impact" style="margin-top: clamp(2rem, 4vw, 3rem);">
+        <div class="es-impact__card" data-reveal>
+          <strong>The research</strong>
+          <p>I planned and led every round &mdash; discovery, a concept test, and three post-launch studies. Around 40 conversations across markets, 27 of them in-depth interviews I ran myself, mostly alongside the Product Owner.</p>
         </div>
-
-        <div class="es-cover">
-          <img src="../assets/images/projects/project-3/personas-all.jpg" alt="The planner personas — three who use our tools day to day, and a junior who works in media houses but doesn't" loading="lazy" decoding="async" />
+        <div class="es-impact__card" data-reveal>
+          <strong>The design</strong>
+          <p>I owned V1 and V2 end to end &mdash; the one-screen setup and the results screen. On V3 a colleague leads; I support, unblock and review.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ===================== THE BET I ARGUED FOR ===================== -->
-    <section class="es-bleed es-band es-section" data-reveal-group>
-      <div class="es-wrap es-wrap--rel">
-        <div class="sticky-note es-postit" data-reveal style="--rotate: 6deg;">
-          &ldquo;The simple setup is a relief &mdash; I get to a plan without
-          the spreadsheet marathon.&rdquo;
-          <span class="es-postit__by">&mdash; planner, research session</span>
+        <div class="es-impact__card" data-reveal>
+          <strong>The decisions</strong>
+          <p>I analysed each round with the PO and the business, and we set the build order together &mdash; a partner in the calls, not just a supplier of findings. The willingness to unship a shipped design came from here.</p>
         </div>
-        <div class="sticky-note sticky-note--pink es-postit" data-reveal style="--rotate: -4deg; top: auto; bottom: 8px; right: 96px; width: 244px;">
-          &ldquo;Some days I&rsquo;m on 150 calls. I used to have help with the
-          decks &mdash; now it&rsquo;s all me.&rdquo;
-          <span class="es-postit__by">&mdash; media planner, interview</span>
+        <div class="es-impact__card" data-reveal>
+          <strong>The AI layer</strong>
+          <p>My first AI project: supporting the agentic V3 work &mdash; the interaction patterns, what the technology needs, and the guardrails a planning workflow wants around an LLM.</p>
         </div>
-
-        <p class="es-statement" data-reveal>
-          On Express, research wasn&rsquo;t a phase bolted onto the product
-          &mdash; it ran <strong>continuously</strong>, with the PO in the
-          room, so every call weighed the business case against what planners
-          actually needed. Several passes later, V3 covers most of the pain
-          points those sessions surfaced.
-        </p>
-        <p class="es-statement" data-reveal>
-          The design bet: reuse the algorithm we already had in the heavier
-          tool, and <strong>simplify everything around it</strong> &mdash;
-          strip the setup to the few things a planner has to choose, and show
-          only what they read on the results.
-        </p>
       </div>
     </section>
 
@@ -765,7 +804,7 @@
         <div class="es-stat" data-reveal>
           <div class="es-stat__num">38%</div>
           <p class="es-stat__label">
-            would be &ldquo;very disappointed&rdquo; to lose Express Scenarios<span class="es-tip"><span class="es-tip__icon" tabindex="0" role="button" aria-label="What the Sean Ellis test is">i</span><span class="es-tip__pop" role="tooltip"><strong>Sean Ellis test.</strong> If at least 40% of surveyed active users answer &ldquo;very disappointed&rdquo;, the product counts as a must-have with true product-market fit &mdash; the signal that it&rsquo;s safe to invest heavily in growth. Express Scenarios came close, so we knew it was worth working on further.</span></span>
+            of surveyed users would be &ldquo;very disappointed&rdquo; to lose Express Scenarios<span class="es-tip"><span class="es-tip__icon" tabindex="0" role="button" aria-label="What the Sean Ellis test is">i</span><span class="es-tip__pop" role="tooltip"><strong>Sean Ellis test.</strong> If at least 40% of surveyed active users answer &ldquo;very disappointed&rdquo;, the product counts as a must-have with true product-market fit &mdash; the signal that it&rsquo;s safe to invest heavily in growth. Express Scenarios came close, so we knew it was worth working on further.</span></span>
           </p>
         </div>
         <div class="es-stat" data-reveal>
@@ -778,95 +817,44 @@
             score it 7 or higher out of 10 on &ldquo;how likely are you to recommend it?&rdquo;<span class="es-tip es-tip--end"><span class="es-tip__icon" tabindex="0" role="button" aria-label="The full distribution behind this number">i</span><span class="es-tip__pop" role="tooltip">January 2025 survey, 82 planners. The full spread: <strong>9&ndash;10</strong> from 24 people, <strong>7&ndash;8</strong> from 39, <strong>0&ndash;6</strong> from 19 &mdash; a mean of <strong>7.5 / 10</strong>. Solid, not a standing ovation.</span></span>
           </p>
         </div>
+      </div>
     </section>
 
-    <!-- ===================== DESIGNING V1 ===================== -->
+    <!-- ===================== THE PRODUCT ARC ===================== -->
     <section class="es-wrap es-section" data-reveal-group>
-      <p class="es-feature__kicker" data-reveal>2022 &middot; designing the first version</p>
-      <h2 class="es-h2" data-reveal>Nine steps in the heavy tool. One screen in V1.</h2>
+      <p class="es-feature__kicker" data-reveal>The product</p>
+      <h2 class="es-h2" data-reveal>Three versions, each one the research&rsquo;s idea.</h2>
       <p class="es-lede" data-reveal>
-        The setup was the whole point &mdash; and where my first assumption
-        showed up in the design. It went through wireframes and a vote before
-        a pixel was committed.
+        Planners build media plans in <strong>Campaigns</strong> &mdash; the
+        heavier app, built for year-long strategies and large budgets. A
+        two-hour workshop with planners worldwide made the gap clear: for a
+        short, tactical campaign it&rsquo;s too heavy. Express is the light
+        path &mdash; here&rsquo;s how it changed, and why.
       </p>
-
-      <div data-reveal style="margin-top: clamp(2.5rem, 6vw, 4.5rem);">
-        <h3 class="es-subhead">First, wireframes in front of planners.</h3>
-        <p class="es-feature__body" style="max-width: 64ch; margin-top: var(--space-sm);">
-          I sketched the setup and a multi-scenario results screen at low
-          fidelity and took them straight into research &mdash; cheap enough
-          to throw away, concrete enough for a planner to react to.
-        </p>
-        <div class="es-media-2">
-          <figure class="es-fig">
-            <img src="../assets/images/projects/project-3/wireframe-setup.png" alt="Low-fi wireframe of the campaign-setup screen — empty and filled states" loading="lazy" decoding="async" />
-            <figcaption>Setup &mdash; empty and filled</figcaption>
-          </figure>
-          <figure class="es-fig">
-            <img src="../assets/images/projects/project-3/wireframe-many-scenarios.png" alt="Low-fi wireframe of the results screen — a grid of goal-based scenario proposals" loading="lazy" decoding="async" />
-            <figcaption>Results &mdash; goal-based scenario proposals</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div data-reveal style="margin-top: clamp(3rem, 7vw, 5.5rem);">
-        <h3 class="es-subhead">Then three layouts, and a vote.</h3>
-        <p class="es-feature__body" style="max-width: 64ch; margin-top: var(--space-sm);">
-          The direction became three candidate layouts for the results screen.
-          In a concept-test survey in August 2022, planners reacted to each one
-          on its own &mdash; in writing &mdash; before any overall vote.
-        </p>
-        <div class="es-media-3">
-          <figure class="es-fig es-fig--fill"><img src="../assets/images/projects/project-3/option-b.jpg" alt="Results-screen layout option B" loading="lazy" decoding="async" /><figcaption>Option B</figcaption></figure>
-          <figure class="es-fig es-fig--fill"><img src="../assets/images/projects/project-3/option-c.jpg" alt="Results-screen layout option C" loading="lazy" decoding="async" /><figcaption>Option C</figcaption></figure>
-          <figure class="es-fig es-fig--fill"><img src="../assets/images/projects/project-3/option-d.jpg" alt="Results-screen layout option D" loading="lazy" decoding="async" /><figcaption>Option D</figcaption></figure>
-        </div>
-      </div>
-
+      <figure class="es-fig" style="margin-top: clamp(2rem, 4vw, 3rem);">
+        <img src="../assets/images/projects/project-3/personas-all.jpg" alt="The planner personas — three who use our tools day to day, and a junior who works in media houses but doesn't" loading="lazy" decoding="async" />
+        <figcaption>Discovery personas &mdash; three planner types who use our tools, and a junior who doesn&rsquo;t</figcaption>
+      </figure>
     </section>
 
-    <!-- ============ THE CALL: THE VOTES TIED ============ -->
-    <section class="es-bleed es-band es-section" data-reveal-group>
-      <div class="es-wrap">
-        <div class="es-decision-row" data-reveal>
-          <div class="es-decision">
-            <h2 style="max-width: 24ch;">The votes tied. I built neither option.</h2>
-            <p>
-              Two layouts drew <strong>equal votes</strong> &mdash; but the
-              written feedback pointed somewhere neither had gone: people
-              wanted one option&rsquo;s <strong>stacked, expandable scenario
-              cards</strong> with another&rsquo;s <strong>detailed
-              per-scenario breakdown</strong>.
-            </p>
-            <p>
-              So I read the survey for what people were asking for, not what
-              they picked, and built the combination none of the three had.
-              Reacting to each option in isolation &mdash; before any vote
-              &mdash; was deliberate: it kept a fixable complaint about one
-              layout from reading as a preference for another.
-            </p>
-          </div>
-          <div class="es-decision__media">
-            <img src="../assets/images/projects/project-3/votes-tied.png" alt="Concept-test survey — 'Which option do you like the most?', 25 responses: two layouts tied at 27.3%, the rest split below" loading="lazy" decoding="async" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== V1 SHIPS ===================== -->
+    <!-- ===================== V1 BEAT ===================== -->
     <section class="es-bleed es-band es-band--accent es-section" data-reveal-group>
       <div class="es-wrap">
         <div class="es-feature es-feature--flip" data-reveal>
           <div class="es-feature__text">
-            <p class="es-feature__kicker">2023 &middot; V1 ships</p>
+            <p class="es-feature__kicker">V1 &middot; 2023</p>
             <h2 class="es-feature__headline">One screen. Only the choices a planner has to make.</h2>
             <p class="es-feature__body">
-              The heavier tool walks through nine steps to start a campaign.
-              V1 of Express brought it to a single <strong>Details</strong>
-              screen: name, budget, dates, audience &mdash; everything else on
-              <strong>smart defaults</strong>. Same algorithm as the heavier
-              tool; a setup stripped to the essentials around it. Few enough
-              decisions for the junior planner we thought we were building for.
+              The heavier tool walks through nine steps to start a campaign. V1
+              brought it to a single <strong>Details</strong> screen &mdash;
+              name, budget, dates, audience &mdash; everything else on
+              <strong>smart defaults</strong>, the same algorithm underneath.
+              It shipped with <strong>four goal-scenarios</strong>, one per
+              objective, and no goal to pick.
+            </p>
+            <p class="es-feature__body">
+              <strong>My part:</strong> discovery, the wireframes, a concept
+              test on three results layouts, and the V1 design.
             </p>
           </div>
           <div class="es-feature__media es-feature__media--full">
@@ -876,92 +864,44 @@
       </div>
     </section>
 
-    <!-- ============ THE ROUND THAT TURNED IT AROUND ============ -->
+    <!-- ===================== V2 BEAT ===================== -->
     <section class="es-wrap es-section" data-reveal-group>
-      <p class="es-feature__kicker" data-reveal>January 2024 &middot; a year after V1 shipped</p>
-      <h2 class="es-h2" data-reveal>A year in, I ran the round that turned it around.</h2>
-      <p class="es-lede" data-reveal>
-        Eight in-depth interviews &mdash; planners who used Express, and some
-        who didn&rsquo;t. Two findings reshaped the design. A third reshaped
-        who it was for.
-      </p>
-
-      <div class="es-feature es-feature--flip" data-reveal style="margin-top: clamp(3rem, 7vw, 6rem); position: relative;">
+      <div class="es-feature" data-reveal style="position: relative;">
         <div class="sticky-note es-postit" data-reveal style="--rotate: 5deg; top: -129px;">
-          &ldquo;Four scenarios are interesting &mdash; but when I plan, I
-          know my goal. It&rsquo;s predetermined.&rdquo;
+          &ldquo;Four scenarios are interesting &mdash; but when I plan, I know
+          my goal. It&rsquo;s predetermined.&rdquo;
           <span class="es-postit__by">&mdash; media planner, interview</span>
         </div>
         <div class="es-feature__text">
-          <p class="es-feature__kicker">Finding one</p>
-          <h2 class="es-feature__headline">Four goal-scenarios were a curiosity, not a decision aid.</h2>
+          <p class="es-feature__kicker">V2 &middot; 2024</p>
+          <h2 class="es-feature__headline">Two scenarios, and budget variants.</h2>
           <p class="es-feature__body">
-            V1 handed every planner <strong>four scenarios</strong>, each
-            optimised for a different campaign goal &mdash; no goal to pick.
-            But planners <strong>always know their goal before they
-            start</strong>. So V2: you choose your goal in setup (that&rsquo;s
-            scenario one), and compare it against one always optimised for
-            <strong>maximum reach</strong> (scenario two).
-          </p>
-        </div>
-        <div class="es-feature__media">
-          <img src="../assets/images/projects/project-3/v1-4-scenarios.jpg" alt="Express Scenarios V1 — four goal-based scenarios, with no goal for the planner to pick" loading="lazy" decoding="async" />
-        </div>
-      </div>
-
-      <div class="es-feature" data-reveal style="position: relative; margin-top: clamp(3.5rem, 8vw, 7rem);">
-        <div class="sticky-note sticky-note--pink es-postit" data-reveal style="--rotate: -5deg; top: -104px; width: 300px;">
-          &ldquo;I use it to test an idea and iterate fast if the client asks
-          for a change &mdash; in a quick, convenient way.&rdquo;
-          <span class="es-postit__by">&mdash; senior media planner, satisfaction survey</span>
-        </div>
-        <div class="es-feature__text">
-          <p class="es-feature__kicker">Finding two</p>
-          <h2 class="es-feature__headline">What clients actually kept asking was budget.</h2>
-          <p class="es-feature__body">
-            &ldquo;What happens if we spend 10% more, or less?&rdquo; came up
-            constantly &mdash; and answering it meant rebuilding the campaign,
-            re-running the simulation, and waiting. So instead of four goal
-            scenarios, V2 computes <strong>four budget variants together</strong>:
-            &minus;20%, &minus;10%, +10% and +20% of the base budget.
+            Eight in-depth interviews a year after launch reset the design.
+            Planners <strong>always know their goal</strong> &mdash; so four
+            goal-scenarios became two: your goal, versus maximum reach. And
+            what clients kept asking was budget, so V2 computes <strong>four
+            budget variants together</strong> &mdash; &minus;20, &minus;10,
+            +10 and +20% of the base. Planners started putting the
+            budget-variant view straight into the client deck.
           </p>
           <p class="es-feature__body">
-            It also changed how the plan gets <strong>presented</strong>:
-            planners started putting the budget-variant view and the reach
-            curve straight into the client deck &mdash; a way to show
-            &ldquo;we know the budget can move, and we&rsquo;re ready for
-            it.&rdquo;
+            <strong>My part:</strong> the eight interviews, the analysis with
+            the PO, and the V2 design &mdash; setup and results.
           </p>
         </div>
         <div class="es-feature__media es-feature__media--full">
           <img src="../assets/images/projects/project-3/explore-budget-options.jpg" alt="Explore other budget options — the plan recomputed at −20 / −10 / +10 / +20% of base budget, for both scenarios" loading="lazy" decoding="async" />
         </div>
       </div>
-
-      <div class="es-decision" data-reveal style="margin-top: clamp(3.5rem, 8vw, 7rem); max-width: 64ch;">
-        <p class="es-feature__kicker" style="margin-bottom: var(--space-sm);">Finding three &middot; who it was for</p>
-        <h2>The junior we built it for wasn&rsquo;t there &mdash; and I own the miss.</h2>
-        <p>
-          In our agencies, juniors don&rsquo;t plan campaigns solo &mdash; so
-          the planner we&rsquo;d stripped the setup for was never going to
-          show up. The persona was real; I hadn&rsquo;t pinned down the
-          <strong>working context</strong> around it before we committed. What
-          saved the product: the same simplicity was exactly what
-          <strong>experienced planners</strong> wanted for short campaigns and
-          fast client turnarounds.
-        </p>
-      </div>
-
     </section>
 
     <!-- ============= SCROLLYTELLING: THE V2 SETUP ============= -->
     <section class="es-wrap es-section" style="padding-bottom: 0;" data-reveal-group>
       <p class="es-feature__kicker" data-reveal>V2 &middot; the setup, rebuilt</p>
       <h2 class="es-h2" data-reveal>More control, and still one screen.</h2>
-      <p class="es-lede" data-reveal>What the findings changed about the setup itself.</p>
     </section>
 
-    <section class="es-wrap es-scrolly" data-scrolly>
+    <section class="es-wrap es-scrolly" data-scrolly style="min-height: 165vh;">
       <div class="es-scrolly__stage">
         <div class="es-scrolly__caps">
           <span class="n">The setup</span>
@@ -982,121 +922,110 @@
       </div>
     </section>
 
-    <!-- ===================== HOW I RAN THE RESEARCH ===================== -->
-    <section class="es-bleed es-band es-section" data-reveal-group>
+    <!-- ===================== V3 BEAT ===================== -->
+    <section class="es-bleed es-band es-band--accent es-section" data-reveal-group>
       <div class="es-wrap">
-      <h2 class="es-spine__head" data-reveal>How I ran the research</h2>
-      <div class="es-prose" data-reveal>
-        <p>
-          I planned and led it end to end &mdash; and I never run a session
-          alone. Most interviews were <strong>with the PO</strong>, so we
-          heard the business need under the user need, and always with
-          planners from <strong>different markets</strong>. Over four years
-          that came to around <strong>40 conversations</strong> &mdash; 27 of
-          them in-depth interviews I ran myself, across three post-launch
-          rounds (January 2024, March 2024, January 2025), plus a
-          layout-preference survey in 2022 and a satisfaction survey with
-          <strong>82 responses</strong> in January 2025.
-        </p>
-        <p>
-          With the PO I analysed each round and we prioritised together what
-          to build, and in what order. My job was to make sure every call had
-          evidence behind it &mdash; and to notice when the evidence had
-          changed.
-        </p>
-      </div>
-
-      <div class="es-rail-wrap" data-rail data-reveal>
-      <div class="es-rail">
-        <article class="es-step">
-          <div class="es-step__img"><img src="../assets/images/projects/project-3/research-feedback-clustering.jpg" alt="Discovery feedback clustered by topic" loading="lazy" decoding="async" /></div>
-          <p class="es-step__year">2022 · Discovery</p>
-          <p class="es-step__title">Interviews &amp; personas</p>
-          <p class="es-step__note">Interviews with the PO across markets, plus a 2-hour workshop with planners worldwide. Three planner personas who use our tools &mdash; and a junior who doesn&rsquo;t. The verdict: the full tool is too heavy for a short campaign.</p>
-        </article>
-
-        <article class="es-step">
-          <div class="es-step__img"><img src="../assets/images/projects/project-3/survey-2022.jpg" alt="Concept-test layout survey, August 2022" loading="lazy" decoding="async" /></div>
-          <p class="es-step__year">Aug 2022 · Concept test</p>
-          <p class="es-step__title">The votes tied. The writing didn&rsquo;t.</p>
-          <p class="es-step__note">Planners react to each of three layouts on its own, then vote. The prose pointed somewhere the votes hadn&rsquo;t &mdash; so I built the combination none of the three had.</p>
-        </article>
-
-        <article class="es-step">
-          <div class="es-step__img"><img src="../assets/images/projects/project-3/v1-four-scenarios-unfolded.jpg" alt="Express Scenarios V1 — four goal-based scenarios, expanded" loading="lazy" decoding="async" /></div>
-          <p class="es-step__year">2023 · V1 ships</p>
-          <p class="es-step__title">One-screen setup, four goal-scenarios</p>
-          <p class="es-step__note">The whole setup on one screen; four scenarios each optimised for a different objective, no goal to pick. It shipped &mdash; and then we watched it get used.</p>
-        </article>
-
-        <article class="es-step">
-          <div class="es-step__img"><img src="../assets/images/projects/project-3/research-what-we-learned.jpg" alt="Post-launch research — what we learned" loading="lazy" decoding="async" /></div>
-          <p class="es-step__year">Jan 2024 · Post-launch research</p>
-          <p class="es-step__title">Eight interviews, users and non-users</p>
-          <p class="es-step__note">A year after launch. Planners always know their goal, so four goal-scenarios weren&rsquo;t a decision aid. Clients kept asking about budget. And the junior we&rsquo;d designed for wasn&rsquo;t there.</p>
-        </article>
-
-        <article class="es-step">
-          <div class="es-step__img"><img src="../assets/images/projects/project-3/express-v2.jpg" alt="Express Scenarios V2 — two scenarios plus four budget variants" loading="lazy" decoding="async" /></div>
-          <p class="es-step__year">Mar 2024 · Testing V2</p>
-          <p class="es-step__title">Nine planners on the new layout</p>
-          <p class="es-step__note">Two scenarios plus budget variants, a reworked setup and results screen &mdash; tested as mockups before build. Most of what they asked for went in; the rest went on a list.</p>
-        </article>
-
-        <article class="es-step">
-          <div class="es-step__img"><img src="../assets/images/projects/project-3/express-experiment.jpg" alt="The adoption experiment — hypothesis test and training plan" loading="lazy" decoding="async" /></div>
-          <p class="es-step__year">Oct&ndash;Nov 2024 · Adoption experiment</p>
-          <p class="es-step__title">Training one team to isolate the cause</p>
-          <p class="es-step__note">Usability scores were high, adoption wasn&rsquo;t. I ran a training for one team and a shared chat &mdash; to test whether the blocker was the tool or the environment around it.</p>
-        </article>
-
-        <article class="es-step">
-          <div class="es-step__img"><img src="../assets/images/projects/project-3/research-feedback-highlights.jpg" alt="January 2025 interviews and satisfaction survey highlights" loading="lazy" decoding="async" /></div>
-          <p class="es-step__year">Jan 2025 · Interviews + survey</p>
-          <p class="es-step__title">Ten interviews, 82 survey responses</p>
-          <p class="es-step__note">The round that set the V3 brief. I also went through the usage data with the colleague taking over &mdash; and kept us from over-reading it.</p>
-        </article>
-
-        <article class="es-step">
-          <div class="es-step__img"><img src="../assets/images/projects/project-3/agentic-mockup.jpg" alt="V3 and the agentic layer in development" loading="lazy" decoding="async" /></div>
-          <p class="es-step__year">From 2026 · V3 + an AI layer</p>
-          <p class="es-step__title">Colleague leads, I support</p>
-          <p class="es-step__note">Editable scenarios and a per-touchpoint investment planners can change &mdash; plus scenarios by conversation with an agent. A colleague leads the design; I support, unblock and review.</p>
-        </article>
-      </div>
-        <button type="button" class="carousel-btn carousel-btn--prev" data-rail-prev aria-label="Previous">&lsaquo;</button>
-        <button type="button" class="carousel-btn carousel-btn--next" data-rail-next aria-label="Next">&rsaquo;</button>
-      </div>
+        <div class="es-feature es-feature--flip" data-reveal>
+          <div class="es-feature__text">
+            <p class="es-feature__kicker">V3 &middot; 2025 &rarr;</p>
+            <h2 class="es-feature__headline">Scenarios planners build, and investment they can edit.</h2>
+            <p class="es-feature__body">
+              The January 2025 survey was specific: planners wanted to
+              <strong>add their own scenarios</strong> and to <strong>edit the
+              per-touchpoint investment</strong> the tool proposes instead of
+              taking it as given. V3 does both &mdash; and clears the biggest
+              items off the signal board (editing and duplicating scenarios, a
+              per-audience cost table, loading speed).
+            </p>
+            <p class="es-feature__body">
+              <strong>My part:</strong> the research round that set the brief,
+              then design reviews and support &mdash; a colleague took design
+              lead on V3.
+            </p>
+          </div>
+          <div class="es-feature__media">
+            <img src="../assets/images/projects/project-3/v3-4-groups.png" alt="Express Scenarios V3 — a results screen with four scenario groups, each a budget-variant chart and an editable per-touchpoint investment table" loading="lazy" decoding="async" />
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ===================== MEASURING SUCCESS ===================== -->
+    <!-- ===================== HOW I WORKED ===================== -->
     <section class="es-wrap es-section" data-reveal-group>
-      <p class="es-feature__kicker" data-reveal>2023&ndash;24 &middot; measuring success</p>
-      <h2 class="es-h2" data-reveal>The team&rsquo;s first success metrics &mdash; and what they couldn&rsquo;t tell us.</h2>
-      <div class="es-decision-row" data-reveal style="margin-top: clamp(2rem, 4vw, 3rem);">
+      <div style="max-width: 58ch; margin-inline: auto; text-align: center;">
+        <p class="es-feature__kicker" data-reveal>How I worked</p>
+        <h2 class="es-h2" data-reveal>How I made the calls &mdash; and checked them.</h2>
+        <p class="es-lede" data-reveal style="max-width: none;">
+          The methods behind the versions &mdash; a concept test, a metrics
+          framework, an adoption experiment, an honest read of the data. Not in
+          date order.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== HOW I WORKED · CONCEPT TEST ===== -->
+    <section class="es-bleed es-band es-section" data-reveal-group>
+      <div class="es-wrap">
+        <div class="es-decision-row" data-reveal>
+          <div class="es-decision">
+            <p class="es-feature__kicker" style="margin-bottom: var(--space-sm);">Concept test &middot; 2022</p>
+            <h2 style="max-width: 24ch;">The votes tied. I built neither option.</h2>
+            <p>
+              Planners saw three candidate layouts for the results screen and
+              reacted to each one <strong>in writing</strong>, on its own,
+              before any vote. Two drew <strong>equal votes</strong> &mdash;
+              but the written feedback pointed somewhere neither had gone:
+              people wanted one option&rsquo;s stacked, expandable scenario
+              cards with another&rsquo;s detailed per-scenario breakdown.
+            </p>
+            <p>
+              So I read the survey for what people were <em>asking for</em>,
+              not what they picked, and built the combination none of the
+              three had. Reacting in isolation first was deliberate &mdash; it
+              kept a fixable complaint about one layout from reading as a
+              preference for another.
+            </p>
+          </div>
+          <div class="es-decision__media">
+            <img src="../assets/images/projects/project-3/votes-tied.png" alt="Concept-test survey — 'Which option do you like the most?', 25 responses: two layouts tied at 27.3%, the rest split below" loading="lazy" decoding="async" />
+          </div>
+        </div>
+        <div class="es-media-3" style="margin-top: clamp(2rem, 4vw, 3rem);">
+          <figure class="es-fig es-fig--fill"><img src="../assets/images/projects/project-3/option-b.jpg" alt="Results-screen layout option 1" loading="lazy" decoding="async" /><figcaption>Option 1</figcaption></figure>
+          <figure class="es-fig es-fig--fill"><img src="../assets/images/projects/project-3/option-c.jpg" alt="Results-screen layout option 2" loading="lazy" decoding="async" /><figcaption>Option 2</figcaption></figure>
+          <figure class="es-fig es-fig--fill"><img src="../assets/images/projects/project-3/option-d.jpg" alt="Results-screen layout option 3" loading="lazy" decoding="async" /><figcaption>Option 3</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW I WORKED · METRICS FRAMEWORK ===== -->
+    <section class="es-wrap es-section" data-reveal-group>
+      <div class="es-decision-row" data-reveal>
         <div class="es-decision">
+          <p class="es-feature__kicker" style="margin-bottom: var(--space-sm);">Metrics, agreed up front</p>
+          <h2>A Goal / Question / Metric framework, before the numbers.</h2>
           <p>
-            After a conference I pushed for the team to attend, we built our
-            <strong>first proper success-metrics framework</strong> for
-            Express &mdash; leading and lagging indicators, agreed up front
-            rather than reverse-engineered later.
+            After a conference I pushed for us to attend, I ran a workshop to
+            build Express&rsquo;s <strong>first proper success-metrics
+            framework</strong> &mdash; goals, the questions under each, and
+            candidate metrics, voted on together. Leading and lagging
+            indicators agreed up front, not reverse-engineered later.
           </p>
           <p>
             Then it hit a wall: <strong>adoption was too low to read a clean
             UX signal</strong>. You can&rsquo;t separate a design problem from
-            an exposure problem when barely anyone is in the tool. That gap is
-            what led to the experiment below.
+            an exposure problem when barely anyone is in the tool &mdash; which
+            is what led to the experiment.
           </p>
         </div>
         <div class="es-decision__media">
-          <img src="../assets/images/projects/project-3/measuring-success-wip.jpg" alt="The success-metrics framework for Express — leading and lagging indicators, a work in progress" loading="lazy" decoding="async" />
+          <img src="../assets/images/projects/project-3/measuring-success-gqm.jpg" alt="The success-metrics workshop board — a Goal / Question / Metric tree, then candidate metrics grouped under each goal (fast onboarding, frequent use, a plan in 20 minutes) with the team's votes" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
 
     <!-- ============= THE EXPERIMENT: WHY WAS ADOPTION LOW? ============= -->
-    <section class="es-wrap es-section" data-reveal-group>
+    <section class="es-wrap es-section" style="margin-top: -120px;" data-reveal-group>
       <div class="es-split">
         <div class="es-honest" data-reveal>
           <span class="es-honest__kicker">Late 2024 &middot; the experiment</span>
@@ -1174,7 +1103,12 @@
         </div>
       </div>
 
-      <div data-reveal style="margin-top: clamp(3.5rem, 8vw, 7rem);">
+      <div data-reveal style="margin-top: clamp(3.5rem, 8vw, 7rem); position: relative;">
+        <div class="sticky-note es-postit" data-reveal style="--rotate: -4deg; top: -40px; width: 268px;">
+          &ldquo;The tool is very fluid, very simple, very user-friendly. What
+          could be improved is the <strong>output</strong>.&rdquo;
+          <span class="es-postit__by">&mdash; senior media planner, interview</span>
+        </div>
         <h2 class="es-h2">The signals we kept</h2>
         <p class="es-lede">
           Every unmet request from the interviews and the survey went on one
@@ -1190,8 +1124,32 @@
       </div>
     </section>
 
-    <!-- ============= THE SURVEY, UNSPUN (82 responses) ============= -->
+    <!-- ===================== WHAT THE RESEARCH OVERTURNED ===================== -->
     <section class="es-wrap es-section" data-reveal-group>
+      <p class="es-feature__kicker" data-reveal>What the evidence changed</p>
+      <h2 class="es-h2" data-reveal>What the research overturned &mdash; and what it didn&rsquo;t move.</h2>
+      <div class="es-impact" style="margin-top: clamp(2rem, 4vw, 3rem);">
+        <div class="es-impact__card" data-reveal>
+          <strong>V1&rsquo;s four-scenario model, unshipped by its own research.</strong>
+          <p>It went live, then the post-launch round replaced it. Planners always know their goal, so four goal-scenarios were a curiosity, not a decision aid.</p>
+        </div>
+        <div class="es-impact__card" data-reveal>
+          <strong>The junior we designed for wasn&rsquo;t a real user.</strong>
+          <p>In our agencies juniors don&rsquo;t plan solo. The persona was real; I hadn&rsquo;t pinned down the working context around it before we committed. What saved the product: experienced planners wanted the same simplicity for short campaigns.</p>
+        </div>
+        <div class="es-impact__card" data-reveal>
+          <strong>Adoption didn&rsquo;t move on UX alone.</strong>
+          <p>Loved in every session, still barely used. It moved a year later &mdash; when management made &ldquo;use our apps&rdquo; an employee goal and tracked it.</p>
+        </div>
+        <div class="es-impact__card" data-reveal>
+          <strong>Speed was the value, not the scenarios.</strong>
+          <p>The survey put fast calculation and fast setup ahead of the budget-variant and multi-scenario features we&rsquo;d bet the redesign on.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= THE SURVEY, UNSPUN (82 responses) ============= -->
+    <section class="es-wrap es-section" style="margin-top: -120px;" data-reveal-group>
       <div>
         <h2 class="es-h2" data-reveal>The survey, unspun</h2>
         <p class="es-lede" data-reveal>
@@ -1225,12 +1183,12 @@
     </section>
 
     <!-- ============= SCROLLYTELLING 2: V3 + THE HANDOFF ============= -->
-    <section class="es-wrap es-section" style="padding-bottom: 0;" data-reveal-group>
-      <h2 class="es-h2" data-reveal>V3 &mdash; and a handoff on purpose</h2>
-      <p class="es-lede" data-reveal>The iteration the January 2025 survey briefed. A colleague leads it; I moved to support.</p>
+    <section class="es-wrap es-section" style="padding-bottom: 0; margin-top: -120px;" data-reveal-group>
+      <p class="es-feature__kicker" data-reveal>V3 &middot; the results screen</p>
+      <h2 class="es-h2" data-reveal>V3 &mdash; and a handoff on purpose.</h2>
     </section>
 
-    <section class="es-wrap es-scrolly" data-scrolly>
+    <section class="es-wrap es-scrolly" data-scrolly style="min-height: 270vh;">
       <div class="es-scrolly__stage">
         <div class="es-scrolly__caps">
           <span class="n">V3</span>
@@ -1251,7 +1209,7 @@
           </p>
         </div>
         <div class="es-scrolly__frame">
-          <img class="es-scrolly__img" src="../assets/images/projects/project-3/express-v3-support.jpg" alt="Express Scenarios v3 — editable per-touchpoint investment and planner-added scenarios" decoding="async" /><!-- TBD: swap for a tall V3 export -->
+          <img class="es-scrolly__img" src="../assets/images/projects/project-3/v3-4-groups.png" alt="Express Scenarios V3 — a results screen with four scenario groups, each a budget-variant chart (−20 / −10 / base / +10 / +20%) and an editable per-touchpoint investment table" decoding="async" />
         </div>
       </div>
     </section>
@@ -1271,9 +1229,13 @@
           &ldquo;thinks&rdquo; &mdash; and the <strong>guardrails</strong> a
           real planning workflow needs around an LLM.
         </p>
+        <!-- NOT lazy on purpose: the scrub timeline is built from these two
+             images. If they only load when the section is already on screen,
+             the timeline gets created mid-scroll and ScrollTrigger jumps it
+             straight to its end state — the composition looks frozen. -->
         <div class="es-aifx" data-reveal data-aifx>
-          <img class="es-aifx__base" src="../assets/images/projects/project-3/agentic-base.png" alt="The agentic layer — building and editing scenarios by chatting with an agent (in development)" loading="lazy" decoding="async" />
-          <img class="es-aifx__card" src="../assets/images/projects/project-3/agentic-card3.png" alt="" loading="lazy" decoding="async" />
+          <img class="es-aifx__base" src="../assets/images/projects/project-3/agentic-base.png" alt="The agentic layer — building and editing scenarios by chatting with an agent (in development)" decoding="async" />
+          <img class="es-aifx__card" src="../assets/images/projects/project-3/agentic-card3.png" alt="" decoding="async" />
         </div>
       </div>
     </section>
@@ -1309,7 +1271,12 @@
     <!-- ==================== PROJECT NAVIGATION ==================== -->
     <nav class="case-nav container" aria-label="Project navigation">
       <a class="btn btn--ghost" href="index.html">&larr; All work</a>
-      <a class="btn btn--primary" href="project-2.html">Next project &rarr;</a>
+      <span class="case-nav__end">
+        <button type="button" class="es-totop" data-totop aria-label="Back to top">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+        <a class="btn btn--primary" href="project-2.html">Next project &rarr;</a>
+      </span>
     </nav>
 
     <!-- ============ LIGHTBOX ============
@@ -1377,62 +1344,6 @@
     });
   </script>
 
-  <!-- Scrollytelling: each [data-scrolly] stage pins (CSS position:sticky);
-       GSAP scrubs its mockup's translateY inside a masked frame as the
-       section scrolls past. The text block just sits there. Desktop + motion
-       only; CSS handles the stacked fallback for narrow / reduced motion. -->
-  <script>
-    (function () {
-      if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
-      gsap.registerPlugin(ScrollTrigger);
-      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-      var narrow = window.matchMedia("(max-width: 900px)");
-      var instances = [];
-
-      document.querySelectorAll("[data-scrolly]").forEach(function (section) {
-        var img = section.querySelector(".es-scrolly__img");
-        var frame = section.querySelector(".es-scrolly__frame");
-        if (!img || !frame) return;
-        var inst = { tl: null };
-
-        inst.build = function () {
-          if (inst.tl) { inst.tl.scrollTrigger && inst.tl.scrollTrigger.kill(); inst.tl.kill(); inst.tl = null; }
-          gsap.set(img, { clearProps: "transform" });
-          section.style.minHeight = "";
-          if (reduce.matches || narrow.matches) return;   // CSS handles these
-          var travel = Math.round(img.getBoundingClientRect().height - frame.clientHeight);
-          if (travel < 40) return;                          // image barely taller than the frame
-          // Give the pin a runway roughly twice the pan distance, so the image
-          // drifts at about half scroll speed — fast enough to feel connected,
-          // slow enough to actually read. (A 1:1 runway reads as "nothing
-          // happened" on a tall screenshot.)
-          var runway = Math.max(travel * 2, 520);
-          section.style.minHeight = Math.round(runway + window.innerHeight) + "px";
-          inst.tl = gsap.timeline({
-            defaults: { ease: "none" },
-            scrollTrigger: { trigger: section, start: "top top", end: "bottom bottom", scrub: 0.4 }
-          });
-          inst.tl.to(img, { y: -travel, duration: 1 }, 0);
-        };
-
-        instances.push(inst);
-        if (img.complete && img.naturalWidth) inst.build();
-        else img.addEventListener("load", inst.build, { once: true });
-      });
-
-      function rebuildAll() {
-        instances.forEach(function (i) { i.build(); });
-        ScrollTrigger.refresh();
-      }
-      if (document.readyState === "complete") rebuildAll();
-      else window.addEventListener("load", rebuildAll);
-
-      var rz;
-      window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(rebuildAll, 200); });
-      if (narrow.addEventListener) narrow.addEventListener("change", rebuildAll);
-      if (reduce.addEventListener) reduce.addEventListener("change", rebuildAll);
-    })();
-  </script>
 
   <!-- Hero cover micro-animation: the two product screens sit in a masked
        frame and, over the first ~440px of scroll, drift down ~25px and grow
@@ -1461,10 +1372,16 @@
 
         tl = gsap.timeline({
           defaults: { ease: "none" },
-          // anchored to the hero so there's scroll runway before the cover is
-          // in frame: at rest-load the screens sit a touch high + small, and
-          // they settle into the composed layout over the first ~520px.
-          scrollTrigger: { trigger: hero, start: "top top", end: "+=520", scrub: 0.6 }
+          // Anchored to the COVER, not the hero section — anchoring to the
+          // section fired this the moment the page moved, while only ~21% of
+          // the cover was on screen, so it settled before you could see it.
+          //
+          // TUNABLE — "top 65%" means: start once the cover's top edge is 65%
+          // of the way down the viewport, i.e. roughly the top HALF of the
+          // cover is in view. LOWER the number to start LATER (more of it
+          // visible first), raise it to start earlier. 100% = the instant it
+          // pokes in, 0% = not until it reaches the top of the screen.
+          scrollTrigger: { trigger: fx, start: "top 65%", end: "+=520", scrub: 0.6 }
         });
         // both start higher + smaller, then slide down into place and grow;
         // the front screen travels a touch further, the back one lags slightly.
@@ -1518,6 +1435,14 @@
       }
 
       build();
+      // Only ever RE-MEASURE after load/fonts — never tear the timeline down
+      // and rebuild it, because a rebuild that lands while the section is
+      // already on screen makes ScrollTrigger snap the composition straight to
+      // its end state (it looks permanently frozen). Rebuild only on the two
+      // events that genuinely change the composition: resize and the media
+      // queries.
+      if (document.readyState !== "complete") window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
       var rz;
       window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { build(); ScrollTrigger.refresh(); }, 200); });
       if (reduce.addEventListener) reduce.addEventListener("change", build);
@@ -1525,36 +1450,15 @@
     })();
   </script>
 
-  <!-- Lightbox (draft-local): click any content image to enlarge; click
-       anywhere on the overlay — the image included — or press Escape to
-       close. The .lightbox markup + CSS are the shared ones. -->
+
+  <!-- Back-to-top button in the project nav. -->
   <script>
     (function () {
-      var lb = document.querySelector("[data-lightbox-overlay]");
-      if (!lb) return;
-      var lbImg = lb.querySelector("[data-lightbox-image]");
-
-      function openLb(src, alt) {
-        lbImg.src = src;
-        lbImg.alt = alt || "";
-        lb.hidden = false;
-        document.body.style.overflow = "hidden";
-      }
-      function closeLb() {
-        lb.hidden = true;
-        lbImg.removeAttribute("src");
-        document.body.style.overflow = "";
-      }
-
-      document.querySelectorAll(
-        ".es-cover img, .es-herofx__mock--front, .es-aifx__base, .es-feature__media img, .es-decision__media img, .es-wide__media img, .es-step__img img, .es-split__media img, .es-fig img, .es-survey-grid img"
-      ).forEach(function (img) {
-        img.addEventListener("click", function () { openLb(img.currentSrc || img.src, img.alt); });
-      });
-
-      lb.addEventListener("click", closeLb);   // backdrop OR the image itself
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && !lb.hidden) closeLb();
+      var b = document.querySelector("[data-totop]");
+      if (!b) return;
+      b.addEventListener("click", function () {
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
       });
     })();
   </script>

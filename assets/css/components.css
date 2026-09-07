@@ -1077,6 +1077,7 @@
   background: var(--color-accent-soft);
 }
 
+
 /* Anything openable in the lightbox gets an affordance cursor. */
 .media-card img,
 .case-gallery img,
