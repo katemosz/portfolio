@@ -2,6 +2,9 @@
 Thumbs.db
 *.log
 
+# Local Claude Code tooling config (preview server, etc.) — machine-specific.
+.claude/
+
 # Raw research source files (screenshots/PDFs with real names, client
 # data) — kept locally for reference, never published to GitHub Pages.
 research-sources/

@@ -173,7 +173,8 @@ document.addEventListener("DOMContentLoaded", () => {
       ".media-card img, .case-gallery img, .mini-shot, .passions img, " +
       ".es-cover img, .es-hero-shot img, .es-herofx__mock--front, .es-aifx__base, " +
       ".es-feature__media img, .es-decision__media img, .es-wide__media img, " +
-      ".es-step__img img, .es-split__media img, .es-fig img, .es-survey-grid img"
+      ".es-step__img img, .es-split__media img, .es-fig img, .es-survey-grid img, " +
+      ".es-montage img, .es-case__media img, .es-case__thumbs img"
     ).forEach((img) => {
       img.addEventListener("click", () => openLightbox(img.currentSrc || img.src, img.alt));
     });

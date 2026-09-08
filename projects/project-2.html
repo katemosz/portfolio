@@ -64,7 +64,7 @@
       box-shadow: 0 24px 60px -40px color-mix(in srgb, var(--color-text) 50%, transparent);
       aspect-ratio: 4 / 3;
     }
-    .es-montage img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .es-montage img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; cursor: zoom-in; }
     @media (max-width: 720px) { .es-montage { grid-template-columns: 1fr 1fr; } .es-montage figure:last-child { display: none; } }
 
     .es-meta {
@@ -135,8 +135,35 @@
       box-shadow: 0 30px 70px -45px color-mix(in srgb, var(--color-text) 50%, transparent);
     }
     .es-case__media img {
-      width: 100%; height: clamp(280px, 36vw, 460px);
-      object-fit: cover; object-position: top center; display: block;
+      width: 100%; height: auto; display: block; cursor: zoom-in;
+    }
+
+    /* secondary previews under the main mockup — a tidy strip of the
+       other steps in the flow. A 16:10 crop keeps the row even; the
+       lightbox opens each one whole. */
+    .es-case__thumbs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: clamp(0.6rem, 1.6vw, 1rem);
+      margin-top: clamp(1.25rem, 3vw, 2rem);
+    }
+    .es-case__thumbs figure {
+      margin: 0; border-radius: clamp(8px, 1vw, 12px); overflow: hidden;
+      background: var(--color-bg-alt); border: 1px solid var(--color-border);
+      box-shadow: 0 18px 44px -34px color-mix(in srgb, var(--color-text) 50%, transparent);
+    }
+    .es-case__thumbs img {
+      width: 100%; aspect-ratio: 16 / 10; object-fit: cover;
+      object-position: top center; display: block; cursor: zoom-in;
+    }
+    .es-case__thumbs figcaption {
+      padding: 0.6em 0.85em; border-top: 1px solid var(--color-border);
+      font-family: var(--font-mono); font-size: calc(var(--fs-300) * 0.82);
+      letter-spacing: 0.02em; color: var(--color-text-muted);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .es-case__thumbs img { transition: transform var(--duration-fast) var(--ease-out); }
+      .es-case__thumbs figure:hover img { transform: scale(1.03); }
     }
     @media (max-width: 900px) {
       .es-case__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
@@ -348,6 +375,18 @@
           <img src="../assets/images/projects/project-2/ai-rf-3-explanation.jpg" alt="AI explanation panel: what went wrong, why it matters, the exact cells, and an expected value" loading="lazy" decoding="async" />
         </div>
       </div>
+
+      <div class="es-case__thumbs" data-reveal>
+        <figure>
+          <img src="../assets/images/projects/project-2/ai-rf-1-error.jpg" alt="The original rejection: one red line of error text, no pointer to which cells are wrong" loading="lazy" decoding="async" />
+          <figcaption>Before — one red line, no pointer</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/images/projects/project-2/ai-rf-2-analyzing.jpg" alt="The AI reading the rejected RF-curve file to work out what failed" loading="lazy" decoding="async" />
+          <figcaption>The AI reads the file</figcaption>
+        </figure>
+      </div>
+
       <dl class="es-case__foot" data-reveal>
         <div class="es-outcome">
           <dt>Outcome</dt>
@@ -380,6 +419,22 @@
           <img src="../assets/images/projects/project-2/roi-5-match.jpg" alt="ROI library step two: matching each selected touchpoint to a library ROI curve, editable per row" loading="lazy" decoding="async" />
         </div>
       </div>
+
+      <div class="es-case__thumbs" data-reveal>
+        <figure>
+          <img src="../assets/images/projects/project-2/roi-1-empty.jpg" alt="The empty ROI view before the library: you had to upload your own econometric model to see any curves" loading="lazy" decoding="async" />
+          <figcaption>Before — bring your own model</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/images/projects/project-2/roi-3-metric.jpg" alt="Choosing a few familiar attributes so the library can match curves" loading="lazy" decoding="async" />
+          <figcaption>Pick a few familiar attributes</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/images/projects/project-2/roi-6-chart.jpg" alt="The result: populated ROI curves, one per touchpoint" loading="lazy" decoding="async" />
+          <figcaption>Curves populate per touchpoint</figcaption>
+        </figure>
+      </div>
+
       <dl class="es-case__foot" data-reveal>
         <div class="es-outcome">
           <dt>Outcome</dt>
@@ -412,6 +467,18 @@
           <img src="../assets/images/projects/project-2/constraints-2-touchpoints.jpg" alt="Constraints suggestions panel: limits the team defined, as values and as a percentage of the plan budget" loading="lazy" decoding="async" />
         </div>
       </div>
+
+      <div class="es-case__thumbs" data-reveal>
+        <figure>
+          <img src="../assets/images/projects/project-2/constraints-1-table.jpg" alt="The original constraints table: manual entry, one row per channel" loading="lazy" decoding="async" />
+          <figcaption>Before — one manual row per channel</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/images/projects/project-2/constraints-3-benchmarks.jpg" alt="Smart benchmark limits Data Science built from thousands of past campaigns, shown only where the data exists" loading="lazy" decoding="async" />
+          <figcaption>Benchmarks from thousands of campaigns</figcaption>
+        </figure>
+      </div>
+
       <dl class="es-case__foot" data-reveal>
         <div class="es-outcome">
           <dt>Outcome</dt>
@@ -444,6 +511,22 @@
           <img src="../assets/images/projects/project-2/admin-3-expanded.jpg" alt="The redesign: one side panel listing affected touchpoints, each changed parameter with current value beside incoming value" loading="lazy" decoding="async" />
         </div>
       </div>
+
+      <div class="es-case__thumbs" data-reveal>
+        <figure>
+          <img src="../assets/images/projects/project-2/admin-before.jpg" alt="The old flow: update icons scattered through the list, with an apply-all that gave no preview" loading="lazy" decoding="async" />
+          <figcaption>Before — &ldquo;apply all&rdquo;, no preview</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/images/projects/project-2/admin-2-list.jpg" alt="One banner and a single panel listing every touchpoint the update affects" loading="lazy" decoding="async" />
+          <figcaption>Every affected touchpoint, listed</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/images/projects/project-2/admin-4-warning.jpg" alt="A changed parameter shown current value beside incoming value, with a plain-language warning on a risky change" loading="lazy" decoding="async" />
+          <figcaption>Current vs. incoming, with a warning</figcaption>
+        </figure>
+      </div>
+
       <dl class="es-case__foot" data-reveal>
         <div class="es-outcome">
           <dt>Outcome</dt>
@@ -483,6 +566,21 @@
             <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
           </svg>
         </div>
+      </div>
+
+      <div class="es-case__thumbs" data-reveal>
+        <figure>
+          <img src="../assets/images/projects/project-2/audience-2-tree.jpg" alt="The rebuilt data-source tree for choosing where audience attributes come from" loading="lazy" decoding="async" />
+          <figcaption>The data-source tree</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/images/projects/project-2/audience-3-attributes.jpg" alt="Attributes placed on the canvas with AND/OR logic staying visible as the audience is built" loading="lazy" decoding="async" />
+          <figcaption>AND/OR logic visible on the canvas</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/images/projects/project-2/audience-5-create.jpg" alt="Audience creation handled as a short side panel rather than a separate screen" loading="lazy" decoding="async" />
+          <figcaption>Creation as a short side panel</figcaption>
+        </figure>
       </div>
 
       <dl class="es-case__foot" data-reveal>
